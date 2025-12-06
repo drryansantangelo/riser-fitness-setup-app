@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riser Fitness Music Setup Wizard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="riser-music-setup">
+        <!-- Hero Section -->
+        <header class="hero">
+            <!-- Top Bar with Logos -->
+            <div class="hero-top-bar">
+                <div class="logo-riser">
+                    <img src="public/Riser_Logo_white.png" alt="Riser Fitness" class="riser-logo" height="48">
+                </div>
+                <div class="powered-by">
+                    <span class="powered-by-text">Powered by</span>
+                    <img src="public/DM_logo_white.png" alt="Dynamic Media" class="dm-logo" height="26">
+                </div>
+            </div>
+            
+            <!-- Main Hero Content -->
+            <div class="hero-content">
+                <h1>Soundtrack Background Music Setup Wizard</h1>
+                <div class="hero-text-container">
+                    <p class="hero-subtitle">Set up your Soundtrack music service in minutes.</p>
+                    <p class="hero-description">Answer a few quick questions and we'll guide you step-by-step through the setup process for your studio's sound system.</p>
+                </div>
+            </div>
+            
+            <!-- Wave Transition -->
+            <div class="hero-wave">
+                <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                    <path d="M0,60 C240,100 480,20 720,60 C960,100 1200,20 1440,60 L1440,120 L0,120 Z" fill="#f8f9fa"/>
+                </svg>
+            </div>
+        </header>
+
+        <!-- Main Wizard Container -->
+        <main class="wizard-container">
+            <!-- Progress Indicator -->
+            <div class="progress-indicator">
+                <div class="step-indicator" data-step="1">
+                    <div class="step-number">1</div>
+                    <span class="step-label">Current Setup</span>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step-indicator" data-step="2">
+                    <div class="step-number">2</div>
+                    <span class="step-label">Details</span>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step-indicator" data-step="3">
+                    <div class="step-number">3</div>
+                    <span class="step-label">Setup Guide</span>
+                </div>
+            </div>
+
+            <!-- Step 1: Current Setup Selector -->
+            <section class="wizard-step" id="step1" data-active="true">
+                <div class="step-header">
+                    <span class="step-badge">Step 1 of 3</span>
+                    <h2>How do you currently play music through your speakers?</h2>
+                    <p class="step-description">Choose the option that best matches how music is connected to your sound system today.</p>
+                </div>
+
+                <div class="cards-grid">
+                    <!-- Sonos Card -->
+                    <div class="setup-card" data-option="sonos">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="8" y="20" width="20" height="28" rx="3" stroke="currentColor" stroke-width="2.5"/>
+                                <rect x="36" y="12" width="20" height="36" rx="3" stroke="currentColor" stroke-width="2.5"/>
+                                <circle cx="18" cy="38" r="5" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="46" cy="38" r="6" stroke="currentColor" stroke-width="2"/>
+                                <path d="M28 30 C32 28 32 36 36 34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M28 26 C34 23 34 41 36 38" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">Sonos System</h3>
+                        <p class="card-description">You use the Sonos app and play music through Sonos speakers or a Sonos Amp/Port.</p>
+                        <div class="card-select-indicator">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                <path class="check" d="M8 12l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Device Card -->
+                    <div class="setup-card" data-option="mobile">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="18" y="8" width="28" height="48" rx="4" stroke="currentColor" stroke-width="2.5"/>
+                                <rect x="22" y="14" width="20" height="32" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                                <circle cx="32" cy="52" r="2" fill="currentColor"/>
+                                <path d="M26 20h12M26 26h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">Mobile Device</h3>
+                        <p class="card-description">A phone or tablet is plugged into your amp/speakers (or connected via Bluetooth), and you control music using a music app like Spotify or Pandora.</p>
+                        <div class="card-select-indicator">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                <path class="check" d="M8 12l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Computer Card -->
+                    <div class="setup-card" data-option="computer">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="8" y="12" width="48" height="32" rx="3" stroke="currentColor" stroke-width="2.5"/>
+                                <rect x="12" y="16" width="40" height="24" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M24 48h16M28 44v4M36 44v4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                                <rect x="20" y="52" width="24" height="4" rx="1" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">Computer</h3>
+                        <p class="card-description">A computer (Mac or Windows PC) is connected to your sound system and plays music using a desktop app or web browser.</p>
+                        <div class="card-select-indicator">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                <path class="check" d="M8 12l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Hardware Box Card -->
+                    <div class="setup-card" data-option="hardware">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="8" y="22" width="48" height="20" rx="3" stroke="currentColor" stroke-width="2.5"/>
+                                <circle cx="18" cy="32" r="3" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="28" cy="32" r="2" fill="currentColor"/>
+                                <rect x="38" y="28" width="12" height="8" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M14 22v-6h36v6M14 42v6h36v-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">Hardware Streaming Box</h3>
+                        <p class="card-description">You have a dedicated music box or receiver from another provider connected to your amp/speakers.</p>
+                        <div class="card-select-indicator">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                <path class="check" d="M8 12l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Step 2: Follow-up Questions -->
+            <section class="wizard-step" id="step2" data-active="false">
+                <!-- Sonos Follow-up -->
+                <div class="step2-content" id="step2-sonos" data-visible="false">
+                    <div class="step-header">
+                        <button class="back-link" data-back="1">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7"/>
+                            </svg>
+                            Change my answer
+                        </button>
+                        <span class="step-badge">Step 2 of 3</span>
+                        <h2>How do you control your Sonos system?</h2>
+                        <p class="step-description">Select the app you typically use to manage your Sonos speakers.</p>
+                    </div>
+
+                    <div class="cards-grid cards-grid-2">
+                        <div class="setup-card" data-option="sonos-mobile">
+                            <div class="card-icon">
+                                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="18" y="8" width="28" height="48" rx="4" stroke="currentColor" stroke-width="2.5"/>
+                                    <rect x="22" y="14" width="20" height="32" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                                    <circle cx="32" cy="52" r="2" fill="currentColor"/>
+                                    <circle cx="32" cy="30" r="6" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M29 30l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <h3 class="card-title">Sonos Mobile App</h3>
+                            <p class="card-description">You use the Sonos app on iPhone or Android to choose music.</p>
+                            <div class="card-select-indicator">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                    <path class="check" d="M8 12l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="setup-card" data-option="sonos-desktop">
+                            <div class="card-icon">
+                                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="8" y="12" width="48" height="32" rx="3" stroke="currentColor" stroke-width="2.5"/>
+                                    <rect x="12" y="16" width="40" height="24" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                                    <path d="M24 48h16M28 44v4M36 44v4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                                    <rect x="20" y="52" width="24" height="4" rx="1" stroke="currentColor" stroke-width="2"/>
+                                    <circle cx="32" cy="28" r="5" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M30 28l1.5 1.5 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <h3 class="card-title">Sonos Desktop App</h3>
+                            <p class="card-description">You use the Sonos app on a Mac or Windows PC to choose music.</p>
+                            <div class="card-select-indicator">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                    <path class="check" d="M8 12l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Follow-up -->
+                <div class="step2-content" id="step2-mobile" data-visible="false">
+                    <div class="step-header">
+                        <button class="back-link" data-back="1">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7"/>
+                            </svg>
+                            Change my answer
+                        </button>
+                        <span class="step-badge">Step 2 of 3</span>
+                        <h2>What type of device is connected to your sound system?</h2>
+                        <p class="step-description">Select your mobile device type so we can provide the right app download links.</p>
+                    </div>
+
+                    <div class="cards-grid cards-grid-3">
+                        <div class="setup-card" data-option="mobile-ios">
+                            <div class="card-icon">
+                                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="18" y="8" width="28" height="48" rx="6" stroke="currentColor" stroke-width="2.5"/>
+                                    <rect x="22" y="14" width="20" height="34" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                                    <path d="M28 11h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    <circle cx="32" cy="54" r="2" stroke="currentColor" stroke-width="1.5"/>
+                                </svg>
+                            </div>
+                            <h3 class="card-title">iPhone / iPad</h3>
+                            <p class="card-description">iOS device from Apple</p>
+                            <div class="card-select-indicator">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                    <path class="check" d="M8 12l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="setup-card" data-option="mobile-android">
+                            <div class="card-icon">
+                                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="18" y="12" width="28" height="44" rx="4" stroke="currentColor" stroke-width="2.5"/>
+                                    <rect x="22" y="18" width="20" height="30" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                                    <circle cx="32" cy="52" r="2" fill="currentColor"/>
+                                    <path d="M24 8l4 4M40 8l-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    <circle cx="28" cy="14" r="1" fill="currentColor"/>
+                                    <circle cx="36" cy="14" r="1" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <h3 class="card-title">Android Phone / Tablet</h3>
+                            <p class="card-description">Samsung, Google Pixel, or other Android device</p>
+                            <div class="card-select-indicator">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                    <path class="check" d="M8 12l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="setup-card" data-option="mobile-fire">
+                            <div class="card-icon">
+                                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="12" y="14" width="40" height="36" rx="4" stroke="currentColor" stroke-width="2.5"/>
+                                    <rect x="16" y="18" width="32" height="28" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                                    <path d="M32 38c-4-6 0-12 4-8-2-4 2-8 4-4 0-4 4-4 4 0 2-4 6 0 0 8-2 4-8 6-12 4z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                </svg>
+                            </div>
+                            <h3 class="card-title">Amazon Fire Tablet</h3>
+                            <p class="card-description">Amazon Fire HD or Fire Max tablet</p>
+                            <div class="card-select-indicator">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                    <path class="check" d="M8 12l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Computer Follow-up -->
+                <div class="step2-content" id="step2-computer" data-visible="false">
+                    <div class="step-header">
+                        <button class="back-link" data-back="1">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7"/>
+                            </svg>
+                            Change my answer
+                        </button>
+                        <span class="step-badge">Step 2 of 3</span>
+                        <h2>What type of computer do you use for music?</h2>
+                        <p class="step-description">Select your operating system so we can provide the right setup instructions.</p>
+                    </div>
+
+                    <div class="cards-grid cards-grid-2">
+                        <div class="setup-card" data-option="computer-windows">
+                            <div class="card-icon">
+                                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 18l16-3v14H12V18zM12 31h16v14l-16-3V31zM30 14l22-4v21H30V14zM30 33h22v21l-22-4V33z" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <h3 class="card-title">Windows PC</h3>
+                            <p class="card-description">Desktop or laptop running Microsoft Windows</p>
+                            <div class="card-select-indicator">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                    <path class="check" d="M8 12l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="setup-card" data-option="computer-mac">
+                            <div class="card-icon">
+                                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M42 52c-2 3-4 3-6 3-2 0-4-1-6-1s-4 1-6 1c-2 0-4 0-6-3-6-8-10-22 0-28 2-1 4-1 6-1 2 0 4 1 6 1s4-1 6-1c4 0 6 2 7 4-6 3-5 12 1 15-2 4-3 7-5 10z" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M38 12c-6 0-8 6-8 6s4-2 8-2c0-2 0-4 0-4z" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <h3 class="card-title">Mac</h3>
+                            <p class="card-description">iMac, MacBook, or Mac Mini running macOS</p>
+                            <div class="card-select-indicator">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                    <path class="check" d="M8 12l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hardware Follow-up (Direct to Step 3) -->
+                <div class="step2-content" id="step2-hardware" data-visible="false">
+                    <div class="step-header">
+                        <button class="back-link" data-back="1">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7"/>
+                            </svg>
+                            Change my answer
+                        </button>
+                        <span class="step-badge">Step 2 of 3</span>
+                        <h2>Replace your existing box with PlayerOne</h2>
+                        <p class="step-description">You're currently using a dedicated third-party music box. For the best reliability and ease of use with Riser Fitness, we recommend swapping it for a Soundtrack PlayerOne device.</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 16v-4M12 8h.01"/>
+                            </svg>
+                        </div>
+                        <div class="info-content">
+                            <h4>Why PlayerOne?</h4>
+                            <p>PlayerOne is a dedicated Soundtrack device that comes pre-configured for Riser Fitness. It automatically connects to your approved playlists and requires minimal setup—just plug in and play.</p>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary continue-btn" id="hardware-continue">
+                        Continue to Setup Instructions
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Step 3: Setup Instructions -->
+            <section class="wizard-step" id="step3" data-active="false">
+                <!-- Sonos Mobile Instructions -->
+                <div class="step3-content" id="step3-sonos-mobile" data-visible="false">
+                    <div class="step-header">
+                        <button class="back-link" data-back="2">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7"/>
+                            </svg>
+                            Back to Step 2
+                        </button>
+                        <span class="step-badge">Step 3 of 3</span>
+                        <h2>Set Up Your Riser Music Player</h2>
+                        <div class="setup-type-badge">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="6" width="8" height="12" rx="1"/>
+                                <rect x="13" y="4" width="8" height="14" rx="1"/>
+                            </svg>
+                            Sonos + Mobile App
+                        </div>
+                    </div>
+
+                    <div class="instructions-panel">
+                        <div class="recommended-setup">
+                            <h3>Recommended Setup</h3>
+                            <p>Use your existing Sonos speakers and the Sonos mobile app, and connect your Riser Soundtrack account as a music service. <strong>No new hardware required.</strong></p>
+                        </div>
+
+                        <div class="steps-list">
+                            <h3>Setup Steps</h3>
+                            <ol>
+                                <li>
+                                    <span class="step-num">1</span>
+                                    <div class="step-content">
+                                        <strong>Confirm your Sonos system is powered on</strong>
+                                        <p>Make sure all Sonos speakers are connected to Wi-Fi and showing as available in your Sonos app.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="step-num">2</span>
+                                    <div class="step-content">
+                                        <strong>Open the Sonos mobile app</strong>
+                                        <p>Launch the Sonos app on your iPhone or Android device.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="step-num">3</span>
+                                    <div class="step-content">
+                                        <strong>Navigate to Music Services</strong>
+                                        <p>Go to Settings → Services & Voice → Add a Service (exact menu location may vary by app version).</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="step-num">4</span>
+                                    <div class="step-content">
+                                        <strong>Add Soundtrack Your Brand</strong>
+                                        <p>Search for and select "Soundtrack Your Brand" from the list of available music services.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="step-num">5</span>
+                                    <div class="step-content">
+                                        <strong>Log in with Riser Fitness credentials</strong>
+                                        <p>Use the Soundtrack login credentials provided by Riser Fitness. <a href="{SOUNDTRACK_LOGIN_URL}" target="_blank">Need your login info?</a></p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="step-num">6</span>
+                                    <div class="step-content">
+                                        <strong>Start playing your Riser playlist</strong>
+                                        <p>Choose the Riser-approved playlist and select which room(s) to play music in. Set volume to a comfortable level.</p>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+
+                        <div class="video-section">
+                            <h3>Video Walkthrough</h3>
+                            <div class="video-placeholder" data-video="sonos-mobile">
+                                <!-- TODO: Replace with Sonos Mobile Setup Video URL -->
+                                <div class="video-embed">
+                                    <iframe src="{SONOS_MOBILE_VIDEO_URL}" frameborder="0" allowfullscreen></iframe>
+                                </div>
+                                <p class="video-caption">Watch: Setting up Soundtrack on Sonos (Mobile App)</p>
+                            </div>
+                        </div>
+
+                        <div class="resources-section">
+                            <h3>Helpful Resources</h3>
+                            <div class="resource-links">
+                                <a href="#" class="resource-link">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                        <polyline points="14 2 14 8 20 8"/>
+                                    </svg>
+                                    Sonos + Soundtrack Setup Guide (PDF)
+                                </a>
+                                <a href="https://help.dynamicmediamusic.com" target="_blank" class="resource-link">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                                        <line x1="12" y1="17" x2="12.01" y2="17"/>
+                                    </svg>
+                                    Support Center
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sonos Desktop Instructions -->
+                <div class="step3-content" id="step3-sonos-desktop" data-visible="false">
+                    <div class="step-header">
+                        <button class="back-link" data-back="2">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7"/>
+                            </svg>
+                            Back to Step 2
+                        </button>
+                        <span class="step-badge">Step 3 of 3</span>
+                        <h2>Set Up Your Riser Music Player</h2>
+                        <div class="setup-type-badge">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                                <line x1="8" y1="21" x2="16" y2="21"/>
+                                <line x1="12" y1="17" x2="12" y2="21"/>
+                            </svg>
+                            Sonos + Desktop App
+                        </div>
+                    </div>
+
+                    <div class="instructions-panel">
+                        <div class="recommended-setup">
+                            <h3>Recommended Setup</h3>
+                            <p>Use your existing Sonos system with the Sonos desktop app and connect your Riser Soundtrack account. <strong>No new hardware required.</strong></p>
+                        </div>
+
+                        <div class="steps-list">
+                            <h3>Setup Steps</h3>
+                            <ol>
+                                <li>
+                                    <span class="step-num">1</span>
+                                    <div class="step-content">
+                                        <strong>Confirm your Sonos system is powered on</strong>
+                                        <p>Make sure all Sonos speakers are connected to Wi-Fi and visible in your Sonos desktop app.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="step-num">2</span>
+                                    <div class="step-content">
+                                        <strong>Open the Sonos desktop app</strong>
+                                        <p>Launch the Sonos app on your Mac or Windows PC.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="step-num">3</span>
+                                    <div class="step-content">
+                                        <strong>Navigate to Music Services</strong>
+                                        <p>Click on "Add Music Services" in the sidebar or go to Manage → Add Music Services.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="step-num">4</span>
+                                    <div class="step-content">
+                                        <strong>Add Soundtrack Your Brand</strong>
+                                        <p>Search for and select "Soundtrack Your Brand" from the available services list.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="step-num">5</span>
+                                    <div class="step-content">
+                                        <strong>Log in with Riser Fitness credentials</strong>
+                                        <p>Enter the Soundtrack login credentials provided by Riser Fitness. <a href="{SOUNDTRACK_LOGIN_URL}" target="_blank">Need your login info?</a></p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="step-num">6</span>
+                                    <div class="step-content">
+                                        <strong>Start playing your Riser playlist</strong>
+                                        <p>Browse to your Riser-approved playlist and select which rooms to play music in.</p>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+
+                        <div class="video-section">
+                            <h3>Video Walkthrough</h3>
+                            <div class="video-placeholder" data-video="sonos-desktop">
+                                <!-- TODO: Replace with Sonos Desktop Setup Video URL -->
+                                <div class="video-embed">
+                                    <iframe src="{SONOS_DESKTOP_VIDEO_URL}" frameborder="0" allowfullscreen></iframe>
+                                </div>
+                                <p class="video-caption">Watch: Setting up Soundtrack on Sonos (Desktop App)</p>
+                            </div>
+                        </div>
+
+                        <div class="resources-section">
+                            <h3>Helpful Resources</h3>
+                            <div class="resource-links">
+                                <a href="#" class="resource-link">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                        <polyline points="14 2 14 8 20 8"/>
+                                    </svg>
+                                    Sonos Desktop Setup Guide (PDF)
+                                </a>
+                                <a href="https://help.dynamicmediamusic.com" target="_blank" class="resource-link">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                                        <line x1="12" y1="17" x2="12.01" y2="17"/>
+                                    </svg>
+                                    Support Center
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Device Instructions -->
+                <div class="step3-content" id="step3-mobile" data-visible="false">
+                    <div class="step-header">
+                        <button class="back-link" data-back="2">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7"/>
+                            </svg>
+                            Back to Step 2
+                        </button>
+                        <span class="step-badge">Step 3 of 3</span>
+                        <h2>Set Up Your Riser Music Player</h2>
+                        <div class="setup-type-badge" id="mobile-device-badge">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="5" y="2" width="14" height="20" rx="2"/>
+                                <line x1="12" y1="18" x2="12.01" y2="18"/>
+                            </svg>
+                            <span id="mobile-device-label">Mobile Device</span>
+                        </div>
+                    </div>
+
+                    <div class="instructions-panel">
+                        <div class="recommended-setup">
+                            <h3>Recommended Setup</h3>
+                            <p>Turn your phone or tablet into the Riser music player by installing the Soundtrack Player app and connecting it to your existing audio system.</p>
+                        </div>
+
+                        <div class="steps-list">
+                            <h3>Setup Steps</h3>
+                            <ol>
+                                <li>
+                                    <span class="step-num">1</span>
+                                    <div class="step-content">
+                                        <strong>Connect your device to your sound system</strong>
+                                        <p>Ensure your phone/tablet is physically connected to your amp/speakers via audio cable or Bluetooth.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="step-num">2</span>
+                                    <div class="step-content">
+                                        <strong>Download the Soundtrack Player app</strong>
+                                        <div class="app-download-links" id="mobile-app-links">
+                                            <!-- Links populated by JS based on device type -->
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="step-num">3</span>
+                                    <div class="step-content">
+                                        <strong>Open the app and log in</strong>
+                                        <p>Use the Riser Fitness Soundtrack credentials provided to you. <a href="{SOUNDTRACK_LOGIN_URL}" target="_blank">Need your login info?</a></p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="step-num">4</span>
+                                    <div class="step-content">
+                                        <strong>Confirm Wi-Fi connection</strong>
+                                        <p>Make sure your device is connected to a stable Wi-Fi network for uninterrupted playback.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="step-num">5</span>
+                                    <div class="step-content">
+                                        <strong>Adjust device settings</strong>
+                                        <p>Prevent interruptions by:</p>
+                                        <ul class="sub-list">
+                                            <li>Disabling auto-lock / setting screen timeout to "Never"</li>
+                                            <li>Enabling Do Not Disturb mode</li>
+                                            <li>Keeping the device plugged in to power</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="step-num">6</span>
+                                    <div class="step-content">
+                                        <strong>Start playing your Riser playlist</strong>
+                                        <p>Select the approved Riser playlist and set the volume to a comfortable level for your space.</p>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+
+                        <div class="video-section">
+                            <h3>Video Walkthrough</h3>
+                            <div class="video-placeholder" data-video="mobile-player">
+                                <!-- TODO: Replace with Soundtrack Mobile Player Setup Video URL -->
+                                <div class="video-embed">
+                                    <iframe src="{MOBILE_PLAYER_VIDEO_URL}" frameborder="0" allowfullscreen></iframe>
+                                </div>
+                                <p class="video-caption">Watch: Setting up Soundtrack Player on Mobile</p>
+                            </div>
+                        </div>
+
+                        <!-- Remote Control App Section -->
+                        <div class="remote-app-section">
+                            <h3>
+                                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="5" y="2" width="14" height="20" rx="2"/>
+                                    <path d="M12 18h.01"/>
+                                    <path d="M9 9l3 3-3 3M15 9l-3 3 3 3" opacity="0.5"/>
+                                </svg>
+                                Optional: Remote Control App
+                            </h3>
+                            <p>Staff can use the <strong>Soundtrack Remote Control</strong> app on their personal phones to change playlists, skip tracks, and adjust music without touching the main player device.</p>
+                            
+                            <div class="remote-app-details">
+                                <h4>How to Set Up Remote Control</h4>
+                                <ul>
+                                    <li>
+                                        <strong>Download the Remote app:</strong>
+                                        <div class="app-links-inline">
+                                            <a href="{REMOTE_APP_IOS_URL}" target="_blank" class="app-link">
+                                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                                                </svg>
+                                                iOS App Store
+                                            </a>
+                                            <a href="{REMOTE_APP_ANDROID_URL}" target="_blank" class="app-link">
+                                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                    <path d="M3.18 23l8.82-5.09V6.09L3.18 1v22zM12 6.09v11.82L20.82 23V1L12 6.09z"/>
+                                                </svg>
+                                                Google Play
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li><strong>Log in</strong> with the same Riser Fitness Soundtrack credentials.</li>
+                                    <li><strong>Select your location</strong> from the list to connect to the player.</li>
+                                    <li><strong>Control playback:</strong> Change playlists, skip tracks, pause, or adjust volume.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="resources-section">
+                            <h3>Helpful Resources</h3>
+                            <div class="resource-links">
+                                <a href="#" class="resource-link">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                        <polyline points="14 2 14 8 20 8"/>
+                                    </svg>
+                                    Mobile Player Setup Guide (PDF)
+                                </a>
+                                <a href="https://help.dynamicmediamusic.com" target="_blank" class="resource-link">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                                        <line x1="12" y1="17" x2="12.01" y2="17"/>
+                                    </svg>
+                                    Support Center
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Computer Instructions -->
+                <div class="step3-content" id="step3-computer" data-visible="false">
+                    <div class="step-header">
+                        <button class="back-link" data-back="2">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7"/>
+                            </svg>
+                            Back to Step 2
+                        </button>
+                        <span class="step-badge">Step 3 of 3</span>
+                        <h2>Set Up Your Riser Music Player</h2>
+                        <div class="setup-type-badge" id="computer-type-badge">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                                <line x1="8" y1="21" x2="16" y2="21"/>
+                                <line x1="12" y1="17" x2="12" y2="21"/>
+                            </svg>
+                            <span id="computer-type-label">Computer</span>
+                        </div>
+                    </div>
+
+                    <div class="instructions-panel">
+                        <div class="recommended-setup">
+                            <h3>Recommended Setup</h3>
+                            <p>Use your existing computer as the Riser music player with the Soundtrack desktop/web player.</p>
+                        </div>
+
+                        <div class="steps-list">
+                            <h3>Setup Steps</h3>
+                            <ol>
+                                <li>
+                                    <span class="step-num">1</span>
+                                    <div class="step-content">
+                                        <strong>Connect your computer to the sound system</strong>
+                                        <p>Confirm your computer is connected to your amp/speakers via audio cable, USB interface, or HDMI.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="step-num">2</span>
+                                    <div class="step-content">
+                                        <strong>Access the Soundtrack Player</strong>
+                                        <div class="app-download-links" id="computer-app-links">
+                                            <!-- Links populated by JS based on computer type -->
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="step-num">3</span>
+                                    <div class="step-content">
+                                        <strong>Log in with Riser Fitness credentials</strong>
+                                        <p>Enter the Soundtrack login credentials provided by Riser Fitness. <a href="{SOUNDTRACK_LOGIN_URL}" target="_blank">Need your login info?</a></p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="step-num">4</span>
+                                    <div class="step-content">
+                                        <strong>Configure power settings</strong>
+                                        <p>Prevent the computer from sleeping during business hours:</p>
+                                        <ul class="sub-list" id="power-settings-list">
+                                            <!-- Populated by JS based on computer type -->
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="step-num">5</span>
+                                    <div class="step-content">
+                                        <strong>Start playing your Riser playlist</strong>
+                                        <p>Select the approved Riser playlist and confirm audio is playing through your speakers.</p>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+
+                        <div class="video-section">
+                            <h3>Video Walkthrough</h3>
+                            <div class="video-placeholder" data-video="desktop-player">
+                                <!-- TODO: Replace with Desktop Player Setup Video URL -->
+                                <div class="video-embed">
+                                    <iframe src="{DESKTOP_PLAYER_VIDEO_URL}" frameborder="0" allowfullscreen></iframe>
+                                </div>
+                                <p class="video-caption">Watch: Setting up Soundtrack Player on Desktop</p>
+                            </div>
+                        </div>
+
+                        <!-- Remote Control App Section -->
+                        <div class="remote-app-section">
+                            <h3>
+                                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="5" y="2" width="14" height="20" rx="2"/>
+                                    <path d="M12 18h.01"/>
+                                    <path d="M9 9l3 3-3 3M15 9l-3 3 3 3" opacity="0.5"/>
+                                </svg>
+                                Optional: Remote Control App
+                            </h3>
+                            <p>Staff can use the <strong>Soundtrack Remote Control</strong> app on their personal phones to change playlists, skip tracks, and adjust music without touching the computer.</p>
+                            
+                            <div class="remote-app-details">
+                                <h4>How to Set Up Remote Control</h4>
+                                <ul>
+                                    <li>
+                                        <strong>Download the Remote app:</strong>
+                                        <div class="app-links-inline">
+                                            <a href="{REMOTE_APP_IOS_URL}" target="_blank" class="app-link">
+                                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                                                </svg>
+                                                iOS App Store
+                                            </a>
+                                            <a href="{REMOTE_APP_ANDROID_URL}" target="_blank" class="app-link">
+                                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                    <path d="M3.18 23l8.82-5.09V6.09L3.18 1v22zM12 6.09v11.82L20.82 23V1L12 6.09z"/>
+                                                </svg>
+                                                Google Play
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li><strong>Log in</strong> with the same Riser Fitness Soundtrack credentials.</li>
+                                    <li><strong>Select your location</strong> from the list to connect to the player.</li>
+                                    <li><strong>Control playback:</strong> Change playlists, skip tracks, pause, or adjust volume.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="resources-section">
+                            <h3>Helpful Resources</h3>
+                            <div class="resource-links">
+                                <a href="#" class="resource-link">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                        <polyline points="14 2 14 8 20 8"/>
+                                    </svg>
+                                    Desktop Player Setup Guide (PDF)
+                                </a>
+                                <a href="https://help.dynamicmediamusic.com" target="_blank" class="resource-link">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                                        <line x1="12" y1="17" x2="12.01" y2="17"/>
+                                    </svg>
+                                    Support Center
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hardware / PlayerOne Instructions -->
+                <div class="step3-content" id="step3-hardware" data-visible="false">
+                    <div class="step-header">
+                        <button class="back-link" data-back="2">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7"/>
+                            </svg>
+                            Back to Step 2
+                        </button>
+                        <span class="step-badge">Step 3 of 3</span>
+                        <h2>Set Up Your Riser Music Player</h2>
+                        <div class="setup-type-badge">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="7" width="20" height="10" rx="2"/>
+                                <circle cx="7" cy="12" r="2"/>
+                            </svg>
+                            PlayerOne Device
+                        </div>
+                    </div>
+
+                    <div class="instructions-panel">
+                        <div class="recommended-setup">
+                            <h3>Recommended Setup</h3>
+                            <p>Replace your existing hardware music box with a preconfigured <strong>PlayerOne device</strong> for Riser Fitness. PlayerOne is the easiest and most reliable way to play Soundtrack music.</p>
+                        </div>
+
+                        <!-- Order Section -->
+                        <div class="order-section">
+                            <div class="order-card">
+                                <div class="order-icon">
+                                    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="8" y="22" width="48" height="20" rx="4" stroke="currentColor" stroke-width="2.5"/>
+                                        <circle cx="18" cy="32" r="4" stroke="currentColor" stroke-width="2"/>
+                                        <rect x="38" y="28" width="12" height="8" rx="2" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M26 30h6M26 34h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                        <path d="M32 14l-8 8M32 14l8 8M32 14v-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div class="order-content">
+                                    <h4>Order PlayerOne</h4>
+                                    <p>PlayerOne is a dedicated Soundtrack device that comes pre-configured for Riser Fitness. Once it arrives, setup takes just minutes.</p>
+                                    <a href="#" class="btn btn-primary order-btn">
+                                        Order PlayerOne
+                                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                                        </svg>
+                                    </a>
+                                    <p class="order-note">Once your PlayerOne arrives, follow the setup steps below.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="steps-list">
+                            <h3>Setup Steps</h3>
+                            <ol>
+                                <li>
+                                    <span class="step-num">1</span>
+                                    <div class="step-content">
+                                        <strong>Unbox PlayerOne</strong>
+                                        <p>Remove PlayerOne from the packaging and place it near your amp/receiver and router.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="step-num">2</span>
+                                    <div class="step-content">
+                                        <strong>Connect audio output</strong>
+                                        <p>Use the included audio cable to connect PlayerOne's audio output to your amp/speakers.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="step-num">3</span>
+                                    <div class="step-content">
+                                        <strong>Connect to power and internet</strong>
+                                        <p>Plug in the power adapter. For best results, connect to your router via Ethernet cable. Wi-Fi setup is also available.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="step-num">4</span>
+                                    <div class="step-content">
+                                        <strong>Power on and wait for auto-configuration</strong>
+                                        <p>PlayerOne will automatically load the Riser Fitness configuration. The LED will turn solid when ready (usually 1-2 minutes).</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="step-num">5</span>
+                                    <div class="step-content">
+                                        <strong>Test playback</strong>
+                                        <p>Music should start playing automatically. Adjust the volume on your amp to a comfortable level.</p>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+
+                        <div class="video-section">
+                            <h3>Video Walkthrough</h3>
+                            <div class="video-placeholder" data-video="playerone">
+                                <!-- TODO: Replace with PlayerOne Setup Video URL -->
+                                <div class="video-embed">
+                                    <iframe src="{PLAYERONE_VIDEO_URL}" frameborder="0" allowfullscreen></iframe>
+                                </div>
+                                <p class="video-caption">Watch: Setting up PlayerOne</p>
+                            </div>
+                        </div>
+
+                        <!-- Remote Control App Section -->
+                        <div class="remote-app-section">
+                            <h3>
+                                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="5" y="2" width="14" height="20" rx="2"/>
+                                    <path d="M12 18h.01"/>
+                                    <path d="M9 9l3 3-3 3M15 9l-3 3 3 3" opacity="0.5"/>
+                                </svg>
+                                Optional: Remote Control App
+                            </h3>
+                            <p>Staff can use the <strong>Soundtrack Remote Control</strong> app on their personal phones to change playlists, skip tracks, and adjust music without touching the PlayerOne device.</p>
+                            
+                            <div class="remote-app-details">
+                                <h4>How to Set Up Remote Control</h4>
+                                <ul>
+                                    <li>
+                                        <strong>Download the Remote app:</strong>
+                                        <div class="app-links-inline">
+                                            <a href="{REMOTE_APP_IOS_URL}" target="_blank" class="app-link">
+                                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                                                </svg>
+                                                iOS App Store
+                                            </a>
+                                            <a href="{REMOTE_APP_ANDROID_URL}" target="_blank" class="app-link">
+                                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                    <path d="M3.18 23l8.82-5.09V6.09L3.18 1v22zM12 6.09v11.82L20.82 23V1L12 6.09z"/>
+                                                </svg>
+                                                Google Play
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li><strong>Log in</strong> with the same Riser Fitness Soundtrack credentials.</li>
+                                    <li><strong>Select your location</strong> from the list to connect to the PlayerOne.</li>
+                                    <li><strong>Control playback:</strong> Change playlists, skip tracks, pause, or adjust volume.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="resources-section">
+                            <h3>Helpful Resources</h3>
+                            <div class="resource-links">
+                                <a href="#" class="resource-link">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                        <polyline points="14 2 14 8 20 8"/>
+                                    </svg>
+                                    PlayerOne Quick Start Guide (PDF)
+                                </a>
+                                <a href="https://help.dynamicmediamusic.com" target="_blank" class="resource-link">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                                        <line x1="12" y1="17" x2="12.01" y2="17"/>
+                                    </svg>
+                                    Support Center
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Help Footer -->
+        <footer class="help-footer">
+            <div class="help-content">
+                <h3>Need Help?</h3>
+                <p>Our support team is here to assist you with your music setup.</p>
+                <div class="contact-options">
+                    <a href="tel:{RISER_SUPPORT_PHONE}" class="contact-item">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        <span>{RISER_SUPPORT_PHONE}</span>
+                    </a>
+                    <a href="mailto:{RISER_SUPPORT_EMAIL}" class="contact-item">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        <span>{RISER_SUPPORT_EMAIL}</span>
+                    </a>
+                    <a href="https://help.dynamicmediamusic.com" target="_blank" class="contact-item">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+                        <span>Support Center</span>
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="wizard.js"></script>
+</body>
+</html>
+

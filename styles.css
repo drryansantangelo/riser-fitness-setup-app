@@ -1,0 +1,1231 @@
+/* =====================================================
+   RISER FITNESS MUSIC SETUP WIZARD
+   Scoped styles for WordPress embedding
+   ===================================================== */
+
+/* CSS Variables - Riser Fitness Branding */
+.riser-music-setup {
+    /* Primary Riser Blue (sampled from riserfitness.com) */
+    --riser-blue: #4A90D9;
+    --riser-blue-dark: #3A7BC8;
+    --riser-blue-light: #6BA3E3;
+    --riser-blue-deep: #2C5A8A;
+    
+    /* Legacy red variables mapped to blue for compatibility */
+    --riser-red: var(--riser-blue);
+    --riser-red-dark: var(--riser-blue-dark);
+    --riser-red-light: var(--riser-blue-light);
+    
+    /* Neutrals */
+    --riser-black: #1A1A2E;
+    --riser-charcoal: #16213E;
+    --riser-gray-900: #333333;
+    --riser-gray-700: #555555;
+    --riser-gray-500: #888888;
+    --riser-gray-300: #CCCCCC;
+    --riser-gray-100: #F5F5F5;
+    --riser-white: #FFFFFF;
+    
+    /* Accent colors */
+    --accent-success: #10B981;
+    --accent-warning: #F59E0B;
+    --accent-info: var(--riser-blue);
+    
+    /* Typography */
+    --font-display: 'Bebas Neue', 'Impact', sans-serif;
+    --font-body: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    
+    /* Spacing */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+    --space-3xl: 4rem;
+    
+    /* Borders & Shadows */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.12);
+    --shadow-xl: 0 20px 50px rgba(0, 0, 0, 0.15);
+    
+    /* Transitions */
+    --transition-fast: 150ms ease;
+    --transition-base: 250ms ease;
+    --transition-slow: 400ms ease;
+}
+
+/* Reset & Base */
+.riser-music-setup {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--riser-gray-900);
+    background: var(--riser-gray-100);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.riser-music-setup *,
+.riser-music-setup *::before,
+.riser-music-setup *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.riser-music-setup img,
+.riser-music-setup svg {
+    display: block;
+    max-width: 100%;
+}
+
+.riser-music-setup a {
+    color: var(--riser-red);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.riser-music-setup a:hover {
+    color: var(--riser-red-dark);
+    text-decoration: underline;
+}
+
+/* =====================================================
+   HERO SECTION
+   ===================================================== */
+.riser-music-setup .hero {
+    background: linear-gradient(165deg, #1e3a5f 0%, #16213e 35%, #1a1a2e 70%, #0f0f1a 100%);
+    color: var(--riser-white);
+    padding: 0 var(--space-lg) 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Blue glow accent - right side */
+.riser-music-setup .hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -5%;
+    width: 50%;
+    height: 140%;
+    background: radial-gradient(ellipse at center, rgba(74, 144, 217, 0.12) 0%, transparent 55%);
+    pointer-events: none;
+}
+
+/* Center vignette for text focus */
+.riser-music-setup .hero::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(30, 58, 95, 0.3) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* Top Bar with Logos */
+.riser-music-setup .hero-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-xl) 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.riser-music-setup .logo-riser {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.riser-music-setup .riser-logo {
+    display: block;
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+}
+
+.riser-music-setup .powered-by {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    height: 48px;
+}
+
+.riser-music-setup .powered-by-text {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.55);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+.riser-music-setup .dm-logo {
+    height: 26px;
+    width: auto;
+    opacity: 0.85;
+}
+
+/* Main Hero Content */
+.riser-music-setup .hero-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    padding: var(--space-2xl) 0 var(--space-3xl);
+}
+
+.riser-music-setup .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.25rem, 6vw, 4rem);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-xl);
+    line-height: 1.1;
+    text-transform: uppercase;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Text container for subheadlines */
+.riser-music-setup .hero-text-container {
+    max-width: 65%;
+    margin: 0 auto;
+}
+
+.riser-music-setup .hero-subtitle {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--riser-white);
+    margin: 0 0 var(--space-md);
+    line-height: 1.5;
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+}
+
+.riser-music-setup .hero-description {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    line-height: 1.7;
+}
+
+.riser-music-setup .hero-wave {
+    position: relative;
+    margin-top: var(--space-2xl);
+}
+
+.riser-music-setup .hero-wave svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 -4px 20px rgba(0, 0, 0, 0.1));
+}
+
+/* =====================================================
+   WIZARD CONTAINER
+   ===================================================== */
+.riser-music-setup .wizard-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: var(--space-2xl) var(--space-lg);
+}
+
+/* =====================================================
+   PROGRESS INDICATOR
+   ===================================================== */
+.riser-music-setup .progress-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-2xl);
+    padding: var(--space-lg);
+    background: var(--riser-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.riser-music-setup .step-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+    opacity: 0.4;
+    transition: opacity var(--transition-base);
+}
+
+.riser-music-setup .step-indicator.active {
+    opacity: 1;
+}
+
+.riser-music-setup .step-indicator.completed {
+    opacity: 1;
+}
+
+.riser-music-setup .step-indicator.completed .step-number {
+    background: var(--accent-success);
+    border-color: var(--accent-success);
+}
+
+.riser-music-setup .step-number {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--riser-gray-100);
+    border: 2px solid var(--riser-gray-300);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: var(--riser-gray-700);
+    transition: all var(--transition-base);
+}
+
+.riser-music-setup .step-indicator.active .step-number {
+    background: var(--riser-red);
+    border-color: var(--riser-red);
+    color: var(--riser-white);
+    transform: scale(1.1);
+}
+
+.riser-music-setup .step-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--riser-gray-700);
+}
+
+.riser-music-setup .step-connector {
+    flex: 0 0 60px;
+    height: 2px;
+    background: var(--riser-gray-300);
+    border-radius: 1px;
+}
+
+/* =====================================================
+   WIZARD STEPS
+   ===================================================== */
+.riser-music-setup .wizard-step {
+    display: none;
+    animation: fadeSlideIn 0.4s ease;
+}
+
+.riser-music-setup .wizard-step[data-active="true"] {
+    display: block;
+}
+
+@keyframes fadeSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Step Header */
+.riser-music-setup .step-header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+}
+
+.riser-music-setup .step-badge {
+    display: inline-block;
+    background: var(--riser-red);
+    color: var(--riser-white);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-xl);
+    margin-bottom: var(--space-md);
+}
+
+.riser-music-setup .step-header h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    color: var(--riser-black);
+    margin-bottom: var(--space-sm);
+    line-height: 1.2;
+}
+
+.riser-music-setup .step-description {
+    font-size: 1rem;
+    color: var(--riser-gray-700);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Back Link */
+.riser-music-setup .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    background: none;
+    border: none;
+    color: var(--riser-gray-700);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: var(--space-sm) 0;
+    margin-bottom: var(--space-md);
+    transition: color var(--transition-fast);
+    font-family: var(--font-body);
+}
+
+.riser-music-setup .back-link:hover {
+    color: var(--riser-red);
+}
+
+.riser-music-setup .back-link svg {
+    transition: transform var(--transition-fast);
+}
+
+.riser-music-setup .back-link:hover svg {
+    transform: translateX(-3px);
+}
+
+/* =====================================================
+   CARDS GRID
+   ===================================================== */
+.riser-music-setup .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+}
+
+.riser-music-setup .cards-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.riser-music-setup .cards-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 768px) {
+    .riser-music-setup .cards-grid,
+    .riser-music-setup .cards-grid-2,
+    .riser-music-setup .cards-grid-3 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =====================================================
+   SETUP CARDS
+   ===================================================== */
+.riser-music-setup .setup-card {
+    background: var(--riser-white);
+    border: 2px solid transparent;
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    cursor: pointer;
+    position: relative;
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.riser-music-setup .setup-card:hover {
+    border-color: var(--riser-gray-300);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.riser-music-setup .setup-card.selected {
+    border-color: var(--riser-red);
+    box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.15), var(--shadow-md);
+}
+
+.riser-music-setup .setup-card.selected .card-icon {
+    color: var(--riser-red);
+}
+
+.riser-music-setup .card-icon {
+    width: 72px;
+    height: 72px;
+    margin-bottom: var(--space-lg);
+    color: var(--riser-gray-700);
+    transition: color var(--transition-base);
+}
+
+.riser-music-setup .setup-card:hover .card-icon {
+    color: var(--riser-red);
+}
+
+.riser-music-setup .card-title {
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--riser-black);
+    margin-bottom: var(--space-sm);
+}
+
+.riser-music-setup .card-description {
+    font-size: 0.9rem;
+    color: var(--riser-gray-700);
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+/* Card Selection Indicator */
+.riser-music-setup .card-select-indicator {
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-md);
+    width: 28px;
+    height: 28px;
+    color: var(--riser-gray-300);
+    transition: all var(--transition-base);
+}
+
+.riser-music-setup .card-select-indicator .check {
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all var(--transition-base);
+}
+
+.riser-music-setup .setup-card.selected .card-select-indicator {
+    color: var(--riser-red);
+}
+
+.riser-music-setup .setup-card.selected .card-select-indicator circle {
+    fill: var(--riser-red);
+    stroke: var(--riser-red);
+}
+
+.riser-music-setup .setup-card.selected .card-select-indicator .check {
+    opacity: 1;
+    transform: scale(1);
+    stroke: var(--riser-white);
+}
+
+/* =====================================================
+   INFO CARD
+   ===================================================== */
+.riser-music-setup .info-card {
+    display: flex;
+    gap: var(--space-lg);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(59, 130, 246, 0.03) 100%);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    margin-bottom: var(--space-xl);
+}
+
+.riser-music-setup .info-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    color: var(--accent-info);
+}
+
+.riser-music-setup .info-content h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--riser-black);
+    margin-bottom: var(--space-xs);
+}
+
+.riser-music-setup .info-content p {
+    font-size: 0.9rem;
+    color: var(--riser-gray-700);
+    line-height: 1.6;
+}
+
+/* =====================================================
+   BUTTONS
+   ===================================================== */
+.riser-music-setup .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-xl);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    text-decoration: none;
+}
+
+.riser-music-setup .btn-primary {
+    background: var(--riser-red);
+    color: var(--riser-white);
+}
+
+.riser-music-setup .btn-primary:hover {
+    background: var(--riser-red-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+    text-decoration: none;
+    color: var(--riser-white);
+}
+
+.riser-music-setup .btn-primary:active {
+    transform: translateY(0);
+}
+
+.riser-music-setup .continue-btn {
+    margin-top: var(--space-lg);
+}
+
+/* =====================================================
+   STEP 2 CONTENT VISIBILITY
+   ===================================================== */
+.riser-music-setup .step2-content,
+.riser-music-setup .step3-content {
+    display: none;
+}
+
+.riser-music-setup .step2-content[data-visible="true"],
+.riser-music-setup .step3-content[data-visible="true"] {
+    display: block;
+    animation: fadeSlideIn 0.4s ease;
+}
+
+/* =====================================================
+   SETUP TYPE BADGE
+   ===================================================== */
+.riser-music-setup .setup-type-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    background: var(--riser-gray-100);
+    color: var(--riser-gray-700);
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    margin-top: var(--space-md);
+}
+
+/* =====================================================
+   INSTRUCTIONS PANEL
+   ===================================================== */
+.riser-music-setup .instructions-panel {
+    background: var(--riser-white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-2xl);
+    box-shadow: var(--shadow-md);
+}
+
+/* Recommended Setup */
+.riser-music-setup .recommended-setup {
+    background: linear-gradient(135deg, rgba(230, 57, 70, 0.06) 0%, rgba(230, 57, 70, 0.02) 100%);
+    border-left: 4px solid var(--riser-red);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    padding: var(--space-lg);
+    margin-bottom: var(--space-2xl);
+}
+
+.riser-music-setup .recommended-setup h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--riser-red);
+    margin-bottom: var(--space-sm);
+    letter-spacing: 0.02em;
+}
+
+.riser-music-setup .recommended-setup p {
+    font-size: 1rem;
+    color: var(--riser-gray-900);
+    line-height: 1.7;
+}
+
+/* Steps List */
+.riser-music-setup .steps-list {
+    margin-bottom: var(--space-2xl);
+}
+
+.riser-music-setup .steps-list h3 {
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    color: var(--riser-black);
+    margin-bottom: var(--space-lg);
+    letter-spacing: 0.02em;
+}
+
+.riser-music-setup .steps-list ol {
+    list-style: none;
+    counter-reset: none;
+}
+
+.riser-music-setup .steps-list li {
+    display: flex;
+    gap: var(--space-lg);
+    padding: var(--space-lg) 0;
+    border-bottom: 1px solid var(--riser-gray-100);
+}
+
+.riser-music-setup .steps-list li:last-child {
+    border-bottom: none;
+}
+
+.riser-music-setup .step-num {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    background: var(--riser-red);
+    color: var(--riser-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.875rem;
+}
+
+.riser-music-setup .step-content {
+    flex: 1;
+}
+
+.riser-music-setup .step-content strong {
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--riser-black);
+    margin-bottom: var(--space-xs);
+}
+
+.riser-music-setup .step-content p {
+    font-size: 0.9rem;
+    color: var(--riser-gray-700);
+    line-height: 1.6;
+}
+
+.riser-music-setup .sub-list {
+    list-style: disc;
+    margin: var(--space-sm) 0 0 var(--space-lg);
+}
+
+.riser-music-setup .sub-list li {
+    display: list-item;
+    padding: var(--space-xs) 0;
+    border-bottom: none;
+    font-size: 0.9rem;
+    color: var(--riser-gray-700);
+}
+
+/* App Download Links */
+.riser-music-setup .app-download-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-top: var(--space-sm);
+}
+
+.riser-music-setup .app-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    background: var(--riser-gray-100);
+    color: var(--riser-gray-900);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all var(--transition-fast);
+}
+
+.riser-music-setup .app-link:hover {
+    background: var(--riser-red);
+    color: var(--riser-white);
+    text-decoration: none;
+}
+
+.riser-music-setup .app-links-inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-top: var(--space-sm);
+}
+
+/* =====================================================
+   VIDEO SECTION
+   ===================================================== */
+.riser-music-setup .video-section {
+    margin-bottom: var(--space-2xl);
+}
+
+.riser-music-setup .video-section h3 {
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    color: var(--riser-black);
+    margin-bottom: var(--space-lg);
+    letter-spacing: 0.02em;
+}
+
+.riser-music-setup .video-placeholder {
+    background: var(--riser-gray-900);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.riser-music-setup .video-embed {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    background: linear-gradient(135deg, var(--riser-charcoal) 0%, var(--riser-black) 100%);
+}
+
+.riser-music-setup .video-embed iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Placeholder state when no video URL */
+.riser-music-setup .video-embed::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.riser-music-setup .video-embed::after {
+    content: '▶';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-45%, -50%);
+    font-size: 2rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.riser-music-setup .video-caption {
+    padding: var(--space-md);
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+}
+
+/* =====================================================
+   REMOTE APP SECTION
+   ===================================================== */
+.riser-music-setup .remote-app-section {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.06) 0%, rgba(16, 185, 129, 0.02) 100%);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    border-radius: var(--radius-md);
+    padding: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+}
+
+.riser-music-setup .remote-app-section h3 {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--accent-success);
+    margin-bottom: var(--space-md);
+    letter-spacing: 0.02em;
+}
+
+.riser-music-setup .remote-app-section > p {
+    font-size: 0.95rem;
+    color: var(--riser-gray-700);
+    line-height: 1.7;
+    margin-bottom: var(--space-lg);
+}
+
+.riser-music-setup .remote-app-details {
+    background: var(--riser-white);
+    border-radius: var(--radius-sm);
+    padding: var(--space-lg);
+}
+
+.riser-music-setup .remote-app-details h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--riser-black);
+    margin-bottom: var(--space-md);
+}
+
+.riser-music-setup .remote-app-details ul {
+    list-style: none;
+}
+
+.riser-music-setup .remote-app-details li {
+    padding: var(--space-sm) 0;
+    font-size: 0.9rem;
+    color: var(--riser-gray-700);
+    line-height: 1.6;
+}
+
+.riser-music-setup .remote-app-details li strong {
+    color: var(--riser-black);
+}
+
+/* =====================================================
+   ORDER SECTION (PlayerOne)
+   ===================================================== */
+.riser-music-setup .order-section {
+    margin-bottom: var(--space-2xl);
+}
+
+.riser-music-setup .order-card {
+    display: flex;
+    gap: var(--space-xl);
+    background: linear-gradient(135deg, rgba(74, 144, 217, 0.08) 0%, rgba(74, 144, 217, 0.03) 100%);
+    border: 2px solid var(--riser-blue);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+}
+
+.riser-music-setup .order-icon {
+    flex-shrink: 0;
+    width: 100px;
+    height: 100px;
+    color: var(--riser-red);
+}
+
+.riser-music-setup .order-content {
+    flex: 1;
+}
+
+.riser-music-setup .order-content h4 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--riser-black);
+    margin-bottom: var(--space-sm);
+    letter-spacing: 0.02em;
+}
+
+.riser-music-setup .order-content p {
+    font-size: 0.95rem;
+    color: var(--riser-gray-700);
+    line-height: 1.6;
+    margin-bottom: var(--space-md);
+}
+
+.riser-music-setup .order-btn {
+    margin-bottom: var(--space-md);
+}
+
+.riser-music-setup .order-note {
+    font-size: 0.85rem;
+    color: var(--riser-gray-500);
+    font-style: italic;
+}
+
+@media (max-width: 600px) {
+    .riser-music-setup .order-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+/* =====================================================
+   RESOURCES SECTION
+   ===================================================== */
+.riser-music-setup .resources-section h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--riser-black);
+    margin-bottom: var(--space-md);
+    letter-spacing: 0.02em;
+}
+
+.riser-music-setup .resource-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+}
+
+.riser-music-setup .resource-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    background: var(--riser-gray-100);
+    color: var(--riser-gray-900);
+    padding: var(--space-md) var(--space-lg);
+    border-radius: var(--radius-md);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all var(--transition-fast);
+}
+
+.riser-music-setup .resource-link:hover {
+    background: var(--riser-charcoal);
+    color: var(--riser-white);
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+
+/* =====================================================
+   HELP FOOTER
+   ===================================================== */
+.riser-music-setup .help-footer {
+    background: var(--riser-charcoal);
+    color: var(--riser-white);
+    padding: var(--space-2xl) var(--space-lg);
+    margin-top: var(--space-2xl);
+}
+
+.riser-music-setup .help-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.riser-music-setup .help-content h3 {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    margin-bottom: var(--space-sm);
+    letter-spacing: 0.02em;
+}
+
+.riser-music-setup .help-content > p {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: var(--space-xl);
+}
+
+.riser-music-setup .contact-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-lg);
+}
+
+.riser-music-setup .contact-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    color: var(--riser-white);
+    background: rgba(255, 255, 255, 0.1);
+    padding: var(--space-md) var(--space-lg);
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+    transition: all var(--transition-fast);
+}
+
+.riser-music-setup .contact-item:hover {
+    background: var(--riser-red);
+    color: var(--riser-white);
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+/* =====================================================
+   RESPONSIVE DESIGN
+   ===================================================== */
+@media (max-width: 768px) {
+    .riser-music-setup .hero {
+        padding: 0 var(--space-md) 0;
+    }
+    
+    .riser-music-setup .hero-top-bar {
+        flex-direction: column;
+        gap: var(--space-sm);
+        padding: var(--space-md) 0;
+        text-align: center;
+    }
+    
+    .riser-music-setup .powered-by {
+        height: auto;
+        gap: var(--space-xs);
+    }
+    
+    .riser-music-setup .riser-logo {
+        height: 38px;
+    }
+    
+    .riser-music-setup .dm-logo {
+        height: 22px;
+    }
+    
+    .riser-music-setup .hero-content {
+        padding: var(--space-lg) 0 var(--space-2xl);
+    }
+    
+    .riser-music-setup .hero h1 {
+        font-size: clamp(1.75rem, 6vw, 2.5rem);
+        margin-bottom: var(--space-lg);
+    }
+    
+    .riser-music-setup .hero-text-container {
+        max-width: 90%;
+    }
+    
+    .riser-music-setup .hero-subtitle {
+        font-size: 1.05rem;
+    }
+    
+    .riser-music-setup .hero-description {
+        font-size: 0.9rem;
+    }
+    
+    .riser-music-setup .hero-wave {
+        margin-top: var(--space-xl);
+    }
+    
+    .riser-music-setup .wizard-container {
+        padding: var(--space-lg) var(--space-md);
+    }
+    
+    .riser-music-setup .progress-indicator {
+        padding: var(--space-md);
+        gap: var(--space-xs);
+    }
+    
+    .riser-music-setup .step-label {
+        display: none;
+    }
+    
+    .riser-music-setup .step-connector {
+        flex: 0 0 30px;
+    }
+    
+    .riser-music-setup .setup-card {
+        padding: var(--space-lg);
+    }
+    
+    .riser-music-setup .card-icon {
+        width: 56px;
+        height: 56px;
+        margin-bottom: var(--space-md);
+    }
+    
+    .riser-music-setup .instructions-panel {
+        padding: var(--space-lg);
+    }
+    
+    .riser-music-setup .steps-list li {
+        gap: var(--space-md);
+    }
+    
+    .riser-music-setup .step-num {
+        width: 32px;
+        height: 32px;
+        font-size: 0.8rem;
+    }
+    
+    .riser-music-setup .contact-options {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .riser-music-setup .contact-item {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .riser-music-setup .hero h1 {
+        font-size: 1.5rem;
+        letter-spacing: 0.03em;
+    }
+    
+    .riser-music-setup .hero-text-container {
+        max-width: 95%;
+    }
+    
+    .riser-music-setup .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .riser-music-setup .hero-description {
+        font-size: 0.875rem;
+    }
+    
+    .riser-music-setup .riser-logo {
+        height: 32px;
+    }
+    
+    .riser-music-setup .dm-logo {
+        height: 20px;
+    }
+    
+    .riser-music-setup .powered-by-text {
+        font-size: 0.65rem;
+    }
+    
+    .riser-music-setup .resource-links {
+        flex-direction: column;
+    }
+    
+    .riser-music-setup .resource-link {
+        justify-content: center;
+    }
+    
+    .riser-music-setup .app-download-links,
+    .riser-music-setup .app-links-inline {
+        flex-direction: column;
+    }
+}
+
+/* =====================================================
+   PRINT STYLES
+   ===================================================== */
+@media print {
+    .riser-music-setup .hero {
+        background: var(--riser-white);
+        color: var(--riser-black);
+        padding: var(--space-lg);
+    }
+    
+    .riser-music-setup .hero::before,
+    .riser-music-setup .hero-wave {
+        display: none;
+    }
+    
+    .riser-music-setup .progress-indicator,
+    .riser-music-setup .back-link,
+    .riser-music-setup .video-section,
+    .riser-music-setup .help-footer {
+        display: none;
+    }
+    
+    .riser-music-setup .wizard-step,
+    .riser-music-setup .step2-content,
+    .riser-music-setup .step3-content {
+        display: block !important;
+    }
+    
+    .riser-music-setup .instructions-panel {
+        box-shadow: none;
+        border: 1px solid var(--riser-gray-300);
+    }
+}
+
