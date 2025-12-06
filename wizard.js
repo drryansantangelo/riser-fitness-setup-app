@@ -640,9 +640,15 @@
     function initVideoModal() {
         if (!videoModal) return;
         
-        // Open modal button
+        // Open modal button (Sonos Mobile)
         if (openVideoModalBtn) {
             openVideoModalBtn.addEventListener('click', openVideoModal);
+        }
+        
+        // Open modal button (Sonos Desktop) - uses same modal for now
+        const openVideoModalDesktopBtn = document.getElementById('openVideoModalDesktop');
+        if (openVideoModalDesktopBtn) {
+            openVideoModalDesktopBtn.addEventListener('click', openVideoModal);
         }
         
         // Close modal on overlay or close button click
