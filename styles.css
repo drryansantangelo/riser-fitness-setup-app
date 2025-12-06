@@ -20,10 +20,14 @@
     --riser-black: #1A1A2E;
     --riser-charcoal: #16213E;
     --riser-gray-900: #333333;
+    --riser-gray-800: #444444;
     --riser-gray-700: #555555;
+    --riser-gray-600: #666666;
     --riser-gray-500: #888888;
     --riser-gray-300: #CCCCCC;
+    --riser-gray-200: #E5E5E5;
     --riser-gray-100: #F5F5F5;
+    --riser-gray-50: #FAFAFA;
     --riser-white: #FFFFFF;
     
     /* Accent colors */
@@ -330,6 +334,26 @@
     display: block;
 }
 
+/* Step sections with boxed backgrounds */
+.riser-music-setup #step1,
+.riser-music-setup .step2-content[data-visible="true"],
+.riser-music-setup .step3-content[data-visible="true"] {
+    background: #F7F9FC;
+    border-radius: var(--radius-lg);
+    padding: var(--space-2xl) var(--space-xl);
+    margin-bottom: var(--space-3xl);
+}
+
+/* Extra spacing between Step 1 and Step 2 */
+.riser-music-setup #step2 {
+    margin-top: 56px;
+}
+
+/* Extra spacing between Step 2 and Step 3 */
+.riser-music-setup #step3 {
+    margin-top: 56px;
+}
+
 @keyframes fadeSlideIn {
     from {
         opacity: 0;
@@ -458,8 +482,8 @@
 }
 
 .riser-music-setup .setup-card.selected {
-    border-color: var(--riser-red);
-    box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.15), var(--shadow-md);
+    border-color: var(--riser-blue);
+    box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.15), var(--shadow-md);
 }
 
 .riser-music-setup .setup-card.selected .card-icon {
@@ -768,6 +792,176 @@
     flex-wrap: wrap;
     gap: var(--space-sm);
     margin-top: var(--space-sm);
+}
+
+/* =====================================================
+   PREREQUISITES SECTION (What You'll Need)
+   ===================================================== */
+.riser-music-setup .prerequisites-section {
+    background: var(--riser-gray-50);
+    border: 1px solid var(--riser-gray-200);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+}
+
+.riser-music-setup .prerequisites-section h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--riser-black);
+    margin-bottom: var(--space-lg);
+}
+
+.riser-music-setup .prerequisites-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.riser-music-setup .prereq-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+    font-size: 1rem;
+    color: var(--riser-gray-800);
+    line-height: 1.5;
+}
+
+.riser-music-setup .prereq-item > svg {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    color: var(--accent-success);
+    margin-top: 2px;
+}
+
+.riser-music-setup .prereq-item > span,
+.riser-music-setup .prereq-item > .prereq-text {
+    flex: 1;
+}
+
+.riser-music-setup .prereq-note {
+    font-size: 0.875rem;
+    color: var(--riser-gray-600);
+    margin-top: var(--space-xs);
+    font-style: italic;
+}
+
+/* =====================================================
+   INSTRUCTION CARDS (Card-Style Setup Steps)
+   ===================================================== */
+.riser-music-setup .setup-instructions-cards {
+    margin-bottom: var(--space-2xl);
+}
+
+.riser-music-setup .setup-instructions-cards > h3 {
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--riser-black);
+    margin-bottom: var(--space-xl);
+}
+
+.riser-music-setup .instruction-card {
+    background: var(--riser-white);
+    border: 1px solid var(--riser-gray-200);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-md);
+    overflow: hidden;
+    transition: all var(--transition-fast);
+    box-shadow: var(--shadow-sm);
+}
+
+.riser-music-setup .instruction-card:hover {
+    border-color: var(--riser-gray-300);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+}
+
+.riser-music-setup .instruction-card:last-of-type {
+    margin-bottom: 0;
+}
+
+.riser-music-setup .instruction-card-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-lg);
+    background: linear-gradient(135deg, var(--riser-gray-50) 0%, var(--riser-white) 100%);
+    border-bottom: 1px solid var(--riser-gray-100);
+}
+
+.riser-music-setup .instruction-step-num {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    background: linear-gradient(135deg, var(--riser-blue) 0%, var(--riser-blue-dark) 100%);
+    color: var(--riser-white);
+    border-radius: 50%;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+    box-shadow: 0 2px 4px rgba(74, 144, 217, 0.3);
+}
+
+.riser-music-setup .instruction-card-header h4 {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    color: var(--riser-black);
+    margin: 0;
+}
+
+.riser-music-setup .instruction-card-body {
+    padding: var(--space-lg);
+    background: var(--riser-white);
+}
+
+.riser-music-setup .instruction-card-body > p {
+    font-size: 0.95rem;
+    color: var(--riser-gray-700);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.riser-music-setup .instruction-substeps {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.riser-music-setup .instruction-substeps > li {
+    position: relative;
+    padding-left: var(--space-lg) !important;
+    font-size: 0.95rem;
+    color: var(--riser-gray-700);
+    line-height: 1.6;
+    border: none !important;
+    display: block !important;
+}
+
+.riser-music-setup .instruction-substeps > li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--riser-blue);
+    font-weight: 700;
+}
+
+.riser-music-setup .instruction-substeps li strong {
+    color: var(--riser-black);
+    font-weight: 600;
 }
 
 /* =====================================================
@@ -1117,6 +1311,18 @@
         flex: 0 0 30px;
     }
     
+    .riser-music-setup #step1,
+    .riser-music-setup .step2-content[data-visible="true"],
+    .riser-music-setup .step3-content[data-visible="true"] {
+        padding: var(--space-xl) var(--space-lg);
+        margin-bottom: var(--space-2xl);
+    }
+    
+    .riser-music-setup #step2,
+    .riser-music-setup #step3 {
+        margin-top: 40px;
+    }
+    
     .riser-music-setup .setup-card {
         padding: var(--space-lg);
     }
@@ -1129,6 +1335,28 @@
     
     .riser-music-setup .instructions-panel {
         padding: var(--space-lg);
+    }
+    
+    .riser-music-setup .prerequisites-section {
+        padding: var(--space-lg);
+    }
+    
+    .riser-music-setup .instruction-card-header {
+        padding: var(--space-md);
+    }
+    
+    .riser-music-setup .instruction-card-body {
+        padding: var(--space-md);
+    }
+    
+    .riser-music-setup .instruction-step-num {
+        width: 36px;
+        height: 36px;
+        font-size: 0.9rem;
+    }
+    
+    .riser-music-setup .instruction-card-header h4 {
+        font-size: 1rem;
     }
     
     .riser-music-setup .steps-list li {
