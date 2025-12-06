@@ -554,6 +554,107 @@
     }
 
     // =========================================
+    // VIDEO MODAL
+    // =========================================
+    
+    const videoModal = document.getElementById('videoModal');
+    const modalVideo = document.getElementById('modalVideo');
+    const openVideoModalBtn = document.getElementById('openVideoModal');
+    
+    // Store previously focused element for focus restoration
+    let previouslyFocusedElement = null;
+    
+    function openVideoModal() {
+        if (!videoModal || !modalVideo) return;
+        
+        // Store the currently focused element
+        previouslyFocusedElement = document.activeElement;
+        
+        // Show modal
+        videoModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        
+        // Focus the close button for accessibility
+        const closeBtn = videoModal.querySelector('.video-modal-close');
+        if (closeBtn) {
+            setTimeout(() => closeBtn.focus(), 100);
+        }
+        
+        // Try to play video (respects autoplay policies)
+        modalVideo.play().catch(() => {
+            // Autoplay blocked, user will need to click play
+            console.log('Autoplay blocked by browser policy');
+        });
+    }
+    
+    function closeVideoModal() {
+        if (!videoModal || !modalVideo) return;
+        
+        // Pause and reset video
+        modalVideo.pause();
+        modalVideo.currentTime = 0;
+        
+        // Hide modal
+        videoModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        
+        // Restore focus to the element that opened the modal
+        if (previouslyFocusedElement) {
+            previouslyFocusedElement.focus();
+        }
+    }
+    
+    function handleModalKeydown(e) {
+        if (videoModal.getAttribute('aria-hidden') === 'true') return;
+        
+        // Close on Escape
+        if (e.key === 'Escape') {
+            closeVideoModal();
+            return;
+        }
+        
+        // Trap focus within modal
+        if (e.key === 'Tab') {
+            const focusableElements = videoModal.querySelectorAll(
+                'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"]), video'
+            );
+            const firstFocusable = focusableElements[0];
+            const lastFocusable = focusableElements[focusableElements.length - 1];
+            
+            if (e.shiftKey) {
+                // Shift + Tab
+                if (document.activeElement === firstFocusable) {
+                    e.preventDefault();
+                    lastFocusable.focus();
+                }
+            } else {
+                // Tab
+                if (document.activeElement === lastFocusable) {
+                    e.preventDefault();
+                    firstFocusable.focus();
+                }
+            }
+        }
+    }
+    
+    function initVideoModal() {
+        if (!videoModal) return;
+        
+        // Open modal button
+        if (openVideoModalBtn) {
+            openVideoModalBtn.addEventListener('click', openVideoModal);
+        }
+        
+        // Close modal on overlay or close button click
+        videoModal.querySelectorAll('[data-close-modal]').forEach(el => {
+            el.addEventListener('click', closeVideoModal);
+        });
+        
+        // Keyboard handling
+        document.addEventListener('keydown', handleModalKeydown);
+    }
+
+    // =========================================
     // INITIALIZATION
     // =========================================
     
@@ -564,6 +665,9 @@
         
         // Initialize event listeners
         initEventListeners();
+        
+        // Initialize video modal
+        initVideoModal();
         
         // Log initialization (can be removed in production)
         console.log('Riser Fitness Music Setup Wizard initialized');

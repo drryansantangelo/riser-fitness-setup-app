@@ -1425,6 +1425,154 @@
 }
 
 /* =====================================================
+   VIDEO CTA BUTTON
+   ===================================================== */
+.riser-music-setup .video-cta-section {
+    display: flex;
+    justify-content: center;
+    margin: var(--space-xl) 0 var(--space-2xl) 0;
+}
+
+.riser-music-setup .video-cta-btn {
+    font-size: 1.1rem;
+    padding: var(--space-md) var(--space-2xl);
+}
+
+.riser-music-setup .video-cta-btn svg {
+    display: inline-block;
+}
+
+/* =====================================================
+   VIDEO MODAL
+   ===================================================== */
+.riser-music-setup .video-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-base), visibility var(--transition-base);
+}
+
+.riser-music-setup .video-modal[aria-hidden="false"] {
+    opacity: 1;
+    visibility: visible;
+}
+
+.riser-music-setup .video-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    cursor: pointer;
+}
+
+.riser-music-setup .video-modal-content {
+    position: relative;
+    background: var(--riser-white);
+    border-radius: var(--radius-lg);
+    max-width: 900px;
+    width: 90%;
+    max-height: 90vh;
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    transform: scale(0.95);
+    transition: transform var(--transition-base);
+}
+
+.riser-music-setup .video-modal[aria-hidden="false"] .video-modal-content {
+    transform: scale(1);
+}
+
+.riser-music-setup .video-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-lg) var(--space-xl);
+    background: linear-gradient(135deg, var(--riser-blue-dark), var(--riser-blue));
+    color: var(--riser-white);
+}
+
+.riser-music-setup .video-modal-header h3 {
+    font-family: var(--font-body);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.riser-music-setup .video-modal-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background var(--transition-fast);
+    color: var(--riser-white);
+}
+
+.riser-music-setup .video-modal-close:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.riser-music-setup .video-modal-close:focus {
+    outline: 2px solid var(--riser-white);
+    outline-offset: 2px;
+}
+
+.riser-music-setup .video-modal-close svg {
+    display: block;
+}
+
+.riser-music-setup .video-modal-body {
+    padding: var(--space-lg);
+    background: var(--riser-gray-900);
+}
+
+.riser-music-setup .video-modal-body video {
+    display: block;
+    width: 100%;
+    max-height: 70vh;
+    border-radius: var(--radius-sm);
+}
+
+/* Video Modal Responsive */
+@media (max-width: 768px) {
+    .riser-music-setup .video-modal-content {
+        width: 95%;
+        max-height: 95vh;
+    }
+    
+    .riser-music-setup .video-modal-header {
+        padding: var(--space-md) var(--space-lg);
+    }
+    
+    .riser-music-setup .video-modal-header h3 {
+        font-size: 1rem;
+    }
+    
+    .riser-music-setup .video-modal-body {
+        padding: var(--space-md);
+    }
+    
+    .riser-music-setup .video-cta-btn {
+        font-size: 1rem;
+        padding: var(--space-md) var(--space-xl);
+    }
+}
+
+/* =====================================================
    PRINT STYLES
    ===================================================== */
 @media print {

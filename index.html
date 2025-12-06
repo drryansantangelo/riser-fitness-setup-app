@@ -433,6 +433,17 @@
                             </div>
                         </div>
 
+                        <!-- Watch Setup Video Button -->
+                        <div class="video-cta-section">
+                            <button class="btn btn-primary video-cta-btn" id="openVideoModal" type="button">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/>
+                                </svg>
+                                Watch Setup Video
+                            </button>
+                        </div>
+
                         <!-- Card-Style Setup Instructions -->
                         <div class="setup-instructions-cards">
                             <h3>Connect Soundtrack to Your Sonos System</h3>
@@ -513,17 +524,6 @@
                                         <li>Tap <strong>Done</strong>.</li>
                                     </ul>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="video-section">
-                            <h3>Video Walkthrough</h3>
-                            <div class="video-placeholder" data-video="sonos-mobile">
-                                <!-- TODO: Replace with Sonos Mobile Setup Video URL -->
-                                <div class="video-embed">
-                                    <iframe src="{SONOS_MOBILE_VIDEO_URL}" frameborder="0" allowfullscreen></iframe>
-                                </div>
-                                <p class="video-caption">Watch: Setting up Soundtrack on Sonos (Mobile App)</p>
                             </div>
                         </div>
 
@@ -1221,6 +1221,28 @@
                 </div>
             </div>
         </footer>
+    </div>
+
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle" aria-hidden="true">
+        <div class="video-modal-overlay" data-close-modal></div>
+        <div class="video-modal-content">
+            <div class="video-modal-header">
+                <h3 id="videoModalTitle">Sonos + Mobile App Setup Video</h3>
+                <button class="video-modal-close" data-close-modal aria-label="Close setup video">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="video-modal-body">
+                <video id="modalVideo" controls playsinline width="100%">
+                    <source src="https://mybizsound.com/wp-content/uploads/2025/12/sonos-mobile-app-soudntrack-setup.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
     </div>
 
     <script src="wizard.js"></script>
