@@ -559,16 +559,44 @@
     
     let videoModal = null;
     let modalVideo = null;
+    let modalVideoSource = null;
+    let modalTitle = null;
+    
+    // Video configuration for different paths
+    const videoConfig = {
+        'sonos-mobile': {
+            title: 'Sonos + Mobile App Setup Video',
+            url: 'https://mybizsound.com/wp-content/uploads/2025/12/sonos-mobile-app-soudntrack-setup.mp4'
+        },
+        'sonos-desktop': {
+            title: 'Sonos + Desktop App Setup Video',
+            url: 'https://mybizsound.com/wp-content/uploads/2025/12/sonos-desktop-app-soundtrack-setup.mp4'
+        }
+    };
     
     // Store previously focused element for focus restoration
     let previouslyFocusedElement = null;
     
-    function openVideoModal() {
+    function openVideoModal(videoTarget) {
         // Get elements if not already cached
         if (!videoModal) videoModal = document.getElementById('videoModal');
         if (!modalVideo) modalVideo = document.getElementById('modalVideo');
+        if (!modalVideoSource) modalVideoSource = document.getElementById('modalVideoSource');
+        if (!modalTitle) modalTitle = document.getElementById('videoModalTitle');
         
         if (!videoModal || !modalVideo) return;
+        
+        // Get video configuration
+        const config = videoConfig[videoTarget] || videoConfig['sonos-mobile'];
+        
+        // Update video source and title
+        if (modalVideoSource && config.url) {
+            modalVideoSource.src = config.url;
+            modalVideo.load(); // Reload video with new source
+        }
+        if (modalTitle && config.title) {
+            modalTitle.textContent = config.title;
+        }
         
         // Store the currently focused element
         previouslyFocusedElement = document.activeElement;
@@ -652,7 +680,8 @@
             const videoBtn = e.target.closest('.video-cta-btn');
             if (videoBtn) {
                 e.preventDefault();
-                openVideoModal();
+                const videoTarget = videoBtn.getAttribute('data-video-target') || 'sonos-mobile';
+                openVideoModal(videoTarget);
             }
         });
         
