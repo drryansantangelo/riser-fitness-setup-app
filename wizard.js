@@ -557,14 +557,17 @@
     // VIDEO MODAL
     // =========================================
     
-    const videoModal = document.getElementById('videoModal');
-    const modalVideo = document.getElementById('modalVideo');
-    const openVideoModalBtn = document.getElementById('openVideoModal');
+    let videoModal = null;
+    let modalVideo = null;
     
     // Store previously focused element for focus restoration
     let previouslyFocusedElement = null;
     
     function openVideoModal() {
+        // Get elements if not already cached
+        if (!videoModal) videoModal = document.getElementById('videoModal');
+        if (!modalVideo) modalVideo = document.getElementById('modalVideo');
+        
         if (!videoModal || !modalVideo) return;
         
         // Store the currently focused element
@@ -638,18 +641,20 @@
     }
     
     function initVideoModal() {
+        // Cache element references
+        videoModal = document.getElementById('videoModal');
+        modalVideo = document.getElementById('modalVideo');
+        
         if (!videoModal) return;
         
-        // Open modal button (Sonos Mobile)
-        if (openVideoModalBtn) {
-            openVideoModalBtn.addEventListener('click', openVideoModal);
-        }
-        
-        // Open modal button (Sonos Desktop) - uses same modal for now
-        const openVideoModalDesktopBtn = document.getElementById('openVideoModalDesktop');
-        if (openVideoModalDesktopBtn) {
-            openVideoModalDesktopBtn.addEventListener('click', openVideoModal);
-        }
+        // Use event delegation for video CTA buttons to handle dynamically shown content
+        document.addEventListener('click', function(e) {
+            const videoBtn = e.target.closest('.video-cta-btn');
+            if (videoBtn) {
+                e.preventDefault();
+                openVideoModal();
+            }
+        });
         
         // Close modal on overlay or close button click
         videoModal.querySelectorAll('[data-close-modal]').forEach(el => {
