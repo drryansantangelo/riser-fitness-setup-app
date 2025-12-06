@@ -49,10 +49,10 @@
     };
 
     // Step 2 content sections
+    // Note: Computer path skips Step 2 and goes directly to Step 3
     const step2Sections = {
         sonos: document.getElementById('step2-sonos'),
         mobile: document.getElementById('step2-mobile'),
-        computer: document.getElementById('step2-computer'),
         hardware: document.getElementById('step2-hardware')
     };
 
@@ -161,7 +161,26 @@
         hideAllStep2Sections();
         hideAllStep3Sections();
         
-        // Show appropriate Step 2 section
+        // Computer path goes directly to Step 3 (no Step 2 OS selection)
+        if (option === 'computer') {
+            // For computer, we skip Step 2 entirely
+            state.currentStep = 3;
+            elements.step1.dataset.active = 'true';
+            elements.step2.dataset.active = 'false'; // Skip Step 2
+            elements.step3.dataset.active = 'true';
+            updateProgressIndicator(2); // Show as Step 2 of 2 for computer path
+            
+            if (step3Sections.computer) {
+                step3Sections.computer.dataset.visible = 'true';
+                
+                setTimeout(() => {
+                    scrollToElement(elements.step3);
+                }, 100);
+            }
+            return;
+        }
+        
+        // Show appropriate Step 2 section for other paths
         showStep(2);
         
         if (step2Sections[option]) {
@@ -228,34 +247,6 @@
         
         if (step3Sections.mobile) {
             step3Sections.mobile.dataset.visible = 'true';
-            
-            setTimeout(() => {
-                scrollToElement(elements.step3);
-            }, 100);
-        }
-    }
-
-    function handleComputerStep2Selection(computerType) {
-        state.computerType = computerType;
-        
-        // Clear previous selections
-        clearCardSelections(step2Sections.computer);
-        
-        // Mark selected card
-        const selectedCard = step2Sections.computer.querySelector(`.setup-card[data-option="computer-${computerType}"]`);
-        if (selectedCard) {
-            selectedCard.classList.add('selected');
-        }
-        
-        // Update computer type label and info
-        updateComputerTypeInfo(computerType);
-        
-        // Show Step 3
-        hideAllStep3Sections();
-        showStep(3);
-        
-        if (step3Sections.computer) {
-            step3Sections.computer.dataset.visible = 'true';
             
             setTimeout(() => {
                 scrollToElement(elements.step3);
@@ -333,88 +324,6 @@
             }
             
             appLinksContainer.innerHTML = linksHTML;
-        }
-    }
-
-    function updateComputerTypeInfo(computerType) {
-        const typeLabels = {
-            'windows': 'Windows PC',
-            'mac': 'Mac'
-        };
-        
-        // Update badge label
-        const label = document.getElementById('computer-type-label');
-        if (label) {
-            label.textContent = typeLabels[computerType] || 'Computer';
-        }
-        
-        // Update app download links
-        const appLinksContainer = document.getElementById('computer-app-links');
-        if (appLinksContainer) {
-            let linksHTML = `
-                <p>You can use either the desktop app or web browser:</p>
-            `;
-            
-            if (computerType === 'windows') {
-                linksHTML += `
-                    <a href="#" class="app-link" target="_blank">
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                            <path d="M3 12V6.75l6-1.32v6.48L3 12zm17-9v8.75l-10 .15V5.21L20 3zM3 13l6 .09v6.81l-6-1.15V13zm17 .25V22l-10-1.91V13.1l10 .15z"/>
-                        </svg>
-                        Download Soundtrack for Windows
-                    </a>
-                    <a href="#" class="app-link" target="_blank">
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"/>
-                            <line x1="2" y1="12" x2="22" y2="12"/>
-                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-                        </svg>
-                        Use Web Player
-                    </a>
-                `;
-            } else {
-                linksHTML += `
-                    <a href="#" class="app-link" target="_blank">
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-                        </svg>
-                        Download Soundtrack for Mac
-                    </a>
-                    <a href="#" class="app-link" target="_blank">
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"/>
-                            <line x1="2" y1="12" x2="22" y2="12"/>
-                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-                        </svg>
-                        Use Web Player
-                    </a>
-                `;
-            }
-            
-            appLinksContainer.innerHTML = linksHTML;
-        }
-        
-        // Update power settings list
-        const powerSettingsList = document.getElementById('power-settings-list');
-        if (powerSettingsList) {
-            let settingsHTML = '';
-            
-            if (computerType === 'windows') {
-                settingsHTML = `
-                    <li>Go to Settings → System → Power & sleep</li>
-                    <li>Set "Screen" and "Sleep" to "Never" when plugged in</li>
-                    <li>Consider creating a power plan for business hours</li>
-                `;
-            } else {
-                settingsHTML = `
-                    <li>Go to System Settings → Battery (or Energy Saver)</li>
-                    <li>Disable "Put hard disks to sleep when possible"</li>
-                    <li>Set display sleep to a longer duration or "Never"</li>
-                    <li>Uncheck "Enable Power Nap"</li>
-                `;
-            }
-            
-            powerSettingsList.innerHTML = settingsHTML;
         }
     }
 
@@ -503,21 +412,6 @@
                         handleMobileStep2Selection('android');
                     } else if (option === 'mobile-fire') {
                         handleMobileStep2Selection('fire');
-                    }
-                });
-            });
-        }
-
-        // Step 2 Computer card clicks
-        if (step2Sections.computer) {
-            const computerCards = step2Sections.computer.querySelectorAll('.setup-card');
-            computerCards.forEach(card => {
-                card.addEventListener('click', () => {
-                    const option = card.dataset.option;
-                    if (option === 'computer-windows') {
-                        handleComputerStep2Selection('windows');
-                    } else if (option === 'computer-mac') {
-                        handleComputerStep2Selection('mac');
                     }
                 });
             });
