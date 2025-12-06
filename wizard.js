@@ -26,6 +26,21 @@
     'use strict';
 
     // =========================================
+    // DOWNLOAD URL CONSTANTS
+    // =========================================
+    // These can be updated to OS-specific .dmg/.exe links when available
+    const DOWNLOAD_URLS = {
+        // Soundtrack desktop app download page (redirects to appropriate OS)
+        SOUNDTRACK_DOWNLOAD_PAGE: 'https://app.soundtrack.io/download/',
+        // OS-specific direct download links (update when available from Soundtrack)
+        SOUNDTRACK_MAC_DMG: 'https://app.soundtrack.io/download/', // Replace with direct .dmg URL when available
+        SOUNDTRACK_WINDOWS_EXE: 'https://app.soundtrack.io/download/' // Replace with direct .exe URL when available
+    };
+
+    // Computer setup video URL (YouTube)
+    const COMPUTER_SETUP_VIDEO_URL = 'https://www.youtube.com/watch?v=VIDEO_ID'; // TODO: Replace VIDEO_ID with actual video ID
+
+    // =========================================
     // STATE MANAGEMENT
     // =========================================
     const state = {

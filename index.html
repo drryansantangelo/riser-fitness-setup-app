@@ -893,9 +893,49 @@
                     </div>
 
                     <div class="instructions-panel">
-                        <div class="recommended-setup">
-                            <h3>Computer Setup</h3>
-                            <p>Use the Soundtrack desktop app on your Mac or Windows PC to play music through your sound system.</p>
+                        <!-- What You'll Need Section -->
+                        <div class="prerequisites-section">
+                            <h3>What You'll Need to Complete This Setup</h3>
+                            <div class="prerequisites-list">
+                                <div class="prereq-item">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"/>
+                                    </svg>
+                                    <span>A Mac or Windows PC located near your sound system.</span>
+                                </div>
+                                <div class="prereq-item">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"/>
+                                    </svg>
+                                    <span>Your computer connected to the internet.</span>
+                                </div>
+                                <div class="prereq-item">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"/>
+                                    </svg>
+                                    <div class="prereq-text">
+                                        <span>A pairing code from Dynamic Media or Riser Fitness.</span>
+                                        <p class="prereq-note">This code links your computer to the correct Soundtrack account.</p>
+                                    </div>
+                                </div>
+                                <div class="prereq-item">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"/>
+                                    </svg>
+                                    <span>Your computer's audio output connected to your amplifier/speakers.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Watch Setup Video Button -->
+                        <div class="video-cta-section">
+                            <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank" rel="noopener noreferrer" class="btn btn-primary video-cta-btn">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/>
+                                </svg>
+                                Watch Setup Video
+                            </a>
                         </div>
 
                         <!-- Download Section -->
@@ -903,13 +943,13 @@
                             <h3>Download Soundtrack Desktop App</h3>
                             <p class="download-intro">Choose your operating system to download the Soundtrack desktop app:</p>
                             <div class="download-buttons">
-                                <a href="#" class="btn btn-download btn-mac" target="_blank" rel="noopener noreferrer">
+                                <a href="https://app.soundtrack.io/download/" class="btn btn-download btn-mac" target="_blank" rel="noopener noreferrer" data-download-url="mac">
                                     <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
                                         <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
                                     </svg>
                                     Download for Mac
                                 </a>
-                                <a href="#" class="btn btn-download btn-windows" target="_blank" rel="noopener noreferrer">
+                                <a href="https://app.soundtrack.io/download/" class="btn btn-download btn-windows" target="_blank" rel="noopener noreferrer" data-download-url="windows">
                                     <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
                                         <path d="M3 12V6.75l6-1.32v6.48L3 12zm17-9v8.75l-10 .15V5.21L20 3zM3 13l6 .09v6.81l-6-1.15V13zm17 .25V22l-10-1.91V13.1l10 .15z"/>
                                     </svg>
@@ -955,11 +995,10 @@
                             <div class="instruction-card">
                                 <div class="instruction-card-header">
                                     <span class="instruction-step-num">4</span>
-                                    <h4>Sign in with your credentials</h4>
+                                    <h4>Enter your pairing code</h4>
                                 </div>
                                 <div class="instruction-card-body">
-                                    <p>Enter the Soundtrack login credentials provided by Dynamic Media or Riser Fitness.</p>
-                                    <p class="prereq-note">Contact your administrator if you need your login information.</p>
+                                    <p>When prompted, enter the Soundtrack pairing code provided by Dynamic Media or Riser Fitness. This links your computer to the correct Soundtrack account and location.</p>
                                 </div>
                             </div>
 
@@ -981,21 +1020,6 @@
                                 <div class="instruction-card-body">
                                     <p>Select a playlist and press play to start your Soundtrack background music. Adjust the volume as needed.</p>
                                 </div>
-                            </div>
-                        </div>
-
-                        <!-- Video Section -->
-                        <div class="video-section">
-                            <h3>Watch: Computer Setup Walkthrough</h3>
-                            <div class="video-container">
-                                <!-- TODO: Replace VIDEO_ID with actual YouTube video ID -->
-                                <iframe 
-                                    src="https://www.youtube.com/embed/VIDEO_ID?rel=0" 
-                                    title="Soundtrack Computer Setup Walkthrough"
-                                    frameborder="0" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    allowfullscreen>
-                                </iframe>
                             </div>
                         </div>
 
