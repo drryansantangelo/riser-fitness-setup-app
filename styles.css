@@ -1154,14 +1154,90 @@
 /* =====================================================
    RESOURCES SECTION
    ===================================================== */
+.riser-music-setup .resources-section {
+    margin-top: var(--space-2xl);
+    padding-top: var(--space-xl);
+    border-top: 1px solid var(--riser-gray-200);
+}
+
 .riser-music-setup .resources-section h3 {
     font-family: var(--font-display);
     font-size: 1.25rem;
     color: var(--riser-black);
-    margin-bottom: var(--space-md);
-    letter-spacing: 0.02em;
+    margin-bottom: var(--space-lg);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
 }
 
+/* Support Block - Unified resources container */
+.riser-music-setup .support-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.riser-music-setup .support-item {
+    background: var(--riser-gray-50);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    border: 1px solid var(--riser-gray-200);
+}
+
+.riser-music-setup .support-description {
+    color: var(--riser-gray-800);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: var(--space-md);
+}
+
+.riser-music-setup .support-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-weight: 600;
+    padding: var(--space-md) var(--space-xl);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+    text-decoration: none;
+}
+
+.riser-music-setup .support-btn svg {
+    flex-shrink: 0;
+}
+
+.riser-music-setup .support-btn.btn-primary {
+    background: linear-gradient(135deg, var(--riser-blue), var(--riser-blue-dark));
+    color: var(--riser-white);
+    box-shadow: var(--shadow-sm);
+}
+
+.riser-music-setup .support-btn.btn-primary:hover {
+    background: linear-gradient(135deg, var(--riser-blue-dark), var(--riser-blue));
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    text-decoration: none;
+}
+
+.riser-music-setup .support-btn.btn-secondary {
+    background: var(--riser-white);
+    color: var(--riser-charcoal);
+    border: 2px solid var(--riser-gray-300);
+}
+
+.riser-music-setup .support-btn.btn-secondary:hover {
+    background: var(--riser-charcoal);
+    color: var(--riser-white);
+    border-color: var(--riser-charcoal);
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+.riser-music-setup .support-btn:focus {
+    outline: 2px solid var(--riser-blue);
+    outline-offset: 2px;
+}
+
+/* Legacy resource links (kept for backward compatibility) */
 .riser-music-setup .resource-links {
     display: flex;
     flex-wrap: wrap;
@@ -1194,10 +1270,81 @@
 .riser-music-setup .help-footer {
     background: var(--riser-charcoal);
     color: var(--riser-white);
-    padding: var(--space-2xl) var(--space-lg);
+    padding: var(--space-3xl) var(--space-lg);
     margin-top: var(--space-2xl);
 }
 
+.riser-music-setup .footer-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.riser-music-setup .footer-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3xl);
+}
+
+.riser-music-setup .footer-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.riser-music-setup .footer-column h4 {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: var(--space-md);
+    letter-spacing: 0.02em;
+    color: var(--riser-white);
+}
+
+.riser-music-setup .footer-column > p {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: var(--space-lg);
+}
+
+.riser-music-setup .footer-contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.riser-music-setup .footer-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
+    padding: var(--space-sm) 0;
+    transition: all var(--transition-fast);
+    text-decoration: none;
+}
+
+.riser-music-setup .footer-link svg {
+    flex-shrink: 0;
+    opacity: 0.7;
+    transition: opacity var(--transition-fast);
+}
+
+.riser-music-setup .footer-link:hover {
+    color: var(--riser-blue-light);
+    text-decoration: none;
+}
+
+.riser-music-setup .footer-link:hover svg {
+    opacity: 1;
+}
+
+.riser-music-setup .footer-link:focus {
+    outline: 2px solid var(--riser-blue-light);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+}
+
+/* Legacy contact items (kept for backward compatibility) */
 .riser-music-setup .help-content {
     max-width: 800px;
     margin: 0 auto;
@@ -1236,7 +1383,7 @@
 }
 
 .riser-music-setup .contact-item:hover {
-    background: var(--riser-red);
+    background: var(--riser-blue);
     color: var(--riser-white);
     text-decoration: none;
     transform: translateY(-2px);
@@ -1569,6 +1716,47 @@
     .riser-music-setup .video-cta-btn {
         font-size: 1rem;
         padding: var(--space-md) var(--space-xl);
+    }
+}
+
+/* =====================================================
+   FOOTER RESPONSIVE
+   ===================================================== */
+@media (max-width: 768px) {
+    .riser-music-setup .footer-columns {
+        grid-template-columns: 1fr;
+        gap: var(--space-2xl);
+    }
+    
+    .riser-music-setup .footer-column {
+        text-align: center;
+    }
+    
+    .riser-music-setup .footer-contact-info {
+        align-items: center;
+    }
+    
+    .riser-music-setup .footer-link {
+        justify-content: center;
+    }
+}
+
+/* =====================================================
+   SUPPORT BLOCK RESPONSIVE
+   ===================================================== */
+@media (max-width: 600px) {
+    .riser-music-setup .support-item {
+        padding: var(--space-md);
+    }
+    
+    .riser-music-setup .support-btn {
+        width: 100%;
+        justify-content: center;
+        padding: var(--space-md) var(--space-lg);
+    }
+    
+    .riser-music-setup .support-description {
+        font-size: 0.9rem;
     }
 }
 
