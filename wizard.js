@@ -59,16 +59,13 @@
         step2: document.getElementById('step2'),
         step3: document.getElementById('step3'),
         progressIndicators: document.querySelectorAll('.step-indicator'),
-        step1Cards: document.querySelectorAll('#step1 .setup-card'),
-        hardwareContinueBtn: document.getElementById('hardware-continue')
+        step1Cards: document.querySelectorAll('#step1 .setup-card')
     };
 
     // Step 2 content sections
-    // Note: Computer path skips Step 2 and goes directly to Step 3
+    // Note: Computer, Mobile, and Hardware paths skip Step 2 and go directly to Step 3
     const step2Sections = {
-        sonos: document.getElementById('step2-sonos'),
-        mobile: document.getElementById('step2-mobile'),
-        hardware: document.getElementById('step2-hardware')
+        sonos: document.getElementById('step2-sonos')
     };
 
     // Step 3 content sections
@@ -195,7 +192,45 @@
             return;
         }
         
-        // Show appropriate Step 2 section for other paths
+        // Mobile path goes directly to Step 3 (no Step 2 device type selection)
+        if (option === 'mobile') {
+            // For mobile, we skip Step 2 entirely
+            state.currentStep = 3;
+            elements.step1.dataset.active = 'true';
+            elements.step2.dataset.active = 'false'; // Skip Step 2
+            elements.step3.dataset.active = 'true';
+            updateProgressIndicator(2); // Show as Step 2 of 2 for mobile path
+            
+            if (step3Sections.mobile) {
+                step3Sections.mobile.dataset.visible = 'true';
+                
+                setTimeout(() => {
+                    scrollToElement(elements.step3);
+                }, 100);
+            }
+            return;
+        }
+        
+        // Hardware path goes directly to Step 3 (PlayerOne pre-selected)
+        if (option === 'hardware') {
+            // For hardware/PlayerOne, we skip Step 2 entirely
+            state.currentStep = 3;
+            elements.step1.dataset.active = 'true';
+            elements.step2.dataset.active = 'false'; // Skip Step 2
+            elements.step3.dataset.active = 'true';
+            updateProgressIndicator(2); // Show as Step 2 of 2 for hardware path
+            
+            if (step3Sections.hardware) {
+                step3Sections.hardware.dataset.visible = 'true';
+                
+                setTimeout(() => {
+                    scrollToElement(elements.step3);
+                }, 100);
+            }
+            return;
+        }
+        
+        // Show appropriate Step 2 section for other paths (only Sonos now)
         showStep(2);
         
         if (step2Sections[option]) {
@@ -262,20 +297,6 @@
         
         if (step3Sections.mobile) {
             step3Sections.mobile.dataset.visible = 'true';
-            
-            setTimeout(() => {
-                scrollToElement(elements.step3);
-            }, 100);
-        }
-    }
-
-    function handleHardwareContinue() {
-        // Show Step 3 for hardware/PlayerOne
-        hideAllStep3Sections();
-        showStep(3);
-        
-        if (step3Sections.hardware) {
-            step3Sections.hardware.dataset.visible = 'true';
             
             setTimeout(() => {
                 scrollToElement(elements.step3);
@@ -432,11 +453,6 @@
             });
         }
 
-        // Hardware continue button
-        if (elements.hardwareContinueBtn) {
-            elements.hardwareContinueBtn.addEventListener('click', handleHardwareContinue);
-        }
-
         // Back links
         document.querySelectorAll('.back-link').forEach(link => {
             link.addEventListener('click', (e) => {
@@ -470,39 +486,84 @@
     let modalVideo = null;
     let modalVideoSource = null;
     let modalTitle = null;
+    let youtubeVideoWrapper = null;
+    let youtubeIframe = null;
     
-    // Video configuration for different paths
+    // YouTube video configuration for all paths
+    // Format: { title: 'Modal Title', videoId: 'YouTube ID', start: seconds }
     const videoConfig = {
         'sonos-mobile': {
             title: 'Sonos + Mobile App Setup Video',
-            url: 'https://mybizsound.com/wp-content/uploads/2025/12/sonos-mobile-app-soudntrack-setup.mp4'
+            videoId: 'jVSjxW-hknE',
+            start: 7
         },
         'sonos-desktop': {
             title: 'Sonos + Desktop App Setup Video',
-            url: 'https://mybizsound.com/wp-content/uploads/2025/12/sonos-desktop-app-soundtrack-setup.mp4'
+            videoId: 'B2SvjpmUDUc',
+            start: 0
+        },
+        'mobile': {
+            title: 'Mobile Device Setup Video',
+            videoId: 'RjZ8dAVEyOI',
+            start: 0
+        },
+        'computer': {
+            title: 'Computer Setup Video',
+            videoId: 'RjZ8dAVEyOI',
+            start: 0
+        },
+        'hardware': {
+            title: 'Hardware Streaming Box Setup Video',
+            videoId: 'vzwJbqn8gL0',
+            start: 0
+        },
+        'remote-control': {
+            title: 'Soundtrack Remote Control Setup Video',
+            videoId: 'w13RRb9Cx0A',
+            start: 1
         }
     };
+    
+    /**
+     * Build YouTube embed URL with parameters
+     */
+    function buildYouTubeEmbedUrl(videoId, startSeconds) {
+        let url = `https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&playsinline=1&autoplay=1`;
+        if (startSeconds && startSeconds > 0) {
+            url += `&start=${startSeconds}`;
+        }
+        return url;
+    }
     
     // Store previously focused element for focus restoration
     let previouslyFocusedElement = null;
     
+    /**
+     * Open video modal with YouTube embed
+     * @param {string} videoTarget - Key from videoConfig (e.g., 'sonos-mobile', 'sonos-desktop', 'mobile', 'hardware', 'remote-control')
+     */
     function openVideoModal(videoTarget) {
         // Get elements if not already cached
         if (!videoModal) videoModal = document.getElementById('videoModal');
         if (!modalVideo) modalVideo = document.getElementById('modalVideo');
-        if (!modalVideoSource) modalVideoSource = document.getElementById('modalVideoSource');
         if (!modalTitle) modalTitle = document.getElementById('videoModalTitle');
+        if (!youtubeVideoWrapper) youtubeVideoWrapper = document.getElementById('youtube-video-wrapper');
+        if (!youtubeIframe) youtubeIframe = document.getElementById('sonos-desktop-video-iframe');
         
-        if (!videoModal || !modalVideo) return;
+        if (!videoModal || !youtubeIframe) return;
         
-        // Get video configuration
+        // Get video configuration (default to sonos-mobile if not found)
         const config = videoConfig[videoTarget] || videoConfig['sonos-mobile'];
         
-        // Update video source and title
-        if (modalVideoSource && config.url) {
-            modalVideoSource.src = config.url;
-            modalVideo.load(); // Reload video with new source
-        }
+        // Hide native video element, show YouTube wrapper
+        if (modalVideo) modalVideo.style.display = 'none';
+        if (youtubeVideoWrapper) youtubeVideoWrapper.style.display = 'block';
+        
+        // Build and set the YouTube embed URL
+        const embedUrl = buildYouTubeEmbedUrl(config.videoId, config.start);
+        youtubeIframe.src = embedUrl;
+        
+        // Update modal title
         if (modalTitle && config.title) {
             modalTitle.textContent = config.title;
         }
@@ -519,20 +580,18 @@
         if (closeBtn) {
             setTimeout(() => closeBtn.focus(), 100);
         }
-        
-        // Try to play video (respects autoplay policies)
-        modalVideo.play().catch(() => {
-            // Autoplay blocked, user will need to click play
-            console.log('Autoplay blocked by browser policy');
-        });
     }
     
+    /**
+     * Close video modal and stop video playback
+     */
     function closeVideoModal() {
-        if (!videoModal || !modalVideo) return;
+        if (!videoModal) return;
         
-        // Pause and reset video
-        modalVideo.pause();
-        modalVideo.currentTime = 0;
+        // Clear YouTube iframe src to stop video
+        if (youtubeIframe) {
+            youtubeIframe.src = '';
+        }
         
         // Hide modal
         videoModal.setAttribute('aria-hidden', 'true');
@@ -545,7 +604,7 @@
     }
     
     function handleModalKeydown(e) {
-        if (videoModal.getAttribute('aria-hidden') === 'true') return;
+        if (!videoModal || videoModal.getAttribute('aria-hidden') === 'true') return;
         
         // Close on Escape
         if (e.key === 'Escape') {
@@ -556,7 +615,7 @@
         // Trap focus within modal
         if (e.key === 'Tab') {
             const focusableElements = videoModal.querySelectorAll(
-                'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"]), video'
+                'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"]), video, iframe'
             );
             const firstFocusable = focusableElements[0];
             const lastFocusable = focusableElements[focusableElements.length - 1];
@@ -581,10 +640,12 @@
         // Cache element references
         videoModal = document.getElementById('videoModal');
         modalVideo = document.getElementById('modalVideo');
+        youtubeVideoWrapper = document.getElementById('youtube-video-wrapper');
+        youtubeIframe = document.getElementById('sonos-desktop-video-iframe');
         
         if (!videoModal) return;
         
-        // Use event delegation for video CTA buttons to handle dynamically shown content
+        // Use event delegation for ALL video CTA buttons
         document.addEventListener('click', function(e) {
             const videoBtn = e.target.closest('.video-cta-btn');
             if (videoBtn) {
@@ -599,8 +660,121 @@
             el.addEventListener('click', closeVideoModal);
         });
         
+        // Also handle click on modal backdrop
+        videoModal.addEventListener('click', function(e) {
+            if (e.target === videoModal) {
+                closeVideoModal();
+            }
+        });
+        
         // Keyboard handling
         document.addEventListener('keydown', handleModalKeydown);
+    }
+
+    // =========================================
+    // HELP MODAL FUNCTIONS
+    // =========================================
+    
+    let helpModal = null;
+    let previouslyFocusedElementHelp = null;
+    
+    /**
+     * Open help modal
+     * @param {string} modalId - The ID of the modal to open
+     */
+    function openHelpModal(modalId) {
+        helpModal = document.getElementById(modalId);
+        if (!helpModal) return;
+        
+        // Store currently focused element
+        previouslyFocusedElementHelp = document.activeElement;
+        
+        // Show modal
+        helpModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        
+        // Focus first focusable element in modal
+        const focusableElements = helpModal.querySelectorAll(
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusableElements.length > 0) {
+            focusableElements[0].focus();
+        }
+    }
+    
+    /**
+     * Close help modal
+     */
+    function closeHelpModal() {
+        if (!helpModal) return;
+        
+        // Hide modal
+        helpModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        
+        // Restore focus to the element that opened the modal
+        if (previouslyFocusedElementHelp) {
+            previouslyFocusedElementHelp.focus();
+        }
+        
+        helpModal = null;
+    }
+    
+    function handleHelpModalKeydown(e) {
+        if (!helpModal || helpModal.getAttribute('aria-hidden') === 'true') return;
+        
+        // Close on Escape
+        if (e.key === 'Escape') {
+            closeHelpModal();
+            return;
+        }
+        
+        // Trap focus within modal
+        if (e.key === 'Tab') {
+            const focusableElements = helpModal.querySelectorAll(
+                'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+            );
+            const firstFocusable = focusableElements[0];
+            const lastFocusable = focusableElements[focusableElements.length - 1];
+            
+            if (e.shiftKey) {
+                if (document.activeElement === firstFocusable) {
+                    e.preventDefault();
+                    lastFocusable.focus();
+                }
+            } else {
+                if (document.activeElement === lastFocusable) {
+                    e.preventDefault();
+                    firstFocusable.focus();
+                }
+            }
+        }
+    }
+    
+    /**
+     * Initialize help modal event listeners
+     */
+    function initHelpModal() {
+        // Open help modal buttons
+        document.addEventListener('click', function(e) {
+            const openBtn = e.target.closest('[data-open-modal]');
+            if (openBtn) {
+                e.preventDefault();
+                const modalId = openBtn.getAttribute('data-open-modal');
+                openHelpModal(modalId);
+            }
+        });
+        
+        // Close help modal on overlay or close button click
+        document.addEventListener('click', function(e) {
+            const closeBtn = e.target.closest('[data-close-help-modal]');
+            if (closeBtn) {
+                closeHelpModal();
+            }
+        });
+        
+        // Keyboard handling for help modal
+        document.addEventListener('keydown', handleHelpModalKeydown);
     }
 
     // =========================================
@@ -617,6 +791,9 @@
         
         // Initialize video modal
         initVideoModal();
+        
+        // Initialize help modal
+        initHelpModal();
         
         // Log initialization (can be removed in production)
         console.log('Riser Fitness Music Setup Wizard initialized');

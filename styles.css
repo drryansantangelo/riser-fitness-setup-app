@@ -850,6 +850,38 @@
     font-style: italic;
 }
 
+.riser-music-setup .prereq-help-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    background: transparent;
+    border: none;
+    color: var(--riser-blue);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: var(--space-xs) 0;
+    margin-top: var(--space-xs);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    font-family: var(--font-body);
+}
+
+.riser-music-setup .prereq-help-link:hover {
+    color: var(--riser-blue-dark);
+    text-decoration: underline;
+}
+
+.riser-music-setup .prereq-help-link:focus {
+    outline: 2px solid var(--riser-blue);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+}
+
+.riser-music-setup .prereq-help-link svg {
+    flex-shrink: 0;
+}
+
 /* =====================================================
    INSTRUCTION CARDS (Card-Style Setup Steps)
    ===================================================== */
@@ -1091,6 +1123,391 @@
     color: var(--riser-black);
 }
 
+/* Remote Control Section Enhancements */
+.riser-music-setup .remote-subheading {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--accent-success);
+    margin-bottom: var(--space-md);
+}
+
+.riser-music-setup .remote-note {
+    background: rgba(232, 30, 37, 0.05);
+    border-left: 3px solid var(--riser-red);
+    padding: var(--space-md);
+    margin-bottom: var(--space-lg);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-size: 0.9rem;
+    color: var(--riser-gray-700);
+}
+
+.riser-music-setup .remote-features-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xs) var(--space-lg);
+    margin-bottom: var(--space-lg);
+}
+
+@media (max-width: 600px) {
+    .riser-music-setup .remote-features-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+.riser-music-setup .remote-features-list li {
+    padding: var(--space-xs) 0;
+    position: relative;
+    padding-left: var(--space-md);
+}
+
+.riser-music-setup .remote-features-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--accent-success);
+    font-weight: 700;
+}
+
+.riser-music-setup .remote-app-details h4 + p {
+    margin-bottom: var(--space-sm);
+}
+
+.riser-music-setup .remote-resources {
+    margin-top: var(--space-xl);
+    padding-top: var(--space-lg);
+    border-top: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.riser-music-setup .remote-resources h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--riser-black);
+    margin-bottom: var(--space-md);
+}
+
+.riser-music-setup .remote-resources-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    align-items: center;
+}
+
+.riser-music-setup .btn-text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    background: transparent;
+    border: none;
+    color: var(--riser-red);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: var(--space-sm) 0;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    transition: all var(--transition-fast);
+}
+
+.riser-music-setup .btn-text-link:hover {
+    text-decoration-color: var(--riser-red);
+}
+
+.riser-music-setup .btn-text-link svg {
+    flex-shrink: 0;
+}
+
+/* =====================================================
+   HELP MODAL (Remote Control Support)
+   ===================================================== */
+.help-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-lg);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-normal), visibility var(--transition-normal);
+}
+
+.help-modal[aria-hidden="false"] {
+    opacity: 1;
+    visibility: visible;
+}
+
+.help-modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    cursor: pointer;
+}
+
+.help-modal-content {
+    position: relative;
+    background: var(--riser-white);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    transform: scale(0.95);
+    transition: transform var(--transition-normal);
+}
+
+.help-modal[aria-hidden="false"] .help-modal-content {
+    transform: scale(1);
+}
+
+.help-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-lg);
+    border-bottom: 1px solid var(--riser-gray-200);
+    background: var(--riser-gray-50);
+}
+
+.help-modal-header h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--riser-black);
+    margin: 0;
+}
+
+.help-modal-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: transparent;
+    color: var(--riser-gray-500);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.help-modal-close:hover {
+    background: var(--riser-gray-100);
+    color: var(--riser-gray-700);
+}
+
+.help-modal-body {
+    padding: var(--space-xl);
+}
+
+.help-modal-body p {
+    font-size: 0.95rem;
+    color: var(--riser-gray-700);
+    line-height: 1.7;
+    margin-bottom: var(--space-md);
+}
+
+.help-contact-list {
+    list-style: none;
+    margin: 0 0 var(--space-lg) 0;
+    padding: 0;
+}
+
+.help-contact-list li {
+    padding: var(--space-sm) 0;
+    font-size: 0.95rem;
+    color: var(--riser-gray-700);
+    line-height: 1.6;
+}
+
+.help-contact-list li strong {
+    color: var(--riser-black);
+}
+
+.help-contact-list a {
+    color: var(--riser-red);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.help-contact-list a:hover {
+    text-decoration: underline;
+}
+
+.help-alternative {
+    background: var(--riser-gray-50);
+    padding: var(--space-md);
+    border-radius: var(--radius-sm);
+    margin-bottom: 0;
+}
+
+/* =====================================================
+   NEED HELP CARD
+   ===================================================== */
+.riser-music-setup .need-help-card {
+    background: linear-gradient(135deg, rgba(232, 30, 37, 0.04) 0%, rgba(232, 30, 37, 0.01) 100%);
+    border: 1px solid rgba(232, 30, 37, 0.15);
+    border-radius: var(--radius-md);
+    padding: var(--space-xl);
+    margin-top: var(--space-lg);
+}
+
+.riser-music-setup .need-help-card h4 {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--riser-black);
+    margin-bottom: var(--space-sm);
+}
+
+.riser-music-setup .need-help-card > p {
+    font-size: 0.95rem;
+    color: var(--riser-gray-700);
+    margin-bottom: var(--space-lg);
+}
+
+.riser-music-setup .support-buttons-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+}
+
+@media (max-width: 600px) {
+    .riser-music-setup .support-buttons-row {
+        flex-direction: column;
+    }
+    
+    .riser-music-setup .support-buttons-row .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* =====================================================
+   CONTACT CARDS (Riser Fitness Support Modal)
+   ===================================================== */
+.contact-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-md);
+    margin: var(--space-lg) 0;
+}
+
+.contact-card {
+    background: var(--riser-gray-50);
+    border-radius: var(--radius-sm);
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.contact-card strong {
+    font-size: 1rem;
+    color: var(--riser-black);
+}
+
+.contact-card .contact-title {
+    font-size: 0.85rem;
+    color: var(--riser-gray-500);
+    font-style: italic;
+}
+
+.contact-card a {
+    font-size: 0.9rem;
+    color: var(--riser-red);
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: var(--space-xs);
+}
+
+.contact-card a:hover {
+    text-decoration: underline;
+}
+
+/* =====================================================
+   INTRO SECTION (Hardware/PlayerOne Setup)
+   ===================================================== */
+.riser-music-setup .intro-section {
+    background: linear-gradient(135deg, rgba(232, 30, 37, 0.04) 0%, rgba(232, 30, 37, 0.01) 100%);
+    border: 1px solid rgba(232, 30, 37, 0.15);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    margin-bottom: var(--space-xl);
+}
+
+.riser-music-setup .intro-section .intro-text {
+    font-size: 1rem;
+    color: var(--riser-gray-700);
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* =====================================================
+   REMOTE TUTORIAL SECTION (Hardware/PlayerOne Setup)
+   ===================================================== */
+.riser-music-setup .remote-tutorial-section {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.06) 0%, rgba(16, 185, 129, 0.02) 100%);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    border-radius: var(--radius-md);
+    padding: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+}
+
+.riser-music-setup .remote-tutorial-section h3 {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--accent-success);
+    margin-bottom: var(--space-md);
+    letter-spacing: 0.02em;
+}
+
+.riser-music-setup .remote-tutorial-section h3 svg {
+    color: var(--accent-success);
+}
+
+.riser-music-setup .remote-tutorial-section > p {
+    font-size: 0.95rem;
+    color: var(--riser-gray-700);
+    line-height: 1.7;
+    margin-bottom: var(--space-lg);
+}
+
+.riser-music-setup .remote-tutorial-section .video-cta-btn {
+    display: inline-flex;
+}
+
+/* =====================================================
+   NESTED LISTS & SUBSTEP LABELS
+   ===================================================== */
+.riser-music-setup .substep-label {
+    font-size: 0.95rem;
+    color: var(--riser-gray-700);
+    margin-bottom: var(--space-xs);
+}
+
+.riser-music-setup .nested-list {
+    list-style: disc;
+    margin-left: var(--space-lg);
+    margin-top: var(--space-sm);
+    padding-left: var(--space-sm);
+}
+
+.riser-music-setup .nested-list li {
+    font-size: 0.9rem;
+    color: var(--riser-gray-600);
+    margin-bottom: var(--space-xs);
+    padding-left: var(--space-xs);
+}
+
+.riser-music-setup .nested-list li::marker {
+    color: var(--riser-red);
+}
+
 /* =====================================================
    DOWNLOAD SECTION (Computer Setup)
    ===================================================== */
@@ -1120,6 +1537,99 @@
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-md);
+}
+
+.riser-music-setup .download-buttons-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+}
+
+@media (max-width: 900px) {
+    .riser-music-setup .download-buttons-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .riser-music-setup .download-buttons-3 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =====================================================
+   STORE DOWNLOAD BUTTONS (Logo-based app store buttons)
+   ===================================================== */
+.riser-music-setup .store-buttons-row {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+}
+
+.riser-music-setup .store-download-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.25rem;
+    background-color: var(--riser-white);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    flex: 1 1 0;
+    min-width: 180px;
+}
+
+.riser-music-setup .store-download-btn:hover {
+    background-color: var(--riser-gray-50);
+    border-color: var(--riser-gray-300);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+.riser-music-setup .store-download-btn:focus {
+    outline: 2px solid var(--riser-blue);
+    outline-offset: 2px;
+}
+
+.riser-music-setup .store-logo {
+    width: auto;
+    height: 28px;
+    flex-shrink: 0;
+}
+
+.riser-music-setup .store-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+}
+
+.riser-music-setup .store-headline {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--riser-gray-600);
+    line-height: 1.2;
+}
+
+.riser-music-setup .store-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--riser-black);
+    line-height: 1.2;
+}
+
+@media (max-width: 768px) {
+    .riser-music-setup .store-buttons-row {
+        flex-direction: column;
+    }
+    
+    .riser-music-setup .store-download-btn {
+        flex: none;
+        width: 100%;
+    }
 }
 
 .riser-music-setup .btn-download {
@@ -1160,6 +1670,45 @@
 
 .riser-music-setup .btn-windows:hover {
     background: linear-gradient(135deg, #1084D8, #0067B8);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    text-decoration: none;
+}
+
+.riser-music-setup .btn-ios {
+    background: linear-gradient(135deg, #333333, #1a1a1a);
+    color: var(--riser-white);
+    border-color: #333333;
+}
+
+.riser-music-setup .btn-ios:hover {
+    background: linear-gradient(135deg, #444444, #2a2a2a);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    text-decoration: none;
+}
+
+.riser-music-setup .btn-android {
+    background: linear-gradient(135deg, #3DDC84, #2DAE6A);
+    color: var(--riser-white);
+    border-color: #3DDC84;
+}
+
+.riser-music-setup .btn-android:hover {
+    background: linear-gradient(135deg, #4DE894, #3DBE7A);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    text-decoration: none;
+}
+
+.riser-music-setup .btn-amazon {
+    background: linear-gradient(135deg, #FF9900, #E68A00);
+    color: var(--riser-white);
+    border-color: #FF9900;
+}
+
+.riser-music-setup .btn-amazon:hover {
+    background: linear-gradient(135deg, #FFAA22, #F09A10);
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
     text-decoration: none;
@@ -1457,6 +2006,28 @@
     border-radius: var(--radius-sm);
 }
 
+/* Footer Branding */
+.riser-music-setup .footer-branding {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.riser-music-setup .footer-brand-logo {
+    display: block;
+    max-width: 140px;
+    height: auto;
+    opacity: 0.9;
+    margin: 0 auto 0.5rem auto;
+}
+
+.riser-music-setup .footer-brand-copy {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+    margin: 0;
+}
+
 /* Legacy contact items (kept for backward compatibility) */
 .riser-music-setup .help-content {
     max-width: 800px;
@@ -1693,6 +2264,26 @@
     margin: var(--space-xl) 0 var(--space-2xl) 0;
 }
 
+.riser-music-setup .video-cta-section-stacked {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.riser-music-setup .video-cta-section-stacked .btn {
+    width: 100%;
+    max-width: 340px;
+}
+
+.riser-music-setup .pdf-download-btn {
+    font-size: 1.1rem;
+    padding: var(--space-md) var(--space-2xl);
+}
+
+.riser-music-setup .pdf-download-btn svg {
+    display: inline-block;
+}
+
 .riser-music-setup .video-cta-btn {
     font-size: 1.1rem;
     padding: var(--space-md) var(--space-2xl);
@@ -1804,6 +2395,26 @@
     display: block;
     width: 100%;
     max-height: 70vh;
+    border-radius: var(--radius-sm);
+}
+
+/* YouTube Video Wrapper */
+.riser-music-setup .video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: var(--radius-sm);
+}
+
+.riser-music-setup .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
     border-radius: var(--radius-sm);
 }
 

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>Riser Fitness Music Setup Wizard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -289,41 +290,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Hardware Follow-up (Direct to Step 3) -->
-                <div class="step2-content" id="step2-hardware" data-visible="false">
-                    <div class="step-header">
-                        <button class="back-link" data-back="1">
-                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M19 12H5M12 19l-7-7 7-7"/>
-                            </svg>
-                            Change my answer
-                        </button>
-                        <span class="step-badge">Step 2 of 3</span>
-                        <h2>Replace your existing box with PlayerOne</h2>
-                        <p class="step-description">You're currently using a dedicated third-party music box. For the best reliability and ease of use with Riser Fitness, we recommend swapping it for a Soundtrack PlayerOne device.</p>
-                    </div>
-
-                    <div class="info-card">
-                        <div class="info-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"/>
-                                <path d="M12 16v-4M12 8h.01"/>
-                            </svg>
-                        </div>
-                        <div class="info-content">
-                            <h4>Why PlayerOne?</h4>
-                            <p>PlayerOne is a dedicated Soundtrack device that comes pre-configured for Riser Fitness. It automatically connects to your approved playlists and requires minimal setup—just plug in and play.</p>
-                        </div>
-                    </div>
-
-                    <button class="btn btn-primary continue-btn" id="hardware-continue">
-                        Continue to Setup Instructions
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </button>
-                </div>
             </section>
 
             <!-- Step 3: Setup Instructions -->
@@ -369,15 +335,16 @@
                                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
                                         <polyline points="20 6 9 17 4 12"/>
                                     </svg>
-                                    <span>A Soundtrack Your Brand account with an active subscription.</span>
-                                </div>
-                                <div class="prereq-item">
-                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-                                        <polyline points="20 6 9 17 4 12"/>
-                                    </svg>
                                     <div class="prereq-text">
                                         <span>Your Soundtrack username and password.</span>
-                                        <p class="prereq-note">Provided to you by your system administrator.</p>
+                                        <button class="prereq-help-link" type="button" data-open-modal="logon-info-modal">
+                                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                                                <circle cx="12" cy="12" r="10"/>
+                                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                                                <line x1="12" y1="17" x2="12.01" y2="17"/>
+                                            </svg>
+                                            How do I get my logon information?
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -492,16 +459,27 @@
                                         How to Use Soundtrack
                                     </a>
                                 </div>
-                                
-                                <div class="support-item">
-                                    <p class="support-description">Need help with installation, speakers, or technical issues? Dynamic Media is here to help.</p>
-                                    <a href="mailto:vip@dm-us.com" class="btn btn-secondary support-btn" aria-label="Contact Dynamic Media Support">
+                            </div>
+                            
+                            <div class="need-help-card">
+                                <h4>Need help with your system?</h4>
+                                <p>Dynamic Media and Riser Fitness are both here to help, depending on what you need.</p>
+                                <div class="support-buttons-row">
+                                    <button class="btn btn-secondary" type="button" data-open-modal="dynamic-media-support-modal">
                                         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                            <polyline points="22,6 12,13 2,6"/>
+                                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
                                         </svg>
-                                        Contact Dynamic Media Support
-                                    </a>
+                                        Dynamic Media Support
+                                    </button>
+                                    <button class="btn btn-secondary" type="button" data-open-modal="riser-fitness-support-modal">
+                                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                            <circle cx="9" cy="7" r="4"/>
+                                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                        </svg>
+                                        Riser Fitness Support
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -556,15 +534,16 @@
                                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
                                         <polyline points="20 6 9 17 4 12"/>
                                     </svg>
-                                    <span>A Soundtrack Your Brand account with an active subscription.</span>
-                                </div>
-                                <div class="prereq-item">
-                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-                                        <polyline points="20 6 9 17 4 12"/>
-                                    </svg>
                                     <div class="prereq-text">
                                         <span>Your Soundtrack username and password.</span>
-                                        <p class="prereq-note">Provided to you by your system administrator.</p>
+                                        <button class="prereq-help-link" type="button" data-open-modal="logon-info-modal">
+                                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                                                <circle cx="12" cy="12" r="10"/>
+                                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                                                <line x1="12" y1="17" x2="12.01" y2="17"/>
+                                            </svg>
+                                            How do I get my logon information?
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -572,7 +551,7 @@
 
                         <!-- Watch Setup Video Button -->
                         <div class="video-cta-section">
-                            <button class="btn btn-primary video-cta-btn" id="openVideoModalDesktop" type="button" data-video-target="sonos-desktop">
+                            <button class="btn btn-primary video-cta-btn" id="watch-sonos-desktop-video" type="button" data-video-target="sonos-desktop">
                                 <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
                                     <circle cx="12" cy="12" r="10"/>
                                     <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/>
@@ -693,115 +672,207 @@
                                         How to Use Soundtrack
                                     </a>
                                 </div>
-                                
-                                <div class="support-item">
-                                    <p class="support-description">Need help with installation, speakers, or technical issues? Dynamic Media is here to help.</p>
-                                    <a href="mailto:vip@dm-us.com" class="btn btn-secondary support-btn" aria-label="Contact Dynamic Media Support">
+                            </div>
+                            
+                            <div class="need-help-card">
+                                <h4>Need help with your system?</h4>
+                                <p>Dynamic Media and Riser Fitness are both here to help, depending on what you need.</p>
+                                <div class="support-buttons-row">
+                                    <button class="btn btn-secondary" type="button" data-open-modal="dynamic-media-support-modal">
                                         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                            <polyline points="22,6 12,13 2,6"/>
+                                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
                                         </svg>
-                                        Contact Dynamic Media Support
-                                    </a>
+                                        Dynamic Media Support
+                                    </button>
+                                    <button class="btn btn-secondary" type="button" data-open-modal="riser-fitness-support-modal">
+                                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                            <circle cx="9" cy="7" r="4"/>
+                                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                        </svg>
+                                        Riser Fitness Support
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Mobile Device Instructions -->
+                <!-- Mobile Device Instructions (Unified) -->
                 <div class="step3-content" id="step3-mobile" data-visible="false">
                     <div class="step-header">
-                        <button class="back-link" data-back="2">
+                        <button class="back-link" data-back="1">
                             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M19 12H5M12 19l-7-7 7-7"/>
                             </svg>
-                            Back to Step 2
+                            Change my answer
                         </button>
-                        <span class="step-badge">Step 3 of 3</span>
+                        <span class="step-badge">Step 2 of 2</span>
                         <h2>Set Up Your Riser Music Player</h2>
-                        <div class="setup-type-badge" id="mobile-device-badge">
+                        <div class="setup-type-badge">
                             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
                                 <rect x="5" y="2" width="14" height="20" rx="2"/>
                                 <line x1="12" y1="18" x2="12.01" y2="18"/>
                             </svg>
-                            <span id="mobile-device-label">Mobile Device</span>
+                            Mobile Device
                         </div>
                     </div>
 
                     <div class="instructions-panel">
-                        <div class="recommended-setup">
-                            <h3>Recommended Setup</h3>
-                            <p>Turn your phone or tablet into the Riser music player by installing the Soundtrack Player app and connecting it to your existing audio system.</p>
-                        </div>
-
-                        <div class="steps-list">
-                            <h3>Setup Steps</h3>
-                            <ol>
-                                <li>
-                                    <span class="step-num">1</span>
-                                    <div class="step-content">
-                                        <strong>Connect your device to your sound system</strong>
-                                        <p>Ensure your phone/tablet is physically connected to your amp/speakers via audio cable or Bluetooth.</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span class="step-num">2</span>
-                                    <div class="step-content">
-                                        <strong>Download the Soundtrack Player app</strong>
-                                        <div class="app-download-links" id="mobile-app-links">
-                                            <!-- Links populated by JS based on device type -->
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span class="step-num">3</span>
-                                    <div class="step-content">
-                                        <strong>Open the app and log in</strong>
-                                        <p>Use the Riser Fitness Soundtrack credentials provided to you. <a href="{SOUNDTRACK_LOGIN_URL}" target="_blank">Need your login info?</a></p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span class="step-num">4</span>
-                                    <div class="step-content">
-                                        <strong>Confirm Wi-Fi connection</strong>
-                                        <p>Make sure your device is connected to a stable Wi-Fi network for uninterrupted playback.</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span class="step-num">5</span>
-                                    <div class="step-content">
-                                        <strong>Adjust device settings</strong>
-                                        <p>Prevent interruptions by:</p>
-                                        <ul class="sub-list">
-                                            <li>Disabling auto-lock / setting screen timeout to "Never"</li>
-                                            <li>Enabling Do Not Disturb mode</li>
-                                            <li>Keeping the device plugged in to power</li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span class="step-num">6</span>
-                                    <div class="step-content">
-                                        <strong>Start playing your Riser playlist</strong>
-                                        <p>Select the approved Riser playlist and set the volume to a comfortable level for your space.</p>
-                                    </div>
-                                </li>
-                            </ol>
-                        </div>
-
-                        <div class="video-section">
-                            <h3>Video Walkthrough</h3>
-                            <div class="video-placeholder" data-video="mobile-player">
-                                <!-- TODO: Replace with Soundtrack Mobile Player Setup Video URL -->
-                                <div class="video-embed">
-                                    <iframe src="{MOBILE_PLAYER_VIDEO_URL}" frameborder="0" allowfullscreen></iframe>
+                        <!-- What You'll Need Section -->
+                        <div class="prerequisites-section">
+                            <h3>What You'll Need to Complete This Setup</h3>
+                            <div class="prerequisites-list">
+                                <div class="prereq-item">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"/>
+                                    </svg>
+                                    <span>A mobile phone or tablet connected to your studio's amplifier or sound system.</span>
                                 </div>
-                                <p class="video-caption">Watch: Setting up Soundtrack Player on Mobile</p>
+                                <div class="prereq-item">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"/>
+                                    </svg>
+                                    <span>Your mobile device connected to the internet.</span>
+                                </div>
+                                <div class="prereq-item">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"/>
+                                    </svg>
+                                    <span>Access to your device's app store (App Store, Google Play, or Amazon Appstore) to download the Soundtrack Player app.</span>
+                                </div>
+                                <div class="prereq-item">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"/>
+                                    </svg>
+                                    <div class="prereq-text">
+                                        <span>A pairing code from Dynamic Media.</span>
+                                        <p class="prereq-note">This code links your device to the correct Soundtrack account.</p>
+                                        <button class="prereq-help-link" type="button" data-open-modal="pairing-code-modal">
+                                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                                                <circle cx="12" cy="12" r="10"/>
+                                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                                                <line x1="12" y1="17" x2="12.01" y2="17"/>
+                                            </svg>
+                                            How do I get my pairing code?
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Remote Control App Section -->
+                        <!-- Watch Setup Video Button -->
+                        <div class="video-cta-section">
+                            <button class="btn btn-primary video-cta-btn" type="button" data-video-target="mobile">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/>
+                                </svg>
+                                Watch Setup Video
+                            </button>
+                        </div>
+
+                        <!-- Download App Section -->
+                        <div class="download-section">
+                            <h3>Download the Soundtrack Player App</h3>
+                            <p class="download-intro">Choose your device type to download the Soundtrack Player app:</p>
+                            <div class="store-buttons-row">
+                                <a href="https://apps.apple.com/app/soundtrack-player/id1114799709" class="store-download-btn" target="_blank" rel="noopener noreferrer" aria-label="Download Soundtrack Player from the Apple App Store">
+                                    <img src="public/ios_logo.svg" alt="Apple" class="store-logo">
+                                    <div class="store-text">
+                                        <span class="store-headline">Download on the</span>
+                                        <span class="store-title">App Store</span>
+                                    </div>
+                                </a>
+                                <a href="https://play.google.com/store/apps/details?id=com.soundtrackyourbrand.soundtrack.player" class="store-download-btn" target="_blank" rel="noopener noreferrer" aria-label="Download Soundtrack Player from Google Play">
+                                    <img src="public/Android_logo.svg" alt="Android" class="store-logo">
+                                    <div class="store-text">
+                                        <span class="store-headline">Get it on</span>
+                                        <span class="store-title">Google Play</span>
+                                    </div>
+                                </a>
+                                <a href="https://www.amazon.com/Soundtrack-Your-Brand-AB-Player/dp/B07ZKWTHM1" class="store-download-btn" target="_blank" rel="noopener noreferrer" aria-label="Download Soundtrack Player from the Amazon Appstore">
+                                    <img src="public/amazon_logo.svg" alt="Amazon" class="store-logo">
+                                    <div class="store-text">
+                                        <span class="store-headline">Available at</span>
+                                        <span class="store-title">Amazon Appstore</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Card-Style Setup Instructions -->
+                        <div class="setup-instructions-cards">
+                            <h3>Setup Steps</h3>
+                            
+                            <div class="instruction-card">
+                                <div class="instruction-card-header">
+                                    <span class="instruction-step-num">1</span>
+                                    <h4>Connect Your Device to Your Sound System</h4>
+                                </div>
+                                <div class="instruction-card-body">
+                                    <ul class="instruction-substeps">
+                                        <li>Make sure your phone/tablet is physically connected to your studio's amplifier or speakers via aux cable, USB audio interface, or Bluetooth.</li>
+                                        <li>Confirm volume is turned up on both your device and the amplifier or speakers.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="instruction-card">
+                                <div class="instruction-card-header">
+                                    <span class="instruction-step-num">2</span>
+                                    <h4>Download & Install the Soundtrack Player App</h4>
+                                </div>
+                                <div class="instruction-card-body">
+                                    <ul class="instruction-substeps">
+                                        <li>Use the download buttons above to install the app.</li>
+                                        <li>Open the app after installation.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="instruction-card">
+                                <div class="instruction-card-header">
+                                    <span class="instruction-step-num">3</span>
+                                    <h4>Launch the App and Pair Your Device</h4>
+                                </div>
+                                <div class="instruction-card-body">
+                                    <ul class="instruction-substeps">
+                                        <li>Open the app and tap on <strong>"Set up playback device"</strong>.</li>
+                                        <li>Enter the six-letter pairing code you received for your location.</li>
+                                        <li>Tap <strong>"Pair"</strong> to connect the app to your business location.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="instruction-card">
+                                <div class="instruction-card-header">
+                                    <span class="instruction-step-num">4</span>
+                                    <h4>Choose Your Music</h4>
+                                </div>
+                                <div class="instruction-card-body">
+                                    <p>Once paired, you have three ways to find music:</p>
+                                    <ul class="instruction-substeps">
+                                        <li><strong>Library Tab:</strong> View your pre-suggested and branded playlists, including recommendations specifically for you.</li>
+                                        <li><strong>Home Button:</strong> Browse through featured stations and playlists.</li>
+                                        <li><strong>Search Tab:</strong> Explore the full library of curated playlists, stations, and genres if you know exactly what you are looking for.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="instruction-card">
+                                <div class="instruction-card-header">
+                                    <span class="instruction-step-num">5</span>
+                                    <h4>Start Playing</h4>
+                                </div>
+                                <div class="instruction-card-body">
+                                    <p>Tap on the playlist you want and press Play to start the music.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Remote Control Section -->
                         <div class="remote-app-section">
                             <h3>
                                 <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
@@ -809,34 +880,54 @@
                                     <path d="M12 18h.01"/>
                                     <path d="M9 9l3 3-3 3M15 9l-3 3 3 3" opacity="0.5"/>
                                 </svg>
-                                Optional: Remote Control App
+                                Optional: Remote Control
                             </h3>
-                            <p>Staff can use the <strong>Soundtrack Remote Control</strong> app on their personal phones to change playlists, skip tracks, and adjust music without touching the main player device.</p>
+                            <p class="remote-subheading">Control your studio's music from any device — phone, tablet, or computer.</p>
+                            
+                            <p>The Soundtrack Remote Control lets you manage your music without touching the mobile device running Soundtrack. Staff can control everything from any phone, tablet, or computer using a simple browser link.</p>
+                            
+                            <div class="remote-note">
+                                <strong>Note:</strong> Remote Control is not available for Sonos users. Sonos playlists and playback must be controlled through the Sonos mobile or desktop apps.
+                            </div>
                             
                             <div class="remote-app-details">
-                                <h4>How to Set Up Remote Control</h4>
-                                <ul>
-                                    <li>
-                                        <strong>Download the Remote app:</strong>
-                                        <div class="app-links-inline">
-                                            <a href="{REMOTE_APP_IOS_URL}" target="_blank" class="app-link">
-                                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                                                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-                                                </svg>
-                                                iOS App Store
-                                            </a>
-                                            <a href="{REMOTE_APP_ANDROID_URL}" target="_blank" class="app-link">
-                                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                                                    <path d="M3.18 23l8.82-5.09V6.09L3.18 1v22zM12 6.09v11.82L20.82 23V1L12 6.09z"/>
-                                                </svg>
-                                                Google Play
-                                            </a>
-                                        </div>
-                                    </li>
-                                    <li><strong>Log in</strong> with the same Riser Fitness Soundtrack credentials.</li>
-                                    <li><strong>Select your location</strong> from the list to connect to the player.</li>
-                                    <li><strong>Control playback:</strong> Change playlists, skip tracks, pause, or adjust volume.</li>
+                                <h4>What you can do with Remote Control</h4>
+                                <ul class="remote-features-list">
+                                    <li>Start or stop music</li>
+                                    <li>Change playlists</li>
+                                    <li>Browse stations</li>
+                                    <li>Skip tracks</li>
+                                    <li>Adjust volume</li>
+                                    <li>See what's currently playing</li>
                                 </ul>
+                                
+                                <h4>How to access your Remote Control</h4>
+                                <p>Every studio will receive a unique Remote Control link from Dynamic Media or Riser Fitness.</p>
+                                <ul>
+                                    <li>You received an email with your Remote Control Link from Dynamic Media.</li>
+                                    <li>The link will automatically log you in so you can control playback at your location.</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="remote-resources">
+                                <h4>Helpful Resources</h4>
+                                <div class="remote-resources-buttons">
+                                    <button class="btn btn-secondary video-cta-btn" type="button" data-video-target="remote-control">
+                                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"/>
+                                            <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/>
+                                        </svg>
+                                        Watch Remote Control Tutorial
+                                    </button>
+                                    <button class="btn btn-text-link" type="button" data-open-modal="remote-help-modal">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"/>
+                                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                                        </svg>
+                                        How do I get my Remote Control link?
+                                    </button>
+                                </div>
                             </div>
                         </div>
 
@@ -855,16 +946,27 @@
                                         How to Use Soundtrack
                                     </a>
                                 </div>
-                                
-                                <div class="support-item">
-                                    <p class="support-description">Need help with installation, speakers, or technical issues? Dynamic Media is here to help.</p>
-                                    <a href="mailto:vip@dm-us.com" class="btn btn-secondary support-btn" aria-label="Contact Dynamic Media Support">
+                            </div>
+                            
+                            <div class="need-help-card">
+                                <h4>Need help with your system?</h4>
+                                <p>Dynamic Media and Riser Fitness are both here to help, depending on what you need.</p>
+                                <div class="support-buttons-row">
+                                    <button class="btn btn-secondary" type="button" data-open-modal="dynamic-media-support-modal">
                                         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                            <polyline points="22,6 12,13 2,6"/>
+                                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
                                         </svg>
-                                        Contact Dynamic Media Support
-                                    </a>
+                                        Dynamic Media Support
+                                    </button>
+                                    <button class="btn btn-secondary" type="button" data-open-modal="riser-fitness-support-modal">
+                                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                            <circle cx="9" cy="7" r="4"/>
+                                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                        </svg>
+                                        Riser Fitness Support
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -901,7 +1003,7 @@
                                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
                                         <polyline points="20 6 9 17 4 12"/>
                                     </svg>
-                                    <span>A Mac or Windows PC located near your sound system.</span>
+                                    <span>A Mac or Windows PC capable of downloading and installing applications.</span>
                                 </div>
                                 <div class="prereq-item">
                                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
@@ -913,29 +1015,37 @@
                                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
                                         <polyline points="20 6 9 17 4 12"/>
                                     </svg>
-                                    <div class="prereq-text">
-                                        <span>A pairing code from Dynamic Media or Riser Fitness.</span>
-                                        <p class="prereq-note">This code links your computer to the correct Soundtrack account.</p>
-                                    </div>
+                                    <span>Your computer's audio output connected to your studio's amplifier or speakers.</span>
                                 </div>
                                 <div class="prereq-item">
                                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
                                         <polyline points="20 6 9 17 4 12"/>
                                     </svg>
-                                    <span>Your computer's audio output connected to your amplifier/speakers.</span>
+                                    <div class="prereq-text">
+                                        <span>A pairing code from Dynamic Media.</span>
+                                        <p class="prereq-note">This code links your computer to the correct Soundtrack account.</p>
+                                        <button class="prereq-help-link" type="button" data-open-modal="pairing-code-modal">
+                                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                                                <circle cx="12" cy="12" r="10"/>
+                                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                                                <line x1="12" y1="17" x2="12.01" y2="17"/>
+                                            </svg>
+                                            How do I get my pairing code?
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Watch Setup Video Button -->
                         <div class="video-cta-section">
-                            <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank" rel="noopener noreferrer" class="btn btn-primary video-cta-btn">
+                            <button class="btn btn-primary video-cta-btn" type="button" data-video-target="computer">
                                 <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
                                     <circle cx="12" cy="12" r="10"/>
                                     <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/>
                                 </svg>
                                 Watch Setup Video
-                            </a>
+                            </button>
                         </div>
 
                         <!-- Download Section -->
@@ -960,7 +1070,7 @@
 
                         <!-- Setup Instructions -->
                         <div class="setup-instructions-cards">
-                            <h3>Setup Instructions</h3>
+                            <h3>Setup Steps</h3>
                             
                             <div class="instruction-card">
                                 <div class="instruction-card-header">
@@ -995,35 +1105,46 @@
                             <div class="instruction-card">
                                 <div class="instruction-card-header">
                                     <span class="instruction-step-num">4</span>
-                                    <h4>Enter your pairing code</h4>
+                                    <h4>Pair the app to your location</h4>
                                 </div>
                                 <div class="instruction-card-body">
-                                    <p>When prompted, enter the Soundtrack pairing code provided by Dynamic Media or Riser Fitness. This links your computer to the correct Soundtrack account and location.</p>
+                                    <ul class="instruction-substeps">
+                                        <li>Click <strong><span style="color: #E53935;">Use Pairing Code</span></strong> at the bottom of the screen.</li>
+                                        <li>Enter the six-letter pairing code you received for your Riser Fitness location.</li>
+                                        <li>Click <strong>Pair Now</strong> to connect the desktop player to your business location.</li>
+                                    </ul>
                                 </div>
                             </div>
 
                             <div class="instruction-card">
                                 <div class="instruction-card-header">
                                     <span class="instruction-step-num">5</span>
-                                    <h4>Select your studio/location</h4>
+                                    <h4>Choose your music</h4>
                                 </div>
                                 <div class="instruction-card-body">
-                                    <p>If prompted, choose your studio or location from the list to connect to your music library.</p>
+                                    <ul class="instruction-substeps">
+                                        <li><strong>Library Tab:</strong> Browse your assigned Riser Fitness playlists and recommended collections.</li>
+                                        <li><strong>Home Button:</strong> Explore featured playlists and stations curated for businesses.</li>
+                                        <li><strong>Search Tab:</strong> Search the full Soundtrack library of playlists, stations, artists, and genres.</li>
+                                    </ul>
                                 </div>
                             </div>
 
                             <div class="instruction-card">
                                 <div class="instruction-card-header">
                                     <span class="instruction-step-num">6</span>
-                                    <h4>Press Play to start your music</h4>
+                                    <h4>Start playing</h4>
                                 </div>
                                 <div class="instruction-card-body">
-                                    <p>Select a playlist and press play to start your Soundtrack background music. Adjust the volume as needed.</p>
+                                    <ul class="instruction-substeps">
+                                        <li>Click on a playlist you want to play.</li>
+                                        <li>Press <strong>Play</strong> to begin streaming music through your connected speakers.</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Remote Control App Section -->
+                        <!-- Remote Control Section -->
                         <div class="remote-app-section">
                             <h3>
                                 <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1031,34 +1152,54 @@
                                     <path d="M12 18h.01"/>
                                     <path d="M9 9l3 3-3 3M15 9l-3 3 3 3" opacity="0.5"/>
                                 </svg>
-                                Optional: Remote Control App
+                                Optional: Remote Control
                             </h3>
-                            <p>Staff can use the <strong>Soundtrack Remote Control</strong> app on their personal phones to change playlists, skip tracks, and adjust music without touching the computer.</p>
+                            <p class="remote-subheading">Control your studio's music from any device — phone, tablet, or computer.</p>
+                            
+                            <p>The Soundtrack Remote Control lets you manage your music without touching the computer running Soundtrack. Staff can control everything from any phone, tablet, or computer using a simple browser link.</p>
+                            
+                            <div class="remote-note">
+                                <strong>Note:</strong> Remote Control is not available for Sonos users. Sonos playlists and playback must be controlled through the Sonos mobile or desktop apps.
+                            </div>
                             
                             <div class="remote-app-details">
-                                <h4>How to Set Up Remote Control</h4>
-                                <ul>
-                                    <li>
-                                        <strong>Download the Remote app:</strong>
-                                        <div class="app-links-inline">
-                                            <a href="{REMOTE_APP_IOS_URL}" target="_blank" class="app-link">
-                                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                                                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-                                                </svg>
-                                                iOS App Store
-                                            </a>
-                                            <a href="{REMOTE_APP_ANDROID_URL}" target="_blank" class="app-link">
-                                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                                                    <path d="M3.18 23l8.82-5.09V6.09L3.18 1v22zM12 6.09v11.82L20.82 23V1L12 6.09z"/>
-                                                </svg>
-                                                Google Play
-                                            </a>
-                                        </div>
-                                    </li>
-                                    <li><strong>Log in</strong> with the same Riser Fitness Soundtrack credentials.</li>
-                                    <li><strong>Select your location</strong> from the list to connect to the player.</li>
-                                    <li><strong>Control playback:</strong> Change playlists, skip tracks, pause, or adjust volume.</li>
+                                <h4>What you can do with Remote Control</h4>
+                                <ul class="remote-features-list">
+                                    <li>Start or stop music</li>
+                                    <li>Change playlists</li>
+                                    <li>Browse stations</li>
+                                    <li>Skip tracks</li>
+                                    <li>Adjust volume</li>
+                                    <li>See what's currently playing</li>
                                 </ul>
+                                
+                                <h4>How to access your Remote Control</h4>
+                                <p>Every studio will receive a unique Remote Control link from Dynamic Media or Riser Fitness.</p>
+                                <ul>
+                                    <li>You received an email with your Remote Control Link from Dynamic Media.</li>
+                                    <li>The link will automatically log you in so you can control playback at your location.</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="remote-resources">
+                                <h4>Helpful Resources</h4>
+                                <div class="remote-resources-buttons">
+                                    <button class="btn btn-secondary video-cta-btn" type="button" data-video-target="remote-control">
+                                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"/>
+                                            <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/>
+                                        </svg>
+                                        Watch Remote Control Tutorial
+                                    </button>
+                                    <button class="btn btn-text-link" type="button" data-open-modal="remote-help-modal">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"/>
+                                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                                        </svg>
+                                        How do I get my Remote Control link?
+                                    </button>
+                                </div>
                             </div>
                         </div>
 
@@ -1077,16 +1218,27 @@
                                         How to Use Soundtrack
                                     </a>
                                 </div>
-                                
-                                <div class="support-item">
-                                    <p class="support-description">Need help with installation, speakers, or technical issues? Dynamic Media is here to help.</p>
-                                    <a href="mailto:vip@dm-us.com" class="btn btn-secondary support-btn" aria-label="Contact Dynamic Media Support">
+                            </div>
+                            
+                            <div class="need-help-card">
+                                <h4>Need help with your system?</h4>
+                                <p>Dynamic Media and Riser Fitness are both here to help, depending on what you need.</p>
+                                <div class="support-buttons-row">
+                                    <button class="btn btn-secondary" type="button" data-open-modal="dynamic-media-support-modal">
                                         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                            <polyline points="22,6 12,13 2,6"/>
+                                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
                                         </svg>
-                                        Contact Dynamic Media Support
-                                    </a>
+                                        Dynamic Media Support
+                                    </button>
+                                    <button class="btn btn-secondary" type="button" data-open-modal="riser-fitness-support-modal">
+                                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                            <circle cx="9" cy="7" r="4"/>
+                                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                        </svg>
+                                        Riser Fitness Support
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -1096,13 +1248,13 @@
                 <!-- Hardware / PlayerOne Instructions -->
                 <div class="step3-content" id="step3-hardware" data-visible="false">
                     <div class="step-header">
-                        <button class="back-link" data-back="2">
+                        <button class="back-link" data-back="1">
                             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M19 12H5M12 19l-7-7 7-7"/>
                             </svg>
-                            Back to Step 2
+                            Change my answer
                         </button>
-                        <span class="step-badge">Step 3 of 3</span>
+                        <span class="step-badge">Step 2 of 2</span>
                         <h2>Set Up Your Riser Music Player</h2>
                         <div class="setup-type-badge">
                             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
@@ -1114,90 +1266,157 @@
                     </div>
 
                     <div class="instructions-panel">
-                        <div class="recommended-setup">
-                            <h3>Recommended Setup</h3>
-                            <p>Replace your existing hardware music box with a preconfigured <strong>PlayerOne device</strong> for Riser Fitness. PlayerOne is the easiest and most reliable way to play Soundtrack music.</p>
+                        <!-- Introductory Copy -->
+                        <div class="intro-section">
+                            <p class="intro-text">This setup is for studios that are currently using a third-party hardware music box and are switching to the pre-configured PlayerOne device sent by Riser Fitness / Dynamic Media. Your PlayerOne has been pre-set for your location so you can simply plug it in and start playing.</p>
                         </div>
 
-                        <!-- Order Section -->
-                        <div class="order-section">
-                            <div class="order-card">
-                                <div class="order-icon">
-                                    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect x="8" y="22" width="48" height="20" rx="4" stroke="currentColor" stroke-width="2.5"/>
-                                        <circle cx="18" cy="32" r="4" stroke="currentColor" stroke-width="2"/>
-                                        <rect x="38" y="28" width="12" height="8" rx="2" stroke="currentColor" stroke-width="2"/>
-                                        <path d="M26 30h6M26 34h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                                        <path d="M32 14l-8 8M32 14l8 8M32 14v-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <!-- What You'll Need Section -->
+                        <div class="prerequisites-section">
+                            <h3>What You'll Need to Complete This Setup</h3>
+                            <div class="prerequisites-list">
+                                <div class="prereq-item">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"/>
                                     </svg>
+                                    <span>A PlayerOne device provided by Dynamic Media.</span>
                                 </div>
-                                <div class="order-content">
-                                    <h4>Order PlayerOne</h4>
-                                    <p>PlayerOne is a dedicated Soundtrack device that comes pre-configured for Riser Fitness. Once it arrives, setup takes just minutes.</p>
-                                    <a href="#" class="btn btn-primary order-btn">
-                                        Order PlayerOne
-                                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                                        </svg>
-                                    </a>
-                                    <p class="order-note">Once your PlayerOne arrives, follow the setup steps below.</p>
+                                <div class="prereq-item">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"/>
+                                    </svg>
+                                    <span>The included power adapter and audio cable(s).</span>
+                                </div>
+                                <div class="prereq-item">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"/>
+                                    </svg>
+                                    <span>An available input on your studio's amplifier or speaker system.</span>
+                                </div>
+                                <div class="prereq-item">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"/>
+                                    </svg>
+                                    <span>Access to a network connection (Ethernet or Wi-Fi).</span>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="steps-list">
+                        <!-- Watch Setup Video & Quick Start Guide Buttons -->
+                        <div class="video-cta-section video-cta-section-stacked">
+                            <button class="btn btn-primary video-cta-btn" type="button" data-video-target="hardware">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/>
+                                </svg>
+                                Watch Setup Video
+                            </button>
+                            <a href="http://help.dynamicmediamusic.com/assets/Soundtrack/PlayerOne_SetupDocument.pdf" class="btn btn-primary pdf-download-btn" target="_blank" rel="noopener noreferrer">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <polyline points="14 2 14 8 20 8"/>
+                                    <line x1="12" y1="18" x2="12" y2="12"/>
+                                    <line x1="9" y1="15" x2="15" y2="15"/>
+                                </svg>
+                                Quick Start Guide (PDF)
+                            </a>
+                        </div>
+
+                        <!-- Setup Steps -->
+                        <div class="setup-instructions-cards">
                             <h3>Setup Steps</h3>
-                            <ol>
-                                <li>
-                                    <span class="step-num">1</span>
-                                    <div class="step-content">
-                                        <strong>Unbox PlayerOne</strong>
-                                        <p>Remove PlayerOne from the packaging and place it near your amp/receiver and router.</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span class="step-num">2</span>
-                                    <div class="step-content">
-                                        <strong>Connect audio output</strong>
-                                        <p>Use the included audio cable to connect PlayerOne's audio output to your amp/speakers.</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span class="step-num">3</span>
-                                    <div class="step-content">
-                                        <strong>Connect to power and internet</strong>
-                                        <p>Plug in the power adapter. For best results, connect to your router via Ethernet cable. Wi-Fi setup is also available.</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span class="step-num">4</span>
-                                    <div class="step-content">
-                                        <strong>Power on and wait for auto-configuration</strong>
-                                        <p>PlayerOne will automatically load the Riser Fitness configuration. The LED will turn solid when ready (usually 1-2 minutes).</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span class="step-num">5</span>
-                                    <div class="step-content">
-                                        <strong>Test playback</strong>
-                                        <p>Music should start playing automatically. Adjust the volume on your amp to a comfortable level.</p>
-                                    </div>
-                                </li>
-                            </ol>
-                        </div>
-
-                        <div class="video-section">
-                            <h3>Video Walkthrough</h3>
-                            <div class="video-placeholder" data-video="playerone">
-                                <!-- TODO: Replace with PlayerOne Setup Video URL -->
-                                <div class="video-embed">
-                                    <iframe src="{PLAYERONE_VIDEO_URL}" frameborder="0" allowfullscreen></iframe>
+                            
+                            <div class="instruction-card">
+                                <div class="instruction-card-header">
+                                    <span class="instruction-step-num">1</span>
+                                    <h4>Unbox PlayerOne</h4>
                                 </div>
-                                <p class="video-caption">Watch: Setting up PlayerOne</p>
+                                <div class="instruction-card-body">
+                                    <ul class="instruction-substeps">
+                                        <li>Remove the PlayerOne device, power adapter, and audio cables from the packaging.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="instruction-card">
+                                <div class="instruction-card-header">
+                                    <span class="instruction-step-num">2</span>
+                                    <h4>Connect audio cables</h4>
+                                </div>
+                                <div class="instruction-card-body">
+                                    <ul class="instruction-substeps">
+                                        <li>Plug the audio cable into the <strong>headphone/AV output port</strong> on the back of the PlayerOne.</li>
+                                        <li>Connect the other end to an available input on your <strong>amplifier or mixer</strong>.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="instruction-card">
+                                <div class="instruction-card-header">
+                                    <span class="instruction-step-num">3</span>
+                                    <h4>Connect to network</h4>
+                                </div>
+                                <div class="instruction-card-body">
+                                    <p class="substep-label"><strong>If your studio uses Ethernet:</strong></p>
+                                    <ul class="instruction-substeps">
+                                        <li>Connect an <strong>Ethernet cable</strong> from the PlayerOne to your router or network switch.</li>
+                                    </ul>
+                                    <p class="substep-label" style="margin-top: 1rem;"><strong>If your studio uses Wi-Fi:</strong></p>
+                                    <ul class="instruction-substeps">
+                                        <li>Your PlayerOne has already been <strong>pre-configured</strong> for your location's Wi-Fi and will <strong>automatically connect once it turns on</strong>.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="instruction-card">
+                                <div class="instruction-card-header">
+                                    <span class="instruction-step-num">4</span>
+                                    <h4>Connect to power</h4>
+                                </div>
+                                <div class="instruction-card-body">
+                                    <ul class="instruction-substeps">
+                                        <li>Plug the power adapter into a wall outlet and into the PlayerOne.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="instruction-card">
+                                <div class="instruction-card-header">
+                                    <span class="instruction-step-num">5</span>
+                                    <h4>Wait for automatic configuration</h4>
+                                </div>
+                                <div class="instruction-card-body">
+                                    <ul class="instruction-substeps">
+                                        <li>The screen will show <strong>"BOOT"</strong> when powering on.</li>
+                                        <li>The device will cycle through several messages as it downloads your <strong>studio's configuration</strong>.</li>
+                                        <li>When the screen displays <strong>"PLAY,"</strong> setup is complete and your device is now streaming music.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="instruction-card">
+                                <div class="instruction-card-header">
+                                    <span class="instruction-step-num">6</span>
+                                    <h4>Control Your Player</h4>
+                                </div>
+                                <div class="instruction-card-body">
+                                    <p>All music selection and playback are controlled through the <strong>Soundtrack Remote Control</strong>, not on the PlayerOne device itself.</p>
+                                    <ul class="instruction-substeps" style="margin-top: 0.75rem;">
+                                        <li>You will receive a <strong>remote control link via email</strong> from your system administrator.</li>
+                                        <li>Click the link to open the Remote Control for your location.</li>
+                                        <li>Use the Remote Control to:
+                                            <ul class="nested-list">
+                                                <li>Select playlists</li>
+                                                <li>Browse stations</li>
+                                                <li>Start or stop playback</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Remote Control App Section -->
+                        <!-- Remote Control Section -->
                         <div class="remote-app-section">
                             <h3>
                                 <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1205,34 +1424,54 @@
                                     <path d="M12 18h.01"/>
                                     <path d="M9 9l3 3-3 3M15 9l-3 3 3 3" opacity="0.5"/>
                                 </svg>
-                                Optional: Remote Control App
+                                Remote Control
                             </h3>
-                            <p>Staff can use the <strong>Soundtrack Remote Control</strong> app on their personal phones to change playlists, skip tracks, and adjust music without touching the PlayerOne device.</p>
+                            <p class="remote-subheading">Control your studio's music from any device — phone, tablet, or computer.</p>
+                            
+                            <p>The Soundtrack Remote Control lets you manage your music without touching the PlayerOne. Staff can control everything from any phone, tablet, or computer using a simple browser link.</p>
+                            
+                            <div class="remote-note">
+                                <strong>Note:</strong> Remote Control is not available for Sonos users. Sonos playlists and playback must be controlled through the Sonos mobile or desktop apps.
+                            </div>
                             
                             <div class="remote-app-details">
-                                <h4>How to Set Up Remote Control</h4>
-                                <ul>
-                                    <li>
-                                        <strong>Download the Remote app:</strong>
-                                        <div class="app-links-inline">
-                                            <a href="{REMOTE_APP_IOS_URL}" target="_blank" class="app-link">
-                                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                                                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-                                                </svg>
-                                                iOS App Store
-                                            </a>
-                                            <a href="{REMOTE_APP_ANDROID_URL}" target="_blank" class="app-link">
-                                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                                                    <path d="M3.18 23l8.82-5.09V6.09L3.18 1v22zM12 6.09v11.82L20.82 23V1L12 6.09z"/>
-                                                </svg>
-                                                Google Play
-                                            </a>
-                                        </div>
-                                    </li>
-                                    <li><strong>Log in</strong> with the same Riser Fitness Soundtrack credentials.</li>
-                                    <li><strong>Select your location</strong> from the list to connect to the PlayerOne.</li>
-                                    <li><strong>Control playback:</strong> Change playlists, skip tracks, pause, or adjust volume.</li>
+                                <h4>What you can do with Remote Control</h4>
+                                <ul class="remote-features-list">
+                                    <li>Start or stop music</li>
+                                    <li>Change playlists</li>
+                                    <li>Browse stations</li>
+                                    <li>Skip tracks</li>
+                                    <li>Adjust volume</li>
+                                    <li>See what's currently playing</li>
                                 </ul>
+                                
+                                <h4>How to access your Remote Control</h4>
+                                <p>Every studio will receive a unique Remote Control link from Dynamic Media or Riser Fitness.</p>
+                                <ul>
+                                    <li>You received an email with your Remote Control Link from Dynamic Media.</li>
+                                    <li>The link will automatically log you in so you can control playback at your location.</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="remote-resources">
+                                <h4>Helpful Resources</h4>
+                                <div class="remote-resources-buttons">
+                                    <button class="btn btn-secondary video-cta-btn" type="button" data-video-target="remote-control">
+                                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"/>
+                                            <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/>
+                                        </svg>
+                                        Watch Remote Control Tutorial
+                                    </button>
+                                    <button class="btn btn-text-link" type="button" data-open-modal="remote-help-modal">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"/>
+                                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                                        </svg>
+                                        How do I get my Remote Control link?
+                                    </button>
+                                </div>
                             </div>
                         </div>
 
@@ -1251,16 +1490,27 @@
                                         How to Use Soundtrack
                                     </a>
                                 </div>
-                                
-                                <div class="support-item">
-                                    <p class="support-description">Need help with installation, speakers, or technical issues? Dynamic Media is here to help.</p>
-                                    <a href="mailto:vip@dm-us.com" class="btn btn-secondary support-btn" aria-label="Contact Dynamic Media Support">
+                            </div>
+                            
+                            <div class="need-help-card">
+                                <h4>Need help with your system?</h4>
+                                <p>Dynamic Media and Riser Fitness are both here to help, depending on what you need.</p>
+                                <div class="support-buttons-row">
+                                    <button class="btn btn-secondary" type="button" data-open-modal="dynamic-media-support-modal">
                                         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                            <polyline points="22,6 12,13 2,6"/>
+                                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
                                         </svg>
-                                        Contact Dynamic Media Support
-                                    </a>
+                                        Dynamic Media Support
+                                    </button>
+                                    <button class="btn btn-secondary" type="button" data-open-modal="riser-fitness-support-modal">
+                                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                            <circle cx="9" cy="7" r="4"/>
+                                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                        </svg>
+                                        Riser Fitness Support
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -1290,20 +1540,14 @@
                     <!-- Dynamic Media Column -->
                     <div class="footer-column">
                         <h4>Dynamic Media – Technical Support</h4>
-                        <p>For music system setup, audio hardware, or technical support, contact Dynamic Media.</p>
+                        <p>For music system setup, Soundtrack portal access, pairing codes, PlayerOne devices, or hardware installation issues, contact Dynamic Media.</p>
                         <div class="footer-contact-info">
-                            <a href="mailto:vip@dm-us.com" class="footer-link">
+                            <a href="mailto:riserfit@dm-us.com" class="footer-link">
                                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                                     <polyline points="22,6 12,13 2,6"/>
                                 </svg>
-                                vip@dm-us.com
-                            </a>
-                            <a href="tel:800-684-7050" class="footer-link">
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                                </svg>
-                                800-684-7050
+                                riserfit@dm-us.com
                             </a>
                             <a href="https://dynamicmediamusic.com" target="_blank" rel="noopener noreferrer" class="footer-link">
                                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
@@ -1316,6 +1560,18 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Footer Branding -->
+                <div class="footer-branding">
+                    <img 
+                        src="public/DM_logo_white.png"
+                        alt="Dynamic Media Logo"
+                        class="footer-brand-logo"
+                    />
+                    <p class="footer-brand-copy">
+                        © 2026 Dynamic Media. All rights reserved.
+                    </p>
+                </div>
             </div>
         </footer>
 
@@ -1325,7 +1581,7 @@
             <div class="video-modal-content">
                 <div class="video-modal-header">
                     <h3 id="videoModalTitle">Setup Video</h3>
-                    <button class="video-modal-close" data-close-modal aria-label="Close setup video">
+                    <button class="video-modal-close" id="video-modal-close" data-close-modal aria-label="Close setup video">
                         <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
                             <line x1="18" y1="6" x2="6" y2="18"/>
                             <line x1="6" y1="6" x2="18" y2="18"/>
@@ -1333,10 +1589,175 @@
                     </button>
                 </div>
                 <div class="video-modal-body">
+                    <!-- Native video player for Sonos Mobile -->
                     <video id="modalVideo" controls playsinline width="100%">
                         <source id="modalVideoSource" src="" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
+                    <!-- YouTube iframe for Sonos Desktop -->
+                    <div class="video-wrapper" id="youtube-video-wrapper" style="display: none;">
+                        <iframe
+                            id="sonos-desktop-video-iframe"
+                            width="100%"
+                            height="360"
+                            src=""
+                            title="Sonos Desktop Setup Video"
+                            frameborder="0"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                        ></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Remote Control Help Modal -->
+        <div class="help-modal" id="remote-help-modal" role="dialog" aria-modal="true" aria-labelledby="remoteHelpModalTitle" aria-hidden="true">
+            <div class="help-modal-overlay" data-close-help-modal></div>
+            <div class="help-modal-content">
+                <div class="help-modal-header">
+                    <h3 id="remoteHelpModalTitle">Need help with Remote Control?</h3>
+                    <button class="help-modal-close" data-close-help-modal aria-label="Close help modal">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"/>
+                            <line x1="6" y1="6" x2="18" y2="18"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="help-modal-body">
+                    <p>If you did not receive your Remote Control link or need it resent, contact Dynamic Media support:</p>
+                    <ul class="help-contact-list">
+                        <li>
+                            <strong>Email:</strong> 
+                            <a href="mailto:riserfit@dm-us.com">riserfit@dm-us.com</a>
+                        </li>
+                        <li>Please include your studio address, your name, your email address, and your phone number so we can locate your account quickly.</li>
+                    </ul>
+                    <p class="help-alternative">You may also ask your Riser Fitness management team to provide your Remote Control link.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dynamic Media Support Modal -->
+        <div class="help-modal" id="dynamic-media-support-modal" role="dialog" aria-modal="true" aria-labelledby="dynamicMediaModalTitle" aria-hidden="true">
+            <div class="help-modal-overlay" data-close-help-modal></div>
+            <div class="help-modal-content">
+                <div class="help-modal-header">
+                    <h3 id="dynamicMediaModalTitle">Dynamic Media Support</h3>
+                    <button class="help-modal-close" data-close-help-modal aria-label="Close help modal">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"/>
+                            <line x1="6" y1="6" x2="18" y2="18"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="help-modal-body">
+                    <p>For technical support with the Soundtrack portal, setup, pairing codes or remote codes, PlayerOne devices, or installation and streaming issues, please contact Dynamic Media.</p>
+                    <ul class="help-contact-list">
+                        <li>
+                            <strong>Hours of operation:</strong> Monday–Friday, 9:00 AM – 5:00 PM Eastern Standard Time
+                        </li>
+                        <li>
+                            <strong>Email:</strong> 
+                            <a href="mailto:riserfit@dm-us.com">riserfit@dm-us.com</a>
+                        </li>
+                    </ul>
+                    <p class="help-alternative">Please include your studio name, studio address, your name, email, and phone number so we can help you quickly.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Riser Fitness Support Modal -->
+        <div class="help-modal" id="riser-fitness-support-modal" role="dialog" aria-modal="true" aria-labelledby="riserFitnessModalTitle" aria-hidden="true">
+            <div class="help-modal-overlay" data-close-help-modal></div>
+            <div class="help-modal-content">
+                <div class="help-modal-header">
+                    <h3 id="riserFitnessModalTitle">Riser Fitness Support</h3>
+                    <button class="help-modal-close" data-close-help-modal aria-label="Close help modal">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"/>
+                            <line x1="6" y1="6" x2="18" y2="18"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="help-modal-body">
+                    <p>For studio policies, membership questions, support with existing Sonos systems, or music requests, please contact Riser Fitness corporate.</p>
+                    
+                    <div class="contact-cards">
+                        <div class="contact-card">
+                            <strong>Teresa Iott</strong>
+                            <span class="contact-title">Director of Operations</span>
+                            <a href="mailto:Teresa@riserfit.com">Teresa@riserfit.com</a>
+                        </div>
+                        <div class="contact-card">
+                            <strong>Mhelvic Delos Reyes</strong>
+                            <span class="contact-title">Technical Store Operations</span>
+                            <a href="mailto:mhelvicdr@riserfit.com">mhelvicdr@riserfit.com</a>
+                        </div>
+                    </div>
+                    
+                    <p class="help-alternative">You can also reach out to your Riser Fitness management team for additional support.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logon Information Help Modal -->
+        <div class="help-modal" id="logon-info-modal" role="dialog" aria-modal="true" aria-labelledby="logonInfoModalTitle" aria-hidden="true">
+            <div class="help-modal-overlay" data-close-help-modal></div>
+            <div class="help-modal-content">
+                <div class="help-modal-header">
+                    <h3 id="logonInfoModalTitle">Need your Soundtrack logon information?</h3>
+                    <button class="help-modal-close" data-close-help-modal aria-label="Close help modal">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"/>
+                            <line x1="6" y1="6" x2="18" y2="18"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="help-modal-body">
+                    <p>When your Soundtrack account was created, your logon information (username and password) should have been emailed to you.</p>
+                    <p>If you do not have this information, please contact Dynamic Media.</p>
+                    <ul class="help-contact-list">
+                        <li>
+                            <strong>Email:</strong> 
+                            <a href="mailto:riserfit@dm-us.com">riserfit@dm-us.com</a>
+                        </li>
+                        <li>
+                            <strong>Hours of operation:</strong> Monday–Friday, 9:00 AM – 5:00 PM Eastern Standard Time
+                        </li>
+                    </ul>
+                    <p class="help-alternative">Please include your studio name, studio address, your name, email, and phone number so we can help you quickly.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pairing Code Help Modal -->
+        <div class="help-modal" id="pairing-code-modal" role="dialog" aria-modal="true" aria-labelledby="pairingCodeModalTitle" aria-hidden="true">
+            <div class="help-modal-overlay" data-close-help-modal></div>
+            <div class="help-modal-content">
+                <div class="help-modal-header">
+                    <h3 id="pairingCodeModalTitle">Need your Soundtrack pairing code?</h3>
+                    <button class="help-modal-close" data-close-help-modal aria-label="Close help modal">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"/>
+                            <line x1="6" y1="6" x2="18" y2="18"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="help-modal-body">
+                    <p>When your Soundtrack player was set up, a pairing code for your location should have been emailed to you.</p>
+                    <p>If you do not have your pairing code, please contact Dynamic Media.</p>
+                    <ul class="help-contact-list">
+                        <li>
+                            <strong>Email:</strong> 
+                            <a href="mailto:riserfit@dm-us.com">riserfit@dm-us.com</a>
+                        </li>
+                        <li>
+                            <strong>Hours of operation:</strong> Monday–Friday, 9:00 AM – 5:00 PM Eastern Standard Time
+                        </li>
+                    </ul>
+                    <p class="help-alternative">Please include your studio name, studio address, your name, email, and phone number so we can look up your account and send the correct pairing code.</p>
                 </div>
             </div>
         </div>
