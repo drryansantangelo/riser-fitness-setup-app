@@ -778,6 +778,397 @@
     }
 
     // =========================================
+    // NEW LOCATION MODAL
+    // =========================================
+    
+    let newLocationModal = null;
+    let previouslyFocusedElementNewLocation = null;
+    
+    function openNewLocationModal() {
+        newLocationModal = document.getElementById('new-location-modal');
+        if (!newLocationModal) return;
+        
+        // Store currently focused element
+        previouslyFocusedElementNewLocation = document.activeElement;
+        
+        // Reset form to initial state
+        resetNewLocationForm();
+        
+        // Show modal
+        newLocationModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        
+        // Focus first input
+        setTimeout(() => {
+            const firstInput = newLocationModal.querySelector('input, textarea');
+            if (firstInput) firstInput.focus();
+        }, 100);
+    }
+    
+    function closeNewLocationModal() {
+        if (!newLocationModal) return;
+        
+        // Hide modal
+        newLocationModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        
+        // Restore focus
+        if (previouslyFocusedElementNewLocation) {
+            previouslyFocusedElementNewLocation.focus();
+        }
+        
+        newLocationModal = null;
+    }
+    
+    function resetNewLocationForm() {
+        const form = document.getElementById('new-location-form');
+        const formContent = document.getElementById('new-location-form-content');
+        const successContent = document.getElementById('new-location-success');
+        
+        if (form) {
+            form.reset();
+            // Clear all error states
+            form.querySelectorAll('.form-input, .form-textarea').forEach(input => {
+                input.classList.remove('error');
+            });
+            form.querySelectorAll('.form-error').forEach(error => {
+                error.classList.remove('visible');
+                error.textContent = '';
+            });
+            // Hide conditional fields
+            document.getElementById('other-system-group').style.display = 'none';
+            document.getElementById('other-requester-group').style.display = 'none';
+            // Disable submit button
+            document.getElementById('submit-location-btn').disabled = true;
+        }
+        
+        // Show form, hide success
+        if (formContent) formContent.style.display = 'block';
+        if (successContent) successContent.style.display = 'none';
+    }
+    
+    function handleNewLocationModalKeydown(e) {
+        if (!newLocationModal || newLocationModal.getAttribute('aria-hidden') === 'true') return;
+        
+        if (e.key === 'Escape') {
+            closeNewLocationModal();
+            return;
+        }
+        
+        // Trap focus within modal
+        if (e.key === 'Tab') {
+            const focusableElements = newLocationModal.querySelectorAll(
+                'button, [href], input:not([type="hidden"]):not([disabled]), select, textarea, [tabindex]:not([tabindex="-1"])'
+            );
+            const firstFocusable = focusableElements[0];
+            const lastFocusable = focusableElements[focusableElements.length - 1];
+            
+            if (e.shiftKey && document.activeElement === firstFocusable) {
+                e.preventDefault();
+                lastFocusable.focus();
+            } else if (!e.shiftKey && document.activeElement === lastFocusable) {
+                e.preventDefault();
+                firstFocusable.focus();
+            }
+        }
+    }
+    
+    function validateNewLocationForm() {
+        const form = document.getElementById('new-location-form');
+        let isValid = true;
+        
+        // Clear previous errors
+        form.querySelectorAll('.form-input, .form-textarea').forEach(input => {
+            input.classList.remove('error');
+        });
+        form.querySelectorAll('.form-error').forEach(error => {
+            error.classList.remove('visible');
+            error.textContent = '';
+        });
+        
+        // Required text fields
+        const requiredFields = [
+            { id: 'location-name', errorId: 'location-name-error', message: 'Location name is required' },
+            { id: 'street-address', errorId: 'street-address-error', message: 'Street address is required' },
+            { id: 'city', errorId: 'city-error', message: 'City is required' },
+            { id: 'state-province', errorId: 'state-province-error', message: 'State is required' },
+            { id: 'postal-code', errorId: 'postal-code-error', message: 'ZIP is required' },
+            { id: 'location-phone', errorId: 'location-phone-error', message: 'Location phone number is required' },
+            { id: 'location-email', errorId: 'location-email-error', message: 'Location email is required' }
+        ];
+        
+        requiredFields.forEach(field => {
+            const input = document.getElementById(field.id);
+            const error = document.getElementById(field.errorId);
+            if (input && !input.value.trim()) {
+                input.classList.add('error');
+                if (error) {
+                    error.textContent = field.message;
+                    error.classList.add('visible');
+                }
+                isValid = false;
+            }
+        });
+        
+        // Email validation
+        const locationEmail = document.getElementById('location-email');
+        const locationEmailError = document.getElementById('location-email-error');
+        if (locationEmail && locationEmail.value.trim()) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(locationEmail.value.trim())) {
+                locationEmail.classList.add('error');
+                if (locationEmailError) {
+                    locationEmailError.textContent = 'Please enter a valid email address';
+                    locationEmailError.classList.add('visible');
+                }
+                isValid = false;
+            }
+        }
+        
+        // System type radio
+        const systemTypeSelected = form.querySelector('input[name="systemType"]:checked');
+        const systemTypeError = document.getElementById('system-type-error');
+        if (!systemTypeSelected) {
+            if (systemTypeError) {
+                systemTypeError.textContent = 'Please select how this location will play music';
+                systemTypeError.classList.add('visible');
+            }
+            isValid = false;
+        }
+        
+        // Other system description (conditional)
+        if (systemTypeSelected && systemTypeSelected.value === 'Other') {
+            const otherDesc = document.getElementById('other-system-description');
+            const otherDescError = document.getElementById('other-system-description-error');
+            if (otherDesc && !otherDesc.value.trim()) {
+                otherDesc.classList.add('error');
+                if (otherDescError) {
+                    otherDescError.textContent = 'Please describe the music system';
+                    otherDescError.classList.add('visible');
+                }
+                isValid = false;
+            }
+        }
+        
+        // Requested by radio
+        const requestedBySelected = form.querySelector('input[name="requestedBy"]:checked');
+        const requestedByError = document.getElementById('requested-by-error');
+        if (!requestedBySelected) {
+            if (requestedByError) {
+                requestedByError.textContent = 'Please select who is submitting this request';
+                requestedByError.classList.add('visible');
+            }
+            isValid = false;
+        }
+        
+        // Other requester fields (conditional)
+        if (requestedBySelected && requestedBySelected.value === 'Other') {
+            const requesterName = document.getElementById('requester-name');
+            const requesterNameError = document.getElementById('requester-name-error');
+            if (requesterName && !requesterName.value.trim()) {
+                requesterName.classList.add('error');
+                if (requesterNameError) {
+                    requesterNameError.textContent = 'Your name is required';
+                    requesterNameError.classList.add('visible');
+                }
+                isValid = false;
+            }
+            
+            const requesterEmail = document.getElementById('requester-email');
+            const requesterEmailError = document.getElementById('requester-email-error');
+            if (requesterEmail && !requesterEmail.value.trim()) {
+                requesterEmail.classList.add('error');
+                if (requesterEmailError) {
+                    requesterEmailError.textContent = 'Your email is required';
+                    requesterEmailError.classList.add('visible');
+                }
+                isValid = false;
+            } else if (requesterEmail && requesterEmail.value.trim()) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(requesterEmail.value.trim())) {
+                    requesterEmail.classList.add('error');
+                    if (requesterEmailError) {
+                        requesterEmailError.textContent = 'Please enter a valid email address';
+                        requesterEmailError.classList.add('visible');
+                    }
+                    isValid = false;
+                }
+            }
+        }
+        
+        return isValid;
+    }
+    
+    function checkFormCompleteness() {
+        const form = document.getElementById('new-location-form');
+        const submitBtn = document.getElementById('submit-location-btn');
+        if (!form || !submitBtn) return;
+        
+        // Check all required fields have values
+        const locationName = document.getElementById('location-name')?.value.trim();
+        const streetAddress = document.getElementById('street-address')?.value.trim();
+        const city = document.getElementById('city')?.value.trim();
+        const stateProvince = document.getElementById('state-province')?.value.trim();
+        const postalCode = document.getElementById('postal-code')?.value.trim();
+        const locationPhone = document.getElementById('location-phone')?.value.trim();
+        const locationEmail = document.getElementById('location-email')?.value.trim();
+        const systemTypeSelected = form.querySelector('input[name="systemType"]:checked');
+        const requestedBySelected = form.querySelector('input[name="requestedBy"]:checked');
+        
+        let isComplete = locationName && streetAddress && city && stateProvince && postalCode && locationPhone && locationEmail && systemTypeSelected && requestedBySelected;
+        
+        // Check conditional fields
+        if (systemTypeSelected && systemTypeSelected.value === 'Other') {
+            const otherDesc = document.getElementById('other-system-description')?.value.trim();
+            if (!otherDesc) isComplete = false;
+        }
+        
+        if (requestedBySelected && requestedBySelected.value === 'Other') {
+            const requesterName = document.getElementById('requester-name')?.value.trim();
+            const requesterEmail = document.getElementById('requester-email')?.value.trim();
+            if (!requesterName || !requesterEmail) isComplete = false;
+        }
+        
+        submitBtn.disabled = !isComplete;
+    }
+    
+    async function submitNewLocationForm(e) {
+        e.preventDefault();
+        
+        if (!validateNewLocationForm()) {
+            return;
+        }
+        
+        const form = document.getElementById('new-location-form');
+        const submitBtn = document.getElementById('submit-location-btn');
+        const formContent = document.getElementById('new-location-form-content');
+        const successContent = document.getElementById('new-location-success');
+        
+        // Disable button and show loading state
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting...';
+        
+        // Build payload
+        const systemTypeSelected = form.querySelector('input[name="systemType"]:checked');
+        const requestedBySelected = form.querySelector('input[name="requestedBy"]:checked');
+        
+        const payload = {
+            locationName: document.getElementById('location-name').value.trim(),
+            streetAddress: document.getElementById('street-address').value.trim(),
+            city: document.getElementById('city').value.trim(),
+            stateProvince: document.getElementById('state-province').value.trim(),
+            postalCode: document.getElementById('postal-code').value.trim(),
+            locationPhone: document.getElementById('location-phone').value.trim(),
+            locationEmail: document.getElementById('location-email').value.trim(),
+            systemType: systemTypeSelected ? systemTypeSelected.value : '',
+            systemTypeOtherDescription: systemTypeSelected && systemTypeSelected.value === 'Other' 
+                ? document.getElementById('other-system-description').value.trim() 
+                : null,
+            audioSystemRequired: document.getElementById('audio-system-required').checked,
+            requestedBy: requestedBySelected ? requestedBySelected.value : '',
+            requesterName: requestedBySelected && requestedBySelected.value === 'Other'
+                ? document.getElementById('requester-name').value.trim()
+                : null,
+            requesterEmail: requestedBySelected && requestedBySelected.value === 'Other'
+                ? document.getElementById('requester-email').value.trim()
+                : null,
+            timestamp: new Date().toISOString()
+        };
+        
+        try {
+            const response = await fetch('https://formspree.io/f/mldqwwal', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            });
+            
+            if (response.ok) {
+                // Show success state
+                formContent.style.display = 'none';
+                successContent.style.display = 'block';
+                
+                // Auto-close after 3 seconds
+                setTimeout(() => {
+                    closeNewLocationModal();
+                }, 3000);
+            } else {
+                throw new Error('Form submission failed');
+            }
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Submit New Location Request';
+            alert('There was an error submitting your request. Please try again or contact riserfit@dm-us.com directly.');
+        }
+    }
+    
+    function initNewLocationModal() {
+        // Open modal button
+        document.addEventListener('click', function(e) {
+            const openBtn = e.target.closest('[data-open-new-location-modal]');
+            if (openBtn) {
+                openNewLocationModal();
+            }
+        });
+        
+        // Close modal on overlay or close button click
+        document.addEventListener('click', function(e) {
+            const closeBtn = e.target.closest('[data-close-new-location-modal]');
+            if (closeBtn) {
+                closeNewLocationModal();
+            }
+        });
+        
+        // Keyboard handling
+        document.addEventListener('keydown', handleNewLocationModalKeydown);
+        
+        // Form field change handlers
+        const form = document.getElementById('new-location-form');
+        if (form) {
+            // System type radio change - show/hide other description
+            form.querySelectorAll('input[name="systemType"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const otherGroup = document.getElementById('other-system-group');
+                    if (otherGroup) {
+                        otherGroup.style.display = this.value === 'Other' ? 'block' : 'none';
+                        if (this.value !== 'Other') {
+                            document.getElementById('other-system-description').value = '';
+                        }
+                    }
+                    checkFormCompleteness();
+                });
+            });
+            
+            // Requested by radio change - show/hide other requester fields
+            form.querySelectorAll('input[name="requestedBy"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const otherGroup = document.getElementById('other-requester-group');
+                    if (otherGroup) {
+                        otherGroup.style.display = this.value === 'Other' ? 'block' : 'none';
+                        if (this.value !== 'Other') {
+                            document.getElementById('requester-name').value = '';
+                            document.getElementById('requester-email').value = '';
+                        }
+                    }
+                    checkFormCompleteness();
+                });
+            });
+            
+            // Input change handlers for completeness check
+            form.querySelectorAll('input, textarea').forEach(input => {
+                input.addEventListener('input', checkFormCompleteness);
+                input.addEventListener('change', checkFormCompleteness);
+            });
+            
+            // Form submission
+            form.addEventListener('submit', submitNewLocationForm);
+        }
+    }
+
+    // =========================================
     // INITIALIZATION
     // =========================================
     
@@ -794,6 +1185,9 @@
         
         // Initialize help modal
         initHelpModal();
+        
+        // Initialize new location modal
+        initNewLocationModal();
         
         // Log initialization (can be removed in production)
         console.log('Riser Fitness Music Setup Wizard initialized');

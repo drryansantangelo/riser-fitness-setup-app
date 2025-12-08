@@ -2021,12 +2021,13 @@
 }
 
 .riser-music-setup .footer-column h4 {
-    font-family: var(--font-display);
-    font-size: 1.15rem;
-    font-weight: 600;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 700;
     margin-bottom: var(--space-md);
-    letter-spacing: 0.02em;
+    letter-spacing: normal;
     color: var(--riser-white);
+    text-transform: uppercase;
 }
 
 .riser-music-setup .footer-column > p {
@@ -2589,6 +2590,457 @@
     
     .riser-music-setup .support-description {
         font-size: 0.9rem;
+    }
+}
+
+/* =====================================================
+   NEW LOCATION MODAL & FORM STYLES
+   ===================================================== */
+
+/* Footer Add Location Button */
+.riser-music-setup .footer-add-location-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.9);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    margin-top: var(--space-sm);
+}
+
+.riser-music-setup .footer-add-location-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.6);
+    color: var(--riser-white);
+}
+
+.riser-music-setup .footer-add-location-btn:focus {
+    outline: 2px solid var(--riser-blue-light);
+    outline-offset: 2px;
+}
+
+.riser-music-setup .footer-add-location-btn svg {
+    flex-shrink: 0;
+    opacity: 0.8;
+}
+
+/* New Location Modal Overrides */
+.riser-music-setup .new-location-modal-content {
+    max-width: 600px;
+    max-height: 90vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Blue header for new location modal */
+.riser-music-setup .new-location-modal .help-modal-header {
+    background: linear-gradient(135deg, #1e3a5f 0%, #16213e 100%);
+    border-bottom: none;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.riser-music-setup .new-location-modal .help-modal-header h3 {
+    color: #FFFFFF;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+.riser-music-setup .new-location-modal .help-modal-close {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.riser-music-setup .new-location-modal .help-modal-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #FFFFFF;
+}
+
+.riser-music-setup .new-location-modal-body {
+    overflow-y: auto;
+    flex: 1;
+    padding: var(--space-xl);
+}
+
+.riser-music-setup .new-location-intro {
+    font-size: 0.95rem;
+    color: var(--riser-gray-600);
+    margin-bottom: var(--space-xl);
+    line-height: 1.6;
+}
+
+/* Form Sections */
+.riser-music-setup .form-section {
+    margin-bottom: var(--space-xl);
+    padding-bottom: var(--space-lg);
+    border-bottom: 1px solid var(--riser-gray-200);
+}
+
+.riser-music-setup .form-section:last-of-type {
+    border-bottom: none;
+    margin-bottom: var(--space-md);
+}
+
+.riser-music-setup .form-section-title {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--riser-black);
+    margin-bottom: var(--space-md);
+}
+
+/* Form Groups */
+.riser-music-setup .form-group {
+    margin-bottom: var(--space-lg);
+}
+
+.riser-music-setup .form-group:last-child {
+    margin-bottom: 0;
+}
+
+.riser-music-setup .form-row {
+    display: flex;
+    gap: var(--space-md);
+    align-items: flex-end;
+    margin-bottom: var(--space-lg);
+}
+
+.riser-music-setup .form-row:last-child {
+    margin-bottom: 0;
+}
+
+.riser-music-setup .form-row .form-group {
+    margin-bottom: 0;
+}
+
+.riser-music-setup .form-group-half {
+    flex: 2;
+    min-width: 0;
+}
+
+.riser-music-setup .form-group-quarter {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Form Labels */
+.riser-music-setup .form-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--riser-gray-700);
+    margin-bottom: var(--space-xs);
+}
+
+.riser-music-setup .form-label .required {
+    color: #dc3545;
+    margin-left: 2px;
+}
+
+/* Form Inputs */
+.riser-music-setup .form-input,
+.riser-music-setup .form-textarea {
+    width: 100%;
+    padding: var(--space-sm) var(--space-md);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--riser-gray-900);
+    background: var(--riser-white);
+    border: 1px solid var(--riser-gray-300);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+}
+
+.riser-music-setup .form-input:focus,
+.riser-music-setup .form-textarea:focus {
+    outline: none;
+    border-color: var(--riser-blue);
+    box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.15);
+}
+
+.riser-music-setup .form-input.error,
+.riser-music-setup .form-textarea.error {
+    border-color: #dc3545;
+}
+
+.riser-music-setup .form-input.error:focus,
+.riser-music-setup .form-textarea.error:focus {
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.15);
+}
+
+.riser-music-setup .form-textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+/* Form Helper & Error Text */
+.riser-music-setup .form-helper {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--riser-gray-500);
+    margin-top: var(--space-xs);
+    font-style: italic;
+}
+
+.riser-music-setup .form-error {
+    display: none;
+    font-size: 0.8rem;
+    color: #dc3545;
+    margin-top: var(--space-xs);
+}
+
+.riser-music-setup .form-error.visible {
+    display: block;
+}
+
+/* Radio Buttons */
+.riser-music-setup .radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.riser-music-setup .radio-label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    cursor: pointer;
+    padding: var(--space-xs) 0;
+}
+
+.riser-music-setup .radio-label input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.riser-music-setup .radio-custom {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    min-height: 20px;
+    border: 2px solid #CCCCCC;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 150ms ease;
+    flex-shrink: 0;
+    background: #FFFFFF;
+    box-sizing: border-box;
+}
+
+.riser-music-setup .radio-custom::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: #4A90D9;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform 150ms ease;
+}
+
+.riser-music-setup .radio-label input[type="radio"]:checked + .radio-custom {
+    border-color: #4A90D9;
+}
+
+.riser-music-setup .radio-label input[type="radio"]:checked + .radio-custom::after {
+    transform: scale(1);
+}
+
+.riser-music-setup .radio-label input[type="radio"]:focus + .radio-custom {
+    box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.15);
+}
+
+.riser-music-setup .radio-text {
+    font-size: 0.95rem;
+    color: var(--riser-gray-700);
+}
+
+/* Checkbox */
+.riser-music-setup .checkbox-group {
+    margin-top: 0;
+}
+
+.riser-music-setup .checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    cursor: pointer;
+    padding: var(--space-sm);
+    background: var(--riser-gray-50);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--riser-gray-200);
+}
+
+.riser-music-setup .checkbox-label input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.riser-music-setup .checkbox-custom {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    min-height: 20px;
+    border: 2px solid #CCCCCC;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 150ms ease;
+    margin-top: 2px;
+    background: #FFFFFF;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.riser-music-setup .checkbox-custom::after {
+    content: '';
+    width: 6px;
+    height: 10px;
+    border: solid #FFFFFF;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg) scale(0);
+    transition: transform 150ms ease;
+    margin-bottom: 2px;
+}
+
+.riser-music-setup .checkbox-label input[type="checkbox"]:checked + .checkbox-custom {
+    background: #4A90D9;
+    border-color: #4A90D9;
+}
+
+.riser-music-setup .checkbox-label input[type="checkbox"]:checked + .checkbox-custom::after {
+    transform: rotate(45deg) scale(1);
+}
+
+.riser-music-setup .checkbox-label input[type="checkbox"]:focus + .checkbox-custom {
+    box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.15);
+}
+
+.riser-music-setup .checkbox-text {
+    font-size: 0.9rem;
+    color: var(--riser-gray-700);
+    line-height: 1.5;
+}
+
+/* Conditional Fields */
+.riser-music-setup .conditional-field,
+.riser-music-setup .conditional-fields {
+    margin-top: var(--space-md);
+    padding-left: var(--space-lg);
+    border-left: 3px solid var(--riser-blue-light);
+}
+
+/* Form Actions */
+.riser-music-setup .form-actions {
+    margin-top: var(--space-xl);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--riser-gray-200);
+}
+
+.riser-music-setup .btn-submit-location {
+    width: 100%;
+    padding: var(--space-md) var(--space-xl);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--riser-white);
+    background: linear-gradient(135deg, var(--riser-blue) 0%, var(--riser-blue-dark) 100%);
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.riser-music-setup .btn-submit-location:hover:not(:disabled) {
+    background: linear-gradient(135deg, var(--riser-blue-dark) 0%, var(--riser-blue-deep) 100%);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.riser-music-setup .btn-submit-location:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.riser-music-setup .btn-submit-location:focus {
+    outline: 2px solid var(--riser-blue-light);
+    outline-offset: 2px;
+}
+
+/* Success State */
+.riser-music-setup .new-location-success {
+    text-align: center;
+    padding: var(--space-2xl) var(--space-xl);
+}
+
+.riser-music-setup .success-icon {
+    margin-bottom: var(--space-lg);
+}
+
+.riser-music-setup .success-icon svg {
+    margin: 0 auto;
+    color: var(--accent-success);
+}
+
+.riser-music-setup .success-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--riser-black);
+    margin-bottom: var(--space-md);
+}
+
+.riser-music-setup .success-message {
+    font-size: 0.95rem;
+    color: var(--riser-gray-600);
+    line-height: 1.6;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* Responsive Form Styles */
+@media (max-width: 600px) {
+    .riser-music-setup .new-location-modal-content {
+        max-height: 95vh;
+        margin: var(--space-sm);
+        border-radius: var(--radius-md);
+    }
+    
+    .riser-music-setup .new-location-modal-body {
+        padding: var(--space-md);
+    }
+    
+    .riser-music-setup .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .riser-music-setup .form-group-half,
+    .riser-music-setup .form-group-quarter {
+        flex: none;
+        width: 100%;
+    }
+    
+    .riser-music-setup .checkbox-label {
+        padding: var(--space-sm);
+    }
+    
+    .riser-music-setup .checkbox-text {
+        font-size: 0.85rem;
     }
 }
 

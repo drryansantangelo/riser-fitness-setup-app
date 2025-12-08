@@ -1552,6 +1552,13 @@
                                 </svg>
                                 riserfit@dm-us.com
                             </a>
+                            <button type="button" class="footer-add-location-btn" data-open-new-location-modal>
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="12" y1="5" x2="12" y2="19"/>
+                                    <line x1="5" y1="12" x2="19" y2="12"/>
+                                </svg>
+                                Add New Location
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -1753,6 +1760,185 @@
                         </li>
                     </ul>
                     <p class="help-alternative">Please include your studio name, studio address, your name, email, and phone number so we can look up your account and send the correct pairing code.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- New Location Request Modal -->
+        <div class="help-modal new-location-modal" id="new-location-modal" role="dialog" aria-modal="true" aria-labelledby="newLocationModalTitle" aria-hidden="true">
+            <div class="help-modal-overlay" data-close-new-location-modal></div>
+            <div class="help-modal-content new-location-modal-content">
+                <div class="help-modal-header">
+                    <h3 id="newLocationModalTitle">Request New Location Setup</h3>
+                    <button class="help-modal-close" data-close-new-location-modal aria-label="Close modal">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"/>
+                            <line x1="6" y1="6" x2="18" y2="18"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="help-modal-body new-location-modal-body">
+                    <!-- Form Content (shown by default) -->
+                    <div id="new-location-form-content">
+                        <p class="new-location-intro">Use this form to request Soundtrack service for a new Riser Fitness studio.</p>
+                        
+                        <form id="new-location-form" novalidate>
+                            <!-- Section A: Location Details -->
+                            <div class="form-section">
+                                <h4 class="form-section-title">Location Details</h4>
+                                
+                                <div class="form-group">
+                                    <label for="location-name" class="form-label">Location / Studio Name <span class="required">*</span></label>
+                                    <input type="text" id="location-name" name="locationName" class="form-input" required>
+                                    <span class="form-error" id="location-name-error"></span>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="street-address" class="form-label">Street address <span class="required">*</span></label>
+                                    <input type="text" id="street-address" name="streetAddress" class="form-input" required>
+                                    <span class="form-error" id="street-address-error"></span>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group form-group-half">
+                                        <label for="city" class="form-label">City <span class="required">*</span></label>
+                                        <input type="text" id="city" name="city" class="form-input" required>
+                                        <span class="form-error" id="city-error"></span>
+                                    </div>
+                                    <div class="form-group form-group-quarter">
+                                        <label for="state-province" class="form-label">State <span class="required">*</span></label>
+                                        <input type="text" id="state-province" name="stateProvince" class="form-input" required>
+                                        <span class="form-error" id="state-province-error"></span>
+                                    </div>
+                                    <div class="form-group form-group-quarter">
+                                        <label for="postal-code" class="form-label">ZIP <span class="required">*</span></label>
+                                        <input type="text" id="postal-code" name="postalCode" class="form-input" required>
+                                        <span class="form-error" id="postal-code-error"></span>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="location-phone" class="form-label">Location Phone Number <span class="required">*</span></label>
+                                    <input type="tel" id="location-phone" name="locationPhone" class="form-input" required>
+                                    <span class="form-error" id="location-phone-error"></span>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="location-email" class="form-label">Location Email Address <span class="required">*</span></label>
+                                    <input type="email" id="location-email" name="locationEmail" class="form-input" required>
+                                    <span class="form-error" id="location-email-error"></span>
+                                </div>
+                            </div>
+                            
+                            <!-- Section B: Player / System Type -->
+                            <div class="form-section">
+                                <h4 class="form-section-title">How will this location play its music? <span class="required">*</span></h4>
+                                
+                                <div class="form-group radio-group" role="radiogroup" aria-labelledby="system-type-label">
+                                    <label class="radio-label">
+                                        <input type="radio" name="systemType" value="Sonos" required>
+                                        <span class="radio-custom"></span>
+                                        <span class="radio-text">Sonos</span>
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="systemType" value="Mobile device (phone / tablet)">
+                                        <span class="radio-custom"></span>
+                                        <span class="radio-text">Mobile device (phone / tablet)</span>
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="systemType" value="Computer (Mac or PC)">
+                                        <span class="radio-custom"></span>
+                                        <span class="radio-text">Computer (Mac or PC)</span>
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="systemType" value="PlayerOne device">
+                                        <span class="radio-custom"></span>
+                                        <span class="radio-text">PlayerOne device</span>
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="systemType" value="Other">
+                                        <span class="radio-custom"></span>
+                                        <span class="radio-text">Other</span>
+                                    </label>
+                                    <span class="form-error" id="system-type-error"></span>
+                                </div>
+                                
+                                <!-- Conditional: Other system description -->
+                                <div class="form-group conditional-field" id="other-system-group" style="display: none;">
+                                    <label for="other-system-description" class="form-label">Describe other music system <span class="required">*</span></label>
+                                    <textarea id="other-system-description" name="systemTypeOtherDescription" class="form-textarea" placeholder="e.g., existing third-party media player, custom AV rack, etc."></textarea>
+                                    <span class="form-error" id="other-system-description-error"></span>
+                                </div>
+                            </div>
+                            
+                            <!-- Section C: Audio System Requirement -->
+                            <div class="form-section">
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="audioSystemRequired" id="audio-system-required">
+                                        <span class="checkbox-custom"></span>
+                                        <span class="checkbox-text">Audio system required – This location needs speakers and/or an amplifier. Please have Dynamic Media contact me about an audio system.</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <!-- Section D: Request Submitted By -->
+                            <div class="form-section">
+                                <h4 class="form-section-title">Who is submitting this request? <span class="required">*</span></h4>
+                                
+                                <div class="form-group radio-group" role="radiogroup" aria-labelledby="requester-label">
+                                    <label class="radio-label">
+                                        <input type="radio" name="requestedBy" value="Teresa Iott" required>
+                                        <span class="radio-custom"></span>
+                                        <span class="radio-text">Teresa Iott</span>
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="requestedBy" value="Mhelvic Reyes">
+                                        <span class="radio-custom"></span>
+                                        <span class="radio-text">Mhelvic Reyes</span>
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="requestedBy" value="Other">
+                                        <span class="radio-custom"></span>
+                                        <span class="radio-text">Other</span>
+                                    </label>
+                                    <span class="form-error" id="requested-by-error"></span>
+                                </div>
+                                
+                                <!-- Conditional: Other requester fields -->
+                                <div class="conditional-fields" id="other-requester-group" style="display: none;">
+                                    <div class="form-group">
+                                        <label for="requester-name" class="form-label">Your name <span class="required">*</span></label>
+                                        <input type="text" id="requester-name" name="requesterName" class="form-input">
+                                        <span class="form-error" id="requester-name-error"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="requester-email" class="form-label">Your email address <span class="required">*</span></label>
+                                        <input type="email" id="requester-email" name="requesterEmail" class="form-input">
+                                        <span class="form-helper">We'll use this address if we have questions about this request.</span>
+                                        <span class="form-error" id="requester-email-error"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Submit Button -->
+                            <div class="form-actions">
+                                <button type="submit" class="btn-submit-location" id="submit-location-btn" disabled>Submit New Location Request</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Success Message (hidden by default) -->
+                    <div id="new-location-success" class="new-location-success" style="display: none;">
+                        <div class="success-icon">
+                            <svg viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="9 12 12 15 16 10"/>
+                            </svg>
+                        </div>
+                        <h4 class="success-title">Request sent</h4>
+                        <p class="success-message">Thank you. Your new location request has been submitted to Dynamic Media. We'll follow up if we need any additional details.</p>
+                    </div>
                 </div>
             </div>
         </div>
