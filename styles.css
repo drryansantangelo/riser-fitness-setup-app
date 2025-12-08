@@ -138,10 +138,56 @@
     pointer-events: none;
 }
 
-/* Top Bar with Logos */
+/* Hero Fade-in Animation */
+@keyframes heroFadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hero Inner Container */
+.riser-music-setup .hero-inner {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+}
+
+/* Top Bar with Logo */
+.riser-music-setup .hero-logo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding-top: 24px;
+    padding-bottom: var(--space-md);
+    animation: heroFadeInUp 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+.riser-music-setup .hero-logo {
+    max-width: 180px;
+    height: auto;
+    display: block;
+}
+
+.riser-music-setup .hero-logo-caption {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+    font-weight: 500;
+}
+
+/* Legacy top bar styles */
 .riser-music-setup .hero-top-bar {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     padding: var(--space-xl) 0;
     max-width: 1200px;
@@ -150,6 +196,19 @@
     z-index: 2;
 }
 
+.riser-music-setup .logo-main {
+    display: flex;
+    align-items: center;
+}
+
+.riser-music-setup .dm-logo-main {
+    display: block;
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Legacy styles kept for backward compatibility */
 .riser-music-setup .logo-riser {
     display: flex;
     align-items: center;
@@ -186,12 +245,13 @@
 
 /* Main Hero Content */
 .riser-music-setup .hero-content {
-    max-width: 1000px;
-    margin: 0 auto;
     text-align: center;
     position: relative;
     z-index: 1;
-    padding: var(--space-2xl) 0 var(--space-3xl);
+    padding: var(--space-xl) 0 var(--space-3xl);
+    animation: heroFadeInUp 0.6s ease-out forwards;
+    animation-delay: 0.15s;
+    opacity: 0;
 }
 
 .riser-music-setup .hero h1 {
@@ -2089,13 +2149,36 @@
         padding: 0 var(--space-md) 0;
     }
     
+    .riser-music-setup .hero-inner {
+        padding: 0 var(--space-md);
+    }
+    
+    .riser-music-setup .hero-logo-wrapper {
+        padding-top: 16px;
+    }
+    
+    .riser-music-setup .hero-logo {
+        max-width: 150px;
+    }
+    
+    .riser-music-setup .hero-logo-caption {
+        font-size: 0.6rem;
+    }
+    
+    .riser-music-setup .hero-content {
+        padding: var(--space-lg) 0 var(--space-2xl);
+    }
+    
     .riser-music-setup .hero-top-bar {
-        flex-direction: column;
-        gap: var(--space-sm);
         padding: var(--space-md) 0;
         text-align: center;
     }
     
+    .riser-music-setup .dm-logo-main {
+        height: 34px;
+    }
+    
+    /* Legacy responsive styles */
     .riser-music-setup .powered-by {
         height: auto;
         gap: var(--space-xs);
