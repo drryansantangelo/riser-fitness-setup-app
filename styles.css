@@ -2042,6 +2042,23 @@
     gap: var(--space-sm);
 }
 
+.riser-music-setup .footer-contact-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.riser-music-setup .footer-contact-block strong {
+    color: var(--riser-white);
+    font-weight: 600;
+}
+
+.riser-music-setup .footer-contact-block .contact-title {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+}
+
 .riser-music-setup .footer-link {
     display: inline-flex;
     align-items: center;
