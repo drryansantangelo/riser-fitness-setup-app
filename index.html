@@ -1871,7 +1871,35 @@
                                 </div>
                             </div>
                             
-                            <!-- Section C: Audio System Requirement -->
+                            <!-- Section C: Activation Timing -->
+                            <div class="form-section">
+                                <h4 class="form-section-title">When would you like the service activated? <span class="required">*</span></h4>
+                                
+                                <div class="form-group radio-group" role="radiogroup" aria-labelledby="activation-timing-label">
+                                    <label class="radio-label">
+                                        <input type="radio" name="activationTiming" value="immediately" required>
+                                        <span class="radio-custom"></span>
+                                        <span class="radio-text">Activate immediately</span>
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="activationTiming" value="specific_date">
+                                        <span class="radio-custom"></span>
+                                        <span class="radio-text">Activate on a specific date</span>
+                                    </label>
+                                    <span class="form-error" id="activation-timing-error"></span>
+                                </div>
+                                
+                                <!-- Conditional: Date picker -->
+                                <div class="conditional-fields" id="activation-date-group" style="display: none;">
+                                    <div class="form-group">
+                                        <label for="activation-date" class="form-label">Preferred activation date <span class="required">*</span></label>
+                                        <input type="date" id="activation-date" name="activationDate" class="form-input">
+                                        <span class="form-error" id="activation-date-error"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Section D: Audio System Requirement -->
                             <div class="form-section">
                                 <div class="form-group checkbox-group">
                                     <label class="checkbox-label">
@@ -1882,7 +1910,7 @@
                                 </div>
                             </div>
                             
-                            <!-- Section D: Request Submitted By -->
+                            <!-- Section E: Request Submitted By -->
                             <div class="form-section">
                                 <h4 class="form-section-title">Who is submitting this request? <span class="required">*</span></h4>
                                 

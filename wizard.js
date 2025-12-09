@@ -784,6 +784,24 @@
     let newLocationModal = null;
     let previouslyFocusedElementNewLocation = null;
     
+    function setActivationDateConstraints() {
+        const dateInput = document.getElementById('activation-date');
+        if (!dateInput) return;
+        
+        // Set min date to tomorrow
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const minDate = tomorrow.toISOString().split('T')[0];
+        
+        // Set max date to 1 year from today
+        const maxDate = new Date();
+        maxDate.setFullYear(maxDate.getFullYear() + 1);
+        const maxDateStr = maxDate.toISOString().split('T')[0];
+        
+        dateInput.setAttribute('min', minDate);
+        dateInput.setAttribute('max', maxDateStr);
+    }
+    
     function openNewLocationModal() {
         newLocationModal = document.getElementById('new-location-modal');
         if (!newLocationModal) return;
@@ -838,6 +856,9 @@
             // Hide conditional fields
             document.getElementById('other-system-group').style.display = 'none';
             document.getElementById('other-requester-group').style.display = 'none';
+            document.getElementById('activation-date-group').style.display = 'none';
+            // Reset activation date constraints
+            setActivationDateConstraints();
             // Disable submit button
             document.getElementById('submit-location-btn').disabled = true;
         }
@@ -996,6 +1017,31 @@
             }
         }
         
+        // Activation timing radio
+        const activationTimingSelected = form.querySelector('input[name="activationTiming"]:checked');
+        const activationTimingError = document.getElementById('activation-timing-error');
+        if (!activationTimingSelected) {
+            if (activationTimingError) {
+                activationTimingError.textContent = 'Please select when you would like the service activated';
+                activationTimingError.classList.add('visible');
+            }
+            isValid = false;
+        }
+        
+        // Activation date (conditional)
+        if (activationTimingSelected && activationTimingSelected.value === 'specific_date') {
+            const activationDate = document.getElementById('activation-date');
+            const activationDateError = document.getElementById('activation-date-error');
+            if (activationDate && !activationDate.value) {
+                activationDate.classList.add('error');
+                if (activationDateError) {
+                    activationDateError.textContent = 'Please select an activation date';
+                    activationDateError.classList.add('visible');
+                }
+                isValid = false;
+            }
+        }
+        
         return isValid;
     }
     
@@ -1015,7 +1061,9 @@
         const systemTypeSelected = form.querySelector('input[name="systemType"]:checked');
         const requestedBySelected = form.querySelector('input[name="requestedBy"]:checked');
         
-        let isComplete = locationName && streetAddress && city && stateProvince && postalCode && locationPhone && locationEmail && systemTypeSelected && requestedBySelected;
+        const activationTimingSelected = form.querySelector('input[name="activationTiming"]:checked');
+        
+        let isComplete = locationName && streetAddress && city && stateProvince && postalCode && locationPhone && locationEmail && systemTypeSelected && requestedBySelected && activationTimingSelected;
         
         // Check conditional fields
         if (systemTypeSelected && systemTypeSelected.value === 'Other') {
@@ -1027,6 +1075,12 @@
             const requesterName = document.getElementById('requester-name')?.value.trim();
             const requesterEmail = document.getElementById('requester-email')?.value.trim();
             if (!requesterName || !requesterEmail) isComplete = false;
+        }
+        
+        // Check activation date if specific date is selected
+        if (activationTimingSelected && activationTimingSelected.value === 'specific_date') {
+            const activationDate = document.getElementById('activation-date')?.value;
+            if (!activationDate) isComplete = false;
         }
         
         submitBtn.disabled = !isComplete;
@@ -1051,6 +1105,7 @@
         // Build payload
         const systemTypeSelected = form.querySelector('input[name="systemType"]:checked');
         const requestedBySelected = form.querySelector('input[name="requestedBy"]:checked');
+        const activationTimingSelected = form.querySelector('input[name="activationTiming"]:checked');
         
         const payload = {
             locationName: document.getElementById('location-name').value.trim(),
@@ -1071,6 +1126,10 @@
                 : null,
             requesterEmail: requestedBySelected && requestedBySelected.value === 'Other'
                 ? document.getElementById('requester-email').value.trim()
+                : null,
+            activationPreference: activationTimingSelected ? activationTimingSelected.value : '',
+            preferredActivationDate: activationTimingSelected && activationTimingSelected.value === 'specific_date'
+                ? document.getElementById('activation-date').value
                 : null,
             timestamp: new Date().toISOString()
         };
@@ -1151,6 +1210,20 @@
                         if (this.value !== 'Other') {
                             document.getElementById('requester-name').value = '';
                             document.getElementById('requester-email').value = '';
+                        }
+                    }
+                    checkFormCompleteness();
+                });
+            });
+            
+            // Activation timing radio change - show/hide date picker
+            form.querySelectorAll('input[name="activationTiming"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const dateGroup = document.getElementById('activation-date-group');
+                    if (dateGroup) {
+                        dateGroup.style.display = this.value === 'specific_date' ? 'block' : 'none';
+                        if (this.value !== 'specific_date') {
+                            document.getElementById('activation-date').value = '';
                         }
                     }
                     checkFormCompleteness();
