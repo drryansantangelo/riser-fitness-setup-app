@@ -1,0 +1,16 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Video configuration - anyone can read, only authenticated users can write
+    match /config/videos {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+    
+    // Default deny all other access
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
+

@@ -9,18 +9,29 @@
  * - mobileDeviceType: 'ios' | 'android' | 'fire'
  * - computerType: 'windows' | 'mac'
  * 
- * Placeholder URLs to replace:
- * - {SOUNDTRACK_LOGIN_URL}
- * - {SONOS_MOBILE_VIDEO_URL}
- * - {SONOS_DESKTOP_VIDEO_URL}
- * - {MOBILE_PLAYER_VIDEO_URL}
- * - {DESKTOP_PLAYER_VIDEO_URL}
- * - {PLAYERONE_VIDEO_URL}
- * - {REMOTE_APP_IOS_URL}
- * - {REMOTE_APP_ANDROID_URL}
- * - {RISER_SUPPORT_PHONE}
- * - {RISER_SUPPORT_EMAIL}
+ * Video Configuration:
+ * - Video IDs are loaded from Firebase Firestore
+ * - Admin panel at /admin allows updating video IDs without code changes
+ * - Falls back to hardcoded defaults if Firestore is unavailable
  */
+
+// Firebase imports for video config
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+import { getFirestore, doc, getDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+
+// Firebase configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyAXGwSCaIBeYsfy2mHhOYf3rwc3xk2q7_w",
+    authDomain: "riser-fitness-setup-app.firebaseapp.com",
+    projectId: "riser-fitness-setup-app",
+    storageBucket: "riser-fitness-setup-app.firebasestorage.app",
+    messagingSenderId: "971388526008",
+    appId: "1:971388526008:web:22ae2c4ced5042c9e3034d"
+};
+
+// Initialize Firebase
+const firebaseApp = initializeApp(firebaseConfig);
+const db = getFirestore(firebaseApp);
 
 (function() {
     'use strict';
@@ -489,40 +500,80 @@
     let youtubeVideoWrapper = null;
     let youtubeIframe = null;
     
-    // YouTube video configuration for all paths
-    // Format: { title: 'Modal Title', videoId: 'YouTube ID', start: seconds }
-    const videoConfig = {
+    // Default YouTube video configuration (fallback if Firestore unavailable)
+    // These are the current production video IDs - update here when videos change
+    // Redirect URLs for reference:
+    //   - sonos-mobile-app.mybizsound.com -> G0u3DRYpaSw
+    //   - sonos-desktop-app.mybizsound.com -> sC-kyEPmN6Y
+    //   - soundtrack-mobile.mybizsound.com -> dForGebklPE
+    //   - soundtrack-desktop-pairing.mybizsound.com -> J7DatV7fA8E
+    //   - playerone-hardware.mybizsound.com -> pv3T4oJbqLI
+    //   - remote-control.mybizsound.com -> w13RRb9Cx0A
+    const defaultVideoConfig = {
         'sonos-mobile': {
             title: 'Sonos + Mobile App Setup Video',
-            videoId: 'jVSjxW-hknE',
-            start: 7
+            videoId: 'G0u3DRYpaSw',
+            start: 0
         },
         'sonos-desktop': {
             title: 'Sonos + Desktop App Setup Video',
-            videoId: 'B2SvjpmUDUc',
+            videoId: 'sC-kyEPmN6Y',
             start: 0
         },
         'mobile': {
             title: 'Mobile Device Setup Video',
-            videoId: 'RjZ8dAVEyOI',
+            videoId: 'dForGebklPE',
             start: 0
         },
         'computer': {
             title: 'Computer Setup Video',
-            videoId: 'RjZ8dAVEyOI',
+            videoId: 'J7DatV7fA8E',
             start: 0
         },
         'hardware': {
             title: 'Hardware Streaming Box Setup Video',
-            videoId: 'vzwJbqn8gL0',
+            videoId: 'pv3T4oJbqLI',
             start: 0
         },
         'remote-control': {
             title: 'Soundtrack Remote Control Setup Video',
             videoId: 'w13RRb9Cx0A',
-            start: 1
+            start: 0
         }
     };
+    
+    // Live video configuration (loaded from Firestore, falls back to defaults)
+    let videoConfig = { ...defaultVideoConfig };
+    
+    /**
+     * Load video configuration from Firestore
+     * Updates videoConfig with values from database, keeping defaults for any missing values
+     */
+    async function loadVideoConfigFromFirestore() {
+        try {
+            const docRef = doc(db, 'config', 'videos');
+            const docSnap = await getDoc(docRef);
+            
+            if (docSnap.exists()) {
+                const data = docSnap.data();
+                // Update each video config with Firestore values if they exist
+                Object.keys(defaultVideoConfig).forEach(key => {
+                    if (data[key]) {
+                        videoConfig[key] = {
+                            ...defaultVideoConfig[key],
+                            videoId: data[key]
+                        };
+                    }
+                });
+                console.log('Video config loaded from Firestore');
+            }
+        } catch (error) {
+            console.warn('Could not load video config from Firestore, using defaults:', error.message);
+        }
+    }
+    
+    // Load video config on page load
+    loadVideoConfigFromFirestore();
     
     /**
      * Build YouTube embed URL with parameters

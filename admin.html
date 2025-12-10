@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Riser Fitness Music Setup</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --riser-blue: #4A90D9;
+            --riser-blue-dark: #3A7BC8;
+            --riser-blue-light: #6BA3E3;
+            --riser-charcoal: #16213E;
+            --riser-gray-900: #333333;
+            --riser-gray-700: #555555;
+            --riser-gray-500: #888888;
+            --riser-gray-300: #CCCCCC;
+            --riser-gray-200: #E5E5E5;
+            --riser-gray-100: #F5F5F5;
+            --riser-gray-50: #FAFAFA;
+            --riser-white: #FFFFFF;
+            --accent-success: #10B981;
+            --accent-error: #EF4444;
+            --font-body: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: linear-gradient(165deg, #1e3a5f 0%, #16213e 35%, #1a1a2e 70%, #0f0f1a 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .admin-container {
+            background: var(--riser-white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            width: 100%;
+            max-width: 600px;
+            overflow: hidden;
+        }
+
+        .admin-header {
+            background: linear-gradient(135deg, var(--riser-blue) 0%, var(--riser-blue-dark) 100%);
+            color: var(--riser-white);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-header h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .admin-header .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.875rem;
+        }
+
+        .admin-header .user-email {
+            opacity: 0.9;
+        }
+
+        .btn-logout {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: var(--riser-white);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: var(--font-body);
+        }
+
+        .btn-logout:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .admin-body {
+            padding: 2rem;
+        }
+
+        /* Login Form */
+        .login-container {
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .login-container h1 {
+            font-size: 1.5rem;
+            color: var(--riser-charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        .login-container .subtitle {
+            color: var(--riser-gray-500);
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+            text-align: left;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--riser-gray-700);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            font-family: var(--font-body);
+            border: 1px solid var(--riser-gray-300);
+            border-radius: var(--radius-sm);
+            transition: all 0.2s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--riser-blue);
+            box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.15);
+        }
+
+        .form-helper {
+            font-size: 0.8rem;
+            color: var(--riser-gray-500);
+            margin-top: 0.375rem;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 0.875rem 1.5rem;
+            background: linear-gradient(135deg, var(--riser-blue) 0%, var(--riser-blue-dark) 100%);
+            color: var(--riser-white);
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: var(--font-body);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .error-message {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: var(--accent-error);
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .error-message.visible {
+            display: block;
+        }
+
+        .success-message {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: var(--accent-success);
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .success-message.visible {
+            display: block;
+        }
+
+        /* Video Config Form */
+        .video-config-intro {
+            color: var(--riser-gray-700);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .video-field {
+            background: var(--riser-gray-50);
+            border: 1px solid var(--riser-gray-200);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .video-field:last-of-type {
+            margin-bottom: 1.5rem;
+        }
+
+        .video-field .form-label {
+            color: var(--riser-charcoal);
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .video-field .field-description {
+            font-size: 0.8rem;
+            color: var(--riser-gray-500);
+            margin-bottom: 0.5rem;
+        }
+
+        .video-field .form-input {
+            background: var(--riser-white);
+        }
+
+        .btn-save {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: linear-gradient(135deg, var(--accent-success) 0%, #0D9668 100%);
+            color: var(--riser-white);
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: var(--font-body);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-save:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-save:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--riser-gray-500);
+            font-size: 0.875rem;
+            text-decoration: none;
+            margin-top: 1.5rem;
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: var(--riser-blue);
+        }
+
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: var(--riser-gray-500);
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--riser-gray-200);
+            border-top-color: var(--riser-blue);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Hidden state */
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Loading State -->
+        <div id="loading-state" class="loading">
+            <div class="spinner"></div>
+            <p>Loading...</p>
+        </div>
+
+        <!-- Login Form -->
+        <div id="login-section" class="hidden">
+            <div class="login-container">
+                <h1>Admin Login</h1>
+                <p class="subtitle">Riser Fitness Music Setup</p>
+                
+                <div id="login-error" class="error-message"></div>
+                
+                <form id="login-form">
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email Address</label>
+                        <input type="email" id="email" class="form-input" placeholder="you@example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="password">Password</label>
+                        <input type="password" id="password" class="form-input" placeholder="Enter your password" required>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary" id="login-btn">Sign In</button>
+                </form>
+                
+                <a href="/" class="back-link">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    Back to Setup Wizard
+                </a>
+            </div>
+        </div>
+
+        <!-- Admin Panel -->
+        <div id="admin-section" class="hidden">
+            <div class="admin-header">
+                <h1>Video Configuration</h1>
+                <div class="user-info">
+                    <span class="user-email" id="user-email"></span>
+                    <button class="btn-logout" id="logout-btn">Sign Out</button>
+                </div>
+            </div>
+            
+            <div class="admin-body">
+                <p class="video-config-intro">
+                    Update the YouTube video IDs below. You can paste either the full YouTube URL or just the video ID.
+                    Changes take effect immediately.
+                </p>
+                
+                <div id="save-error" class="error-message"></div>
+                <div id="save-success" class="success-message"></div>
+                
+                <form id="video-config-form">
+                    <div class="video-field">
+                        <label class="form-label" for="sonos-mobile">Sonos + Mobile App</label>
+                        <p class="field-description">Video shown when user selects Sonos system with mobile app control</p>
+                        <input type="text" id="sonos-mobile" class="form-input" placeholder="YouTube video ID or URL">
+                    </div>
+                    
+                    <div class="video-field">
+                        <label class="form-label" for="sonos-desktop">Sonos + Desktop App</label>
+                        <p class="field-description">Video shown when user selects Sonos system with desktop app control</p>
+                        <input type="text" id="sonos-desktop" class="form-input" placeholder="YouTube video ID or URL">
+                    </div>
+                    
+                    <div class="video-field">
+                        <label class="form-label" for="mobile">Mobile Device</label>
+                        <p class="field-description">Video shown when user selects mobile device (phone/tablet) setup</p>
+                        <input type="text" id="mobile" class="form-input" placeholder="YouTube video ID or URL">
+                    </div>
+                    
+                    <div class="video-field">
+                        <label class="form-label" for="computer">Computer (Mac/PC)</label>
+                        <p class="field-description">Video shown when user selects computer setup</p>
+                        <input type="text" id="computer" class="form-input" placeholder="YouTube video ID or URL">
+                    </div>
+                    
+                    <div class="video-field">
+                        <label class="form-label" for="hardware">Hardware / PlayerOne</label>
+                        <p class="field-description">Video shown when user selects hardware streaming box setup</p>
+                        <input type="text" id="hardware" class="form-input" placeholder="YouTube video ID or URL">
+                    </div>
+                    
+                    <div class="video-field">
+                        <label class="form-label" for="remote-control">Remote Control</label>
+                        <p class="field-description">Video showing how to use the Soundtrack Remote Control app</p>
+                        <input type="text" id="remote-control" class="form-input" placeholder="YouTube video ID or URL">
+                    </div>
+                    
+                    <button type="submit" class="btn-save" id="save-btn">Save Changes</button>
+                </form>
+                
+                <a href="/" class="back-link">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    Back to Setup Wizard
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+        import { getFirestore, doc, getDoc, setDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAXGwSCaIBeYsfy2mHhOYf3rwc3xk2q7_w",
+            authDomain: "riser-fitness-setup-app.firebaseapp.com",
+            projectId: "riser-fitness-setup-app",
+            storageBucket: "riser-fitness-setup-app.firebasestorage.app",
+            messagingSenderId: "971388526008",
+            appId: "1:971388526008:web:22ae2c4ced5042c9e3034d"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // DOM Elements
+        const loadingState = document.getElementById('loading-state');
+        const loginSection = document.getElementById('login-section');
+        const adminSection = document.getElementById('admin-section');
+        const loginForm = document.getElementById('login-form');
+        const loginError = document.getElementById('login-error');
+        const loginBtn = document.getElementById('login-btn');
+        const logoutBtn = document.getElementById('logout-btn');
+        const userEmailDisplay = document.getElementById('user-email');
+        const videoConfigForm = document.getElementById('video-config-form');
+        const saveError = document.getElementById('save-error');
+        const saveSuccess = document.getElementById('save-success');
+        const saveBtn = document.getElementById('save-btn');
+
+        // Video field IDs
+        const videoFields = ['sonos-mobile', 'sonos-desktop', 'mobile', 'computer', 'hardware', 'remote-control'];
+
+        /**
+         * Extract YouTube video ID from URL or return as-is if already an ID
+         */
+        function extractVideoId(input) {
+            if (!input) return '';
+            input = input.trim();
+            
+            // If it's already just an ID (11 characters, alphanumeric with - and _)
+            if (/^[a-zA-Z0-9_-]{11}$/.test(input)) {
+                return input;
+            }
+            
+            // Try to extract from various YouTube URL formats
+            const patterns = [
+                /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/,
+                /youtube\.com\/watch\?.*v=([a-zA-Z0-9_-]{11})/
+            ];
+            
+            for (const pattern of patterns) {
+                const match = input.match(pattern);
+                if (match) return match[1];
+            }
+            
+            // Return input as-is if no pattern matches
+            return input;
+        }
+
+        /**
+         * Show appropriate section based on auth state
+         */
+        function showSection(section) {
+            loadingState.classList.add('hidden');
+            loginSection.classList.add('hidden');
+            adminSection.classList.add('hidden');
+            
+            if (section === 'login') {
+                loginSection.classList.remove('hidden');
+            } else if (section === 'admin') {
+                adminSection.classList.remove('hidden');
+            }
+        }
+
+        /**
+         * Load video configuration from Firestore
+         */
+        async function loadVideoConfig() {
+            try {
+                const docRef = doc(db, 'config', 'videos');
+                const docSnap = await getDoc(docRef);
+                
+                if (docSnap.exists()) {
+                    const data = docSnap.data();
+                    videoFields.forEach(field => {
+                        const input = document.getElementById(field);
+                        if (input && data[field]) {
+                            input.value = data[field];
+                        }
+                    });
+                }
+            } catch (error) {
+                console.error('Error loading video config:', error);
+            }
+        }
+
+        /**
+         * Save video configuration to Firestore
+         */
+        async function saveVideoConfig() {
+            saveError.classList.remove('visible');
+            saveSuccess.classList.remove('visible');
+            saveBtn.disabled = true;
+            saveBtn.textContent = 'Saving...';
+            
+            try {
+                const data = {};
+                videoFields.forEach(field => {
+                    const input = document.getElementById(field);
+                    if (input) {
+                        data[field] = extractVideoId(input.value);
+                        // Update the input to show the extracted ID
+                        input.value = data[field];
+                    }
+                });
+                
+                data.updatedAt = new Date().toISOString();
+                data.updatedBy = auth.currentUser?.email || 'unknown';
+                
+                await setDoc(doc(db, 'config', 'videos'), data);
+                
+                saveSuccess.textContent = 'Video configuration saved successfully!';
+                saveSuccess.classList.add('visible');
+                
+                setTimeout(() => {
+                    saveSuccess.classList.remove('visible');
+                }, 3000);
+            } catch (error) {
+                console.error('Error saving video config:', error);
+                saveError.textContent = 'Error saving configuration: ' + error.message;
+                saveError.classList.add('visible');
+            } finally {
+                saveBtn.disabled = false;
+                saveBtn.textContent = 'Save Changes';
+            }
+        }
+
+        // Auth state listener
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                userEmailDisplay.textContent = user.email;
+                showSection('admin');
+                await loadVideoConfig();
+            } else {
+                showSection('login');
+            }
+        });
+
+        // Login form handler
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            loginError.classList.remove('visible');
+            loginBtn.disabled = true;
+            loginBtn.textContent = 'Signing in...';
+            
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+            } catch (error) {
+                console.error('Login error:', error);
+                let message = 'Invalid email or password.';
+                if (error.code === 'auth/too-many-requests') {
+                    message = 'Too many failed attempts. Please try again later.';
+                }
+                loginError.textContent = message;
+                loginError.classList.add('visible');
+            } finally {
+                loginBtn.disabled = false;
+                loginBtn.textContent = 'Sign In';
+            }
+        });
+
+        // Logout handler
+        logoutBtn.addEventListener('click', async () => {
+            try {
+                await signOut(auth);
+            } catch (error) {
+                console.error('Logout error:', error);
+            }
+        });
+
+        // Save form handler
+        videoConfigForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            await saveVideoConfig();
+        });
+    </script>
+</body>
+</html>
+
